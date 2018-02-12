@@ -1,20 +1,117 @@
 <!doctype html>
 <html>
 	<head>
-		<link href="./src/styles/index.css" rel="stylesheet" type="text/css">
-		<!--<script src="./src/scripts/index.js"></script>-->
+		<!--<link href="./src/styles/index.css" rel="stylesheet" type="text/css">
+		<script src="./src/scripts/index.js"></script>-->
+		<meta charset='utf-8' />
+    		<title>Display map navigation controls</title>
+    		<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
 		<script src='https://api.mapbox.com/mapbox-gl-js/v0.44.0/mapbox-gl.js'></script>
 		<link href='https://api.mapbox.com/mapbox-gl-js/v0.44.0/mapbox-gl.css' rel='stylesheet' />
+		<style>
+        		body { margin:0; padding:0; }
+        		#map { position:absolute; top:0; bottom:0; width:100%; }
+    		</style>
 	</head>
 	<body>
-		<div id='map' style='width: 400px; height: 300px;'></div>
+		<style>
+			.mapboxgl-popup {
+				max-width: 100%;
+				font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+			}
+
+			#menu {
+			        position: absolute;
+			        background: #fff;
+			        padding: 10px;
+			        font-family: 'Open Sans', sans-serif;
+			}
+		</style>
+		<div id='map'></div>
+		<div id='menu'>
+		    <input id='basic' type='radio' name='rtoggle' value='basic' checked='checked'>
+		    <label for='basic'>basic</label>
+		    <input id='streets' type='radio' name='rtoggle' value='streets'>
+		    <label for='streets'>streets</label>
+		    <input id='bright' type='radio' name='rtoggle' value='bright'>
+		    <label for='bright'>bright</label>
+		    <input id='light' type='radio' name='rtoggle' value='light'>
+		    <label for='light'>light</label>
+		    <input id='dark' type='radio' name='rtoggle' value='dark'>
+		    <label for='dark'>dark</label>
+		    <input id='satellite' type='radio' name='rtoggle' value='satellite'>
+		    <label for='satellite'>satellite</label>
+		</div>
 		<script>
 			mapboxgl.accessToken = 'pk.eyJ1IjoiYWRhcmlhbiIsImEiOiJjajJvYWkzbncwMnRtMnJtaXljZjkzZm1tIn0.dadJW7Lq3wuEU6jr8B2Rcg';
 			var map = new mapboxgl.Map({
-				container: 'map',
-				style: 'mapbox://styles/mapbox/satellite-streets-v10'
+				container: 'map', //container id
+				style: 'mapbox://styles/mapbox/satellite-streets-v10',
+				center: [ -120.4234415, 37.3660279], //starting position
+				zoom: 15 //starting zoom
 			});
+
+			var layerList = document.getElementById('menu');
+			var inputs = layerList.getElementsByTagName('input');
+
+			function switchLayer(layer) {
+			    var layerId = layer.target.id;
+			    map.setStyle('mapbox://styles/mapbox/' + layerId + '-v9');
+			}
+
+			for (var i = 0; i < inputs.length; i++) {
+			    inputs[i].onclick = switchLayer;
+			}
+
+			map.on('load', function() {
+				//Add a layer showing the places.
+				map.addLayer({
+					"id": "places",
+					"type": "symbol",
+					"source": {
+						"type": "geojson",
+						"data": {
+							"type": "FeatureCollection",
+							"features": [{
+								"type": "Feature",
+								"properties": {
+									//"description": "<strong>Engineering Service Learning (ENGSL)</strong>"<p><a href=\"https://engineeringservicelearning.ucmerced.edu/" target=\"_blank\" title=\"Opens in a new window\">ENGSL Website</a></p>",
+									"icon": "star"
+								},
+								"geometry": {
+									"type": "Point",
+									"coordinates": [-120.4229667, 37.3668401]
+								}
+							}]
+						}
+					},
+					"layout": {
+						"icon-image": "{icon}-15",
+						"icon-allow-overlap": true
+					}
+				});
+
+				//When click event occures ona feature in the places layre, open a popup at the location of the feature, with description HTML from its properties.
+				map.on('click', 'places', function(e) {
+					new mapboxgl.Popup()
+						.setLngLat(e.feature[0].geometry.coordinates)
+						.setHTML(e.features[0].properties.description)
+						.addTo(map);
+				});
+
+				//Change the cursor to a pointer when the mouse is over the places layer.
+				map.on('mouseenter', 'places', function() {
+					map.getCanvas().style.cursor = 'pointer';
+				});
+
+				//Change it back to a pointer when it leaves.
+				map.on('mouseleave', 'places', function() {
+					map.getCanvas().style.cursor = '';
+				});
+			});
+
+			//Add zoom and rotation controls to the map.
+			map.addControl(new mapboxgl.NavigationCOntrol());
 		</script>
 	</body>
 </html>
-
