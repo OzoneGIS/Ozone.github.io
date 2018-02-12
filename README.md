@@ -1,5 +1,5 @@
 # Sustainable Sites
-## Engineering Service Learning @ UC Merced
+#### Engineering Service Learning @ UC Merced
 
 Working with the Department of Sustainability (sustainability.ucmerced.edu) to provide access to sustainability initiatives in an interactive, hands-on manner.
 
