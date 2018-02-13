@@ -48,7 +48,7 @@
 				container: 'map', //container id
 				style: 'mapbox://styles/mapbox/satellite-streets-v10',
 				center: [ -120.4234415, 37.3660279], //starting position
-				zoom: 15 //starting zoom
+				zoom: 17 //starting zoom
 			});
 
 			var layerList = document.getElementById('menu');
@@ -75,12 +75,12 @@
 							"features": [{
 								"type": "Feature",
 								"properties": {
-									//"description": "<strong>Engineering Service Learning (ENGSL)</strong>"<p><a href=\"https://engineeringservicelearning.ucmerced.edu/" target=\"_blank\" title=\"Opens in a new window\">ENGSL Website</a></p>",
+									"description": "<strong>Engineering Service Learning (ENGSL)</strong><p><a href=\"https://engineeringservicelearning.ucmerced.edu/\" target=\"_blank\" title=\"Opens in a new window\">Engineering Service Learning</a>: Sustainable-Sites hub for weekly meetings.</p>",
 									"icon": "star"
 								},
 								"geometry": {
 									"type": "Point",
-									"coordinates": [-120.4229667, 37.3668401]
+									"coordinates": [-120.422485, 37.366126]
 								}
 							}]
 						}
@@ -91,10 +91,10 @@
 					}
 				});
 
-				//When click event occures ona feature in the places layre, open a popup at the location of the feature, with description HTML from its properties.
+				//When click event occures on a feature in the places layre, open a popup at the location of the feature, with description HTML from its properties.
 				map.on('click', 'places', function(e) {
 					new mapboxgl.Popup()
-						.setLngLat(e.feature[0].geometry.coordinates)
+						.setLngLat(e.features[0].geometry.coordinates)
 						.setHTML(e.features[0].properties.description)
 						.addTo(map);
 				});
@@ -111,7 +111,7 @@
 			});
 
 			//Add zoom and rotation controls to the map.
-			map.addControl(new mapboxgl.NavigationCOntrol());
+			map.addControl(new mapboxgl.NavigationControl());
 		</script>
 	</body>
 </html>
