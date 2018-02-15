@@ -29,7 +29,7 @@
 		</style>
 		<div id='map'></div>
 		<div id='menu'>
-		    <input id='basic' type='radio' name='rtoggle' value='basic' checked='checked'>
+		    <input id='basic' type='radio' name='rtoggle' value='basic'>
 		    <label for='basic'>basic</label>
 		    <input id='streets' type='radio' name='rtoggle' value='streets'>
 		    <label for='streets'>streets</label>
@@ -39,7 +39,7 @@
 		    <label for='light'>light</label>
 		    <input id='dark' type='radio' name='rtoggle' value='dark'>
 		    <label for='dark'>dark</label>
-		    <input id='satellite' type='radio' name='rtoggle' value='satellite'>
+		    <input id='satellite' type='radio' name='rtoggle' value='satellite' checked='checked'>
 		    <label for='satellite'>satellite</label>
 		</div>
 		<script>
@@ -60,7 +60,12 @@
 			}
 
 			for (var i = 0; i < inputs.length; i++) {
-			    inputs[i].onclick = switchLayer;
+				if (i == 4) {
+					mapboxgl.accessToken = 'pk.eyJ1IjoiYWRhcmlhbiIsImEiOiJjajJvYWkzbncwMnRtMnJtaXljZjkzZm1tIn0.dadJW7Lq3wuEU6jr8B2Rcg';
+					inputs[4].onclick = switchLayer;
+				} else {
+			    		inputs[i].onclick = switchLayer;
+				}
 			}
 
 			map.on('load', function() {
@@ -88,6 +93,139 @@
 					"layout": {
 						"icon-image": "{icon}-15",
 						"icon-allow-overlap": true
+					}
+				});
+
+				//Add a layer showing the points
+				map.addLayer({
+					"id": "points",
+					"type": "symbol",
+					"source": {
+						"type": "geojson",
+						"data": {
+							"type": "FeatureCollection",
+							"features": [{
+								"type": "Feature",
+								"geometry": {
+									"type": "Point",
+									"coordinates": [-120.4291989, 37.3640066]
+								},
+								"properties": {
+									"title": "Bicycle Rack",
+									"icon": "star"
+								}
+							}, {
+								"type": "Feature",
+								"geometry": {
+									"type": "Point",
+									"coordinates": [-120.4292576, 37.3641988]
+								},
+								"properties": {
+									"title": "Bicycle Rack",
+									"icon": "star"
+								}
+							}, {
+								"type": "Feature",
+								"geometry": {
+									"type": "Point",
+									"coordinates": [-120.4296224, 37.3643237]
+								},
+								"properties": {
+									"title": "Bicycle Rack",
+									"icon": "star"
+								}
+							}, {
+								"type": "Feature",
+								"geometry": {
+									"type": "Point",
+									"coordinates": [-120.4303757, 37.3639896]
+								},
+								"properties": {
+									"title": "Bicycle Rack",
+									"icon": "star"
+								}
+							}, {
+								"type": "Feature",
+								"geometry": {
+									"type": "Point",
+									"coordinates": [-120.4302195, 37.3639954]
+								},
+								"properties": {
+									"title": "Bicycle Rack",
+									"icon": "star"
+								}
+							}, {
+								"type": "Feature",
+								"geometry": {
+									"type": "Point",
+									"coordinates": [-120.4301149, 37.3639821]
+								},
+								"properties": {
+									"title": "Bicycle Rack",
+									"icon": "star"
+								}
+							}, {
+								"type": "Feature",
+								"geometry": {
+									"type": "Point",
+									"coordinates": [-120.4299597, 37.3639771]
+								},
+								"properties": {
+									"title": "Bicycle Rack",
+									"icon": "star"
+								}
+							}, {
+								"type": "Feature",
+								"geometry": {
+									"type": "Point",
+									"coordinates": [-120.4295453, 37.3638038]
+								},
+								"properties": {
+									"title": "Bicycle Rack",
+									"icon": "star"
+								}
+							}, {
+								"type": "Feature",
+								"geometry": {
+									"type": "Point",
+									"coordinates": [-120.4289907, 37.3636093]
+								},
+								"properties": {
+									"title": "Bicycle Rack",
+									"icon": "star"
+								}
+							}, {
+								"type": "Feature",
+								"geometry": {
+									"type": "Point",
+									"coordinates": [-120.4290162, 37.3638806]
+								},
+								"properties": {
+									"title": "Bicycle Rack",
+									"icon": "star"
+								}
+							}, {
+								"type": "Feature",
+								"geometry": {
+									"type": "Point",
+									"coordinates": [-120.4290199, 37.3641676]
+								},
+								"properties": {
+									"title": "Bicycle Rack",
+									"icon": "star"
+								}
+							}]
+						}
+					},
+					"layout": {
+						"icon-image": "{icon}-15",
+						"text-field": "{title}",
+						"text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
+						"text-offset": [0, 0.6],
+						"text-anchor": "top"
+					},
+					"paint": {
+						"icon-color": "#FFF"
 					}
 				});
 
