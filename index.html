@@ -1,3 +1,4 @@
+<!doctype html>
 <html>
 
 <head>
@@ -11,24 +12,11 @@
 </head>
 
 <body>
-  <div id="container">
-  <div id="Left-Bar"></div>
-	<div id='map'></div>
-  </div>
-	<div id='menu'>
-		<input id='basic' type='radio' name='rtoggle' value='basic'>
-		<label for='basic'>basic</label>
-		<input id='streets' type='radio' name='rtoggle' value='streets'>
-		<label for='streets'>streets</label>
-		<input id='bright' type='radio' name='rtoggle' value='bright'>
-		<label for='bright'>bright</label>
-		<input id='light' type='radio' name='rtoggle' value='light' checked='checked'>
-		<label for='light'>light</label>
-		<input id='dark' type='radio' name='rtoggle' value='dark'>
-		<label for='dark'>dark</label>
-		<input id='satellite' type='radio' name='rtoggle' value='satellite' >
-		<label for='satellite'>satellite</label>
+	<div id="container">
+		<div id="Left-Bar"></div>
+		<div id='map'></div>
 	</div>
+
 	<script>
 		mapboxgl.accessToken = 'pk.eyJ1IjoiYWRhcmlhbiIsImEiOiJjajJvYWkzbncwMnRtMnJtaXljZjkzZm1tIn0.dadJW7Lq3wuEU6jr8B2Rcg';
 		var map = new mapboxgl.Map({
@@ -37,20 +25,17 @@
 			center: [-120.4234415, 37.3660279], //starting position
 			zoom: 17 //starting zoom
 		});
-		var layerList = document.getElementById('menu');
-		var inputs = layerList.getElementsByTagName('input');
-		function switchLayer(layer) {
-			var layerId = layer.target.id;
-			map.setStyle('mapbox://styles/mapbox/' + layerId + '-v9');
-		}
-		for (var i = 0; i < inputs.length; i++) {
-			if (i == 4) {
-				mapboxgl.accessToken = 'pk.eyJ1IjoiYWRhcmlhbiIsImEiOiJjajJvYWkzbncwMnRtMnJtaXljZjkzZm1tIn0.dadJW7Lq3wuEU6jr8B2Rcg';
-				inputs[4].onclick = switchLayer;
-			} else {
-				inputs[i].onclick = switchLayer;
-			}
-		}
+
+
+
+	/*$.getJSON("./src/scripts/waterRefillStations.json", function(data){
+		console.log("JSON Data: " + data);
+		$.each(data, function(key, val) {
+		console.log(key + "value: " + val);
+		});
+	});*/
+
+
 		map.on('load', function() {
 			//Add a layer showing the places.
 			map.addLayer({
