@@ -57,6 +57,8 @@ a:hover {
   min-height: 60px;
   line-height: 60px;
   padding: 0 10px;
+  background-color: #00853e;
+  color: #fff;
 }
 
 .listings {
@@ -86,8 +88,7 @@ a:hover {
   font-weight: 400;
 }
 
-.listings .item.active .titless,
-.listings .item .titles:hover {
+.listings .item.active .titles, .listings .item .titles:hover {
   color: #8cc63f;
 }
 
@@ -110,7 +111,35 @@ a:hover {
   background: #00853e;
   border-radius: 0;
 }
+
+.marker {
+  border: none;
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  background: url(./icons/tint.svg);
+  background-color: rgba(0, 0, 0, 0);
+  background-repeat: no-repeat;
+}
+
+
+.clearfix {
+  display: block;
+}
+
+.clearfix:after {
+  content: '.';
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
 /* Marker tweaks */
+
+.mapboxgl-popup {
+  padding-bottom: 50px;
+}
 
 .mapboxgl-popup-close-button {
   display: none;
@@ -140,9 +169,8 @@ a:hover {
 .mapboxgl-popup-content h4 {
   margin: 0;
   display: block;
-  padding: 10px;
+  padding: 10px 10px 10px 10px;
   font-weight: 400;
-  margin: 0;
 }
 
 .mapboxgl-popup-content div {
@@ -153,10 +181,10 @@ a:hover {
   cursor: pointer;
 }
 
-.mapboxgl-popup-anchor-top > .mapboxgl-popup-content {
-        margin-top: 15px;
-      }
+.mapboxgl-popup-anchor-top>.mapboxgl-popup-content {
+  margin-top: 15px;
+}
 
-.mapboxgl-popup-anchor-top > .mapboxgl-popup-tip {
+.mapboxgl-popup-anchor-top>.mapboxgl-popup-tip {
   border-bottom-color: #91c949;
 }

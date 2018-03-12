@@ -4,10 +4,11 @@
   <meta charset="utf-8">
   <title>Ozone</title>
   <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700' rel='stylesheet'>
   <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.js'></script>
   <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.css' rel='stylesheet' />
   <link href='./src/styles/index.css' type="text/css" rel="stylesheet" />
-
+  <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
 </head>
 
 <body>
@@ -21,7 +22,6 @@
   <div id='map' class='map'></div>
 
   <script>
-    // This will let you use the .remove() function later on
     if (!('remove' in Element.prototype)) {
       Element.prototype.remove = function() {
         if (this.parentNode) {
@@ -37,15 +37,10 @@
       [-120.417969, 37.373377], //Northeast coordinates
     ];
 
-    // This adds the map to your page
     var map = new mapboxgl.Map({
-      // container id specified in the HTML
       container: 'map',
-      // style URL
       style: 'mapbox://styles/mapbox/light-v9',
-      // initial position in [lon, lat] format
       center: [-120.4295379, 37.3634714],
-      // initial zoom
       zoom: 17,
       maxBounds: bounds,
     });
@@ -110,18 +105,6 @@
           "geometry": {
             "type": "Point",
             "coordinates": [-120.4294095, 37.3642766],
-          }
-        },
-        {
-          "type": "Feature",
-          "properties": {
-            "title": "Water Refill Station",
-            "description": "Description to be added...",
-            "icon": "star",
-          },
-          "geometry": {
-            "type": "Point",
-            "coordinates": [-120.42945651, 37.3675824],
           }
         },
         {
@@ -320,47 +303,45 @@
     };
 
     map.on('load', function(e) {
-      // Add the data to your map as a layer
-      map.addLayer({
-        "id": "locations",
-        "type": "symbol",
-        // Add a GeoJSON source containing place coordinates and information.
-        "source": {
-          "type": "geojson",
-          "data": water
-        },
-        'layout': {
-          'icon-image': 'marker-15',
-          'icon-allow-overlap': true,
-        }
+      map.addSource('locations', {
+        'type': 'geojson',
+        'data': water,
       });
       buildLocationList(water);
     });
 
-    map.on('click', function(e) {
-      var features = map.queryRenderedFeatures(e.point, {
-        layers: ['locations']
-      });
-      if (features.length) {
-        var clickedPoint = features[0];
-        flyToStore(clickedPoint);
-        createPopUp(clickedPoint);
+    map.addControl(new mapboxgl.GeolocateControl({
+      positionOptions: {
+        enableHighAccuracy: true
+      },
+      trackUserLocation: true,
+    }));
+
+    map.addControl(new mapboxgl.NavigationControl());
+
+    water.features.forEach(function(marker, i) {
+      var el = document.createElement('div');
+      el.id = "marker-" + i;
+      el.className = 'marker';
+      new mapboxgl.Marker(el, {
+          offset: [0, -23]
+        })
+        .setLngLat(marker.geometry.coordinates)
+        .addTo(map);
+      el.addEventListener('click', function(e) {
+        flyToWater(marker);
+        createPopUp(marker);
         var activeItem = document.getElementsByClassName('active');
+        e.stopPropagation();
         if (activeItem[0]) {
           activeItem[0].classList.remove('active');
         }
-        var selectedFeature = clickedPoint.properties.title;
-        for (var i = 0; i < stores.features.length; i++) {
-          if (stores.features[i].properties.description === selectedFeature) {
-            selectedFeatureIndex = i;
-          }
-        }
-        var listing = document.getElementById('listing-' + selectedFeatureIndex);
+        var listing = document.getElementById('listing-' + i);
         listing.classList.add('active');
-      }
+      });
     });
 
-    function flyToStore(currentFeature) {
+    function flyToWater(currentFeature) {
       map.flyTo({
         center: currentFeature.geometry.coordinates,
         zoom: 17
@@ -371,7 +352,7 @@
       var popUps = document.getElementsByClassName('mapboxgl-popup');
       if (popUps[0]) popUps[0].remove();
       var popup = new mapboxgl.Popup({
-          closeOnClick: true,
+          closeOnClick: false
         })
         .setLngLat(currentFeature.geometry.coordinates)
         .setHTML('<h3>Water Refill Station</h3>' +
@@ -386,7 +367,7 @@
         var listings = document.getElementById('listings');
         var listing = listings.appendChild(document.createElement('div'));
         listing.className = 'item';
-        listing.id = 'listing-' + i;
+        listing.id = "listing-" + i;
         var link = listing.appendChild(document.createElement('a'));
         link.href = '#';
         link.className = 'titles';
@@ -396,7 +377,7 @@
         details.innerHTML = prop.description;
         link.addEventListener('click', function(e) {
           var clickedListing = data.features[this.dataPosition];
-          flyToStore(clickedListing);
+          flyToWater(clickedListing);
           createPopUp(clickedListing);
           var activeItem = document.getElementsByClassName('active');
           if (activeItem[0]) {
