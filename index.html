@@ -30,7 +30,8 @@
       };
     }
 
-    mapboxgl.accessToken = 'pk.eyJ1IjoiYWRhcmlhbiIsImEiOiJjajJvYWkzbncwMnRtMnJtaXljZjkzZm1tIn0.dadJW7Lq3wuEU6jr8B2Rcg';
+    //mapboxgl.accessToken = 'pk.eyJ1IjoiYWRhcmlhbiIsImEiOiJjajJvYWkzbncwMnRtMnJtaXljZjkzZm1tIn0.dadJW7Lq3wuEU6jr8B2Rcg';
+    mapboxgl.accessToken = 'undefined';
 
     var bounds = [
       [-120.434492, 37.360587], //Southwest coordinates
@@ -306,14 +307,41 @@
         'data': water,
       });
       buildLocationList(water);
-      map.addSource('vernalPools', {
+      /*map.addSource('vernalPools', {
         'type': 'geojson',
         'data': 'vernal',
       });
       buildLocationList(vernal);
       var layers = map.getStyle().layers;
       var labelLayerId;
-      for (var i = 0; i < layers.length)
+      for (var i = 0; i < layers.length; i++) {
+        if (layers[i].type === 'symbol' && layers[i].layout['text-field']) {
+          labelLayerId = layers[i].id;
+          break;
+        }
+      }
+      map.addLayer({
+        'id': '3d-buildings',
+        'source': 'composite',
+        'source-layer': 'building',
+        'filter': ['==', 'extrude', 'true'],
+        'type': 'fill-extrusion',
+        'minzoom': 15,
+        'paint': {
+          'fill-extrusion-color': '#aaa',
+          'fill-extrusion-height': [
+            "interpolate", ["linear"], ["zoom"],
+            15, 0,
+            15.05, ["get", "height"],
+          ],
+          'fill-extrusion-base': [
+            "interpolate", ["linear"], ["zoom"],
+            15, 0,
+            15.05, ["get", "min_height"],
+          ],
+          'fill-extrusion-opacity': 0.6,
+        }
+      }, labelLayerId);*/
     });
 
     map.addControl(new mapboxgl.GeolocateControl({
