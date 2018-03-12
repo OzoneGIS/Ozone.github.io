@@ -76,18 +76,18 @@ a:hover {
   border-bottom: none;
 }
 
-.listings .item .title {
+.listings .item .titles {
   display: block;
   color: #00853e;
   font-weight: 700;
 }
 
-.listings .item .title small {
+.listings .item .titles small {
   font-weight: 400;
 }
 
-.listings .item.active .title,
-.listings .item .title:hover {
+.listings .item.active .titless,
+.listings .item .titles:hover {
   color: #8cc63f;
 }
 
