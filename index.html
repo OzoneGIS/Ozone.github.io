@@ -1,297 +1,371 @@
-<!doctype html>
 <html>
 
 <head>
-	<link href="./src/styles/index.css" rel="stylesheet" type="text/css">
-	<!--<script src="./src/scripts/index.js"></script>-->
-	<meta charset='utf-8' />
-	<title>Display map navigation controls</title>
-	<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-	<script src='https://api.mapbox.com/mapbox-gl-js/v0.44.0/mapbox-gl.js'></script>
-	<link href='https://api.mapbox.com/mapbox-gl-js/v0.44.0/mapbox-gl.css' rel='stylesheet' />
+  <meta charset="utf-8">
+  <title>Ozone</title>
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.js'></script>
+  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.css' rel='stylesheet' />
+  <link href='./src/styles/index.css' type="text/css" rel="stylesheet" />
+
 </head>
 
 <body>
-	<div id="container">
-		<div id="Left-Bar"></div>
-		<div id='map'></div>
-	</div>
+  <div id='map' class='map pad2'></div>
 
-	<script>
-		mapboxgl.accessToken = 'pk.eyJ1IjoiYWRhcmlhbiIsImEiOiJjajJvYWkzbncwMnRtMnJtaXljZjkzZm1tIn0.dadJW7Lq3wuEU6jr8B2Rcg';
-		var map = new mapboxgl.Map({
-			container: 'map', //container id
-			style: 'mapbox://styles/mapbox/light-v9',
-			center: [-120.4234415, 37.3660279], //starting position
-			zoom: 17 //starting zoom
-		});
+  <div class='sidebar'>
+    <div class="heading">
+      <h1>Water Refill Stations</h1>
+    </div>
+    <div id="listings" class="listings"></div>
+  </div>
 
+  <script>
+  // This will let you use the .remove() function later on
+  if (!('remove' in Element.prototype)) {
+    Element.prototype.remove = function() {
+      if (this.parentNode) {
+        this.parentNode.removeChild(this);
+      }
+    };
+  }
 
+    mapboxgl.accessToken = 'pk.eyJ1IjoiYWRhcmlhbiIsImEiOiJjajJvYWkzbncwMnRtMnJtaXljZjkzZm1tIn0.dadJW7Lq3wuEU6jr8B2Rcg';
 
-	/*$.getJSON("./src/scripts/waterRefillStations.json", function(data){
-		console.log("JSON Data: " + data);
-		$.each(data, function(key, val) {
-		console.log(key + "value: " + val);
-		});
-	});*/
+    var bounds = [
+      [-120.434492, 37.360587], //Southwest coordinates
+      [-120.417969, 37.373377], //Northeast coordinates
+    ];
 
+    // This adds the map to your page
+    var map = new mapboxgl.Map({
+      // container id specified in the HTML
+      container: 'map',
+      // style URL
+      style: 'mapbox://styles/mapbox/light-v9',
+      // initial position in [lon, lat] format
+      center: [-120.4295379, 37.3634714],
+      // initial zoom
+      zoom: 17,
+      maxBounds: bounds,
+    });
 
-		map.on('load', function() {
-			//Add a layer showing the places.
-			map.addLayer({
-				"id": "places",
-				"type": "symbol",
-				"source": {
-					"type": "geojson",
-					"data": {
-						"type": "FeatureCollection",
-						"features": [{
-							"type": "Feature",
-							"properties": {
-								"description": "Water Refill Station",
-								"icon": "star",
-							},
-							"geometry": {
-								"type": "Point",
-								"coordinates": [-120.4295379, 37.3634714],
-							}
-						}, {
-							"type": "Feature",
-							"properties": {
-								"description": "Water Refill Station",
-								"icon": "star",
-							},
-							"geometry": {
-								"type": "Point",
-								"coordinates": [-120.4298095, 37.3638236],
-							}
-						}, {
-							"type": "Feature",
-							"properties": {
-								"description": "Water Refill Station",
-								"icon": "star",
-							},
-							"geometry": {
-								"type": "Point",
-								"coordinates": [-120.4296546, 37.3642097],
-							}
-						}, {
-							"type": "Feature",
-							"properties": {
-								"description": "Water Refill Station",
-								"icon": "star",
-							},
-							"geometry": {
-								"type": "Point",
-								"coordinates": [-120.4294038, 37.3642779],
-							}
-						}, {
-							"type": "Feature",
-							"properties": {
-								"description": "Water Refill Station",
-								"icon": "star",
-							},
-							"geometry": {
-								"type": "Point",
-								"coordinates": [-120.4294095, 37.3642766],
-							}
-						}, {
-							"type": "Feature",
-							"properties": {
-								"description": "Water Refill Station",
-								"icon": "star",
-							},
-							"geometry": {
-								"type": "Point",
-								"coordinates": [-120.42945651, 37.3675824],
-							}
-						}, {
-							"type": "Feature",
-							"properties": {
-								"description": "Water Refill Station",
-								"icon": "star",
-							},
-							"geometry": {
-								"type": "Point",
-								"coordinates": [-120.427814, 37.364143],
-							}
-						}, {
-							"type": "Feature",
-							"properties": {
-								"description": "Water Refill Station",
-								"icon": "star",
-							},
-							"geometry": {
-								"type": "Point",
-								"coordinates": [-120.426924, 37.364605],
-							}
-						}, {
-							"type": "Feature",
-							"properties": {
-								"description": "Water Refill Station",
-								"icon": "star",
-							},
-							"geometry": {
-								"type": "Point",
-								"coordinates": [-120.426837, 37.365075],
-							}
-						}, {
-							"type": "Feature",
-							"properties": {
-								"description": "Water Refill Station",
-								"icon": "star",
-							},
-							"geometry": {
-								"type": "Point",
-								"coordinates": [-120.427697, 37.365323],
-							}
-						}, {
-							"type": "Feature",
-							"properties": {
-								"description": "Water Refill Station",
-								"icon": "star",
-							},
-							"geometry": {
-								"type": "Point",
-								"coordinates": [-120.426142, 37.365323],
-							}
-						}, {
-							"type": "Feature",
-							"properties": {
-								"description": "Water Refill Station",
-								"icon": "star",
-							},
-							"geometry": {
-								"type": "Point",
-								"coordinates": [-120.426142, 37.365181],
-							}
-						}, {
-							"type": "Feature",
-							"properties": {
-								"description": "Water Refill Station",
-								"icon": "star",
-							},
-							"geometry": {
-								"type": "Point",
-								"coordinates": [-120.426955, 37.365905],
-							}
-						}, {
-							"type": "Feature",
-							"properties": {
-								"description": "Water Refill Station",
-								"icon": "star",
-							},
-							"geometry": {
-								"type": "Point",
-								"coordinates": [-120.4301343, 37.3640383],
-							}
-						}, {
-							"type": "Feature",
-							"properties": {
-								"description": "Water Refill Station",
-								"icon": "star",
-							},
-							"geometry": {
-								"type": "Point",
-								"coordinates": [-120.4249661, 37.3662876],
-							}
-						}, {
-							"type": "Feature",
-							"properties": {
-								"description": "Water Refill Station",
-								"icon": "star",
-							},
-							"geometry": {
-								"type": "Point",
-								"coordinates": [-120.4244122, 37.3663140],
-							}
-						}, {
-							"type": "Feature",
-							"properties": {
-								"description": "Water Refill Station",
-								"icon": "star",
-							},
-							"geometry": {
-								"type": "Point",
-								"coordinates": [-120.4244561, 37.3670241],
-							}
-						}, {
-							"type": "Feature",
-							"properties": {
-								"description": "Water Refill Station",
-								"icon": "star",
-							},
-							"geometry": {
-								"type": "Point",
-								"coordinates": [-120.4234681, 37.3669634],
-							}
-						}, {
-							"type": "Feature",
-							"properties": {
-								"description": "Water Refill Station",
-								"icon": "star",
-							},
-							"geometry": {
-								"type": "Point",
-								"coordinates": [-120.4228461, 37.3676064],
-							}
-						}, {
-							"type": "Feature",
-							"properties": {
-								"description": "Water Refill Station",
-								"icon": "star",
-							},
-							"geometry": {
-								"type": "Point",
-								"coordinates": [-120.4219516, 37.3673346],
-							}
-						}, {
-							"type": "Feature",
-							"properties": {
-								"description": "Water Refill Station",
-								"icon": "star",
-							},
-							"geometry": {
-								"type": "Point",
-								"coordinates": [-120.4222021, 37.3663892],
-							}
-						}, {
-							"type": "Feature",
-							"properties": {
-								"description": "Water Refill Station",
-								"icon": "star",
-							},
-							"geometry": {
-								"type": "Point",
-								"coordinates": [-120.4216203, 37.3659548],
-							}
-						}, ]
-					}
-				},
-				"layout": {
-					"icon-image": "{icon}-15",
-					"icon-allow-overlap": true
-				}
-			});
-			//When click event occures on a feature in the places layre, open a popup at the location of the feature, with description HTML from its properties.
-			map.on('click', 'places', function(e) {
-				new mapboxgl.Popup()
-					.setLngLat(e.features[0].geometry.coordinates)
-					.setHTML(e.features[0].properties.description)
-					.addTo(map);
-			});
-			//Change the cursor to a pointer when the mouse is over the places layer.
-			map.on('mouseenter', 'places', function() {
-				map.getCanvas().style.cursor = 'pointer';
-			});
-			//Change it back to a pointer when it leaves.
-			map.on('mouseleave', 'places', function() {
-				map.getCanvas().style.cursor = '';
-			});
-		});
-		//Add zoom and rotation controls to the map.
-		map.addControl(new mapboxgl.NavigationControl());
-	</script>
+    var water = {
+      "type": "FeatureCollection",
+      "features": [{
+          "type": "Feature",
+          "properties": {
+            "title": "Water Refill Station",
+            "description": "Description to be added...",
+            "icon": "star",
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [-120.4295379, 37.3634714],
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "title": "Water Refill Station",
+            "description": "Description to be added...",
+            "icon": "star",
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [-120.4298095, 37.3638236],
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "title": "Water Refill Station",
+            "description": "Description to be added...",
+            "icon": "star",
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [-120.4296546, 37.3642097],
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "title": "Water Refill Station",
+            "description": "Description to be added...",
+            "icon": "star",
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [-120.4294038, 37.3642779],
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "title": "Water Refill Station",
+            "description": "Description to be added...",
+            "icon": "star",
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [-120.4294095, 37.3642766],
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "title": "Water Refill Station",
+            "description": "Description to be added...",
+            "icon": "star",
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [-120.42945651, 37.3675824],
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "title": "Water Refill Station",
+            "description": "Description to be added...",
+            "icon": "star",
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [-120.427814, 37.364143],
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "title": "Water Refill Station",
+            "description": "Description to be added...",
+            "icon": "star",
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [-120.426924, 37.364605],
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "title": "Water Refill Station",
+            "description": "Description to be added...",
+            "icon": "star",
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [-120.426837, 37.365075],
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "title": "Water Refill Station",
+            "description": "Description to be added...",
+            "icon": "star",
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [-120.427697, 37.365323],
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "title": "Water Refill Station",
+            "description": "Description to be added...",
+            "icon": "star",
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [-120.426142, 37.365323],
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "title": "Water Refill Station",
+            "description": "Description to be added...",
+            "icon": "star",
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [-120.426142, 37.365181],
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "title": "Water Refill Station",
+            "description": "Description to be added...",
+            "icon": "star",
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [-120.426955, 37.365905],
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "title": "Water Refill Station",
+            "description": "Description to be added...",
+            "icon": "star",
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [-120.4301343, 37.3640383],
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "title": "Water Refill Station",
+            "description": "Description to be added...",
+            "icon": "star",
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [-120.4249661, 37.3662876],
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "title": "Water Refill Station",
+            "description": "Description to be added...",
+            "icon": "star",
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [-120.4244122, 37.3663140],
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "title": "Water Refill Station",
+            "description": "Description to be added...",
+            "icon": "star",
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [-120.4244561, 37.3670241],
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "title": "Water Refill Station",
+            "description": "Description to be added...",
+            "icon": "star",
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [-120.4234681, 37.3669634],
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "title": "Water Refill Station",
+            "description": "Description to be added...",
+            "icon": "star",
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [-120.4228461, 37.3676064],
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "title": "Water Refill Station",
+            "description": "Description to be added...",
+            "icon": "star",
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [-120.4219516, 37.3673346],
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "title": "Water Refill Station",
+            "description": "Description to be added...",
+            "icon": "star",
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [-120.4222021, 37.3663892],
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "title": "Water Refill Station",
+            "description": "Description to be added...",
+            "icon": "star",
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [-120.4216203, 37.3659548],
+          }
+        }
+      ],
+    };
+
+    map.on('load', function(e) {
+      // Add the data to your map as a layer
+      map.addLayer({
+        "id": "locations",
+        "type": "symbol",
+        // Add a GeoJSON source containing place coordinates and information.
+        "source": {
+          "type": "geojson",
+          "data": water
+        },
+        'layout': {
+          'icon-image': 'marker-15',
+          'icon-allow-overlap': true,
+        }
+      });
+      buildLocationList(water);
+    });
+
+    function buildLocationList(data) {
+      // Iterate through the list of stores
+      for (i = 0; i < data.features.length; i++) {
+        var currentFeature = data.features[i];
+        // Shorten data.feature.properties to just `prop` so we're not
+        // writing this long form over and over again.
+        var prop = currentFeature.properties;
+        // Select the listing container in the HTML and append a div
+        // with the class 'item' for each store
+        var listings = document.getElementById('listings');
+        var listing = listings.appendChild(document.createElement('div'));
+        listing.className = 'item';
+        listing.id = 'listing-' + i;
+
+        // Create a new link with the class 'title' for each store
+        // and fill it with the store address
+        var link = listing.appendChild(document.createElement('a'));
+        link.href = '#';
+        link.className = 'titles';
+        link.dataPosition = i;
+        link.innerHTML = prop.title;
+
+        // Create a new div with the class 'details' for each store
+        // and fill it with the city and phone number
+        var details = listing.appendChild(document.createElement('div'));
+        details.innerHTML = prop.description;
+      }
+    }
+  </script>
 </body>
 
 </html>
