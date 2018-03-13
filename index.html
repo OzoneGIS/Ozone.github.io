@@ -309,13 +309,8 @@
         'data': water,
       });
       buildLocationList(water);
-      var geocoder = new MapboxGeocoder({
-        accessToken: mapboxgl.accessToken,
-        bbox: [-77.210763, 38.803367, -76.853675, 39.052643]
-      });
-
-      map.addControl(geocoder, 'top-left');
     });
+
     map.addControl(new mapboxgl.GeolocateControl({
       positionOptions: {
         enableHighAccuracy: true
