@@ -122,7 +122,6 @@ a:hover {
   background-repeat: no-repeat;
 }
 
-
 .clearfix {
   display: block;
 }
@@ -187,4 +186,18 @@ a:hover {
 
 .mapboxgl-popup-anchor-top>.mapboxgl-popup-tip {
   border-bottom-color: rgb(74, 167, 201);
+}
+
+.mapboxgl-ctrl-geocoder {
+  border: 0;
+  border-radius: 0;
+  position: relative;
+  top: 0;
+  width: 800px;
+  margin-top: 0;
+}
+
+.mapboxgl-ctrl-geocoder>div {
+  min-width: 100%;
+  margin-left: 0;
 }
