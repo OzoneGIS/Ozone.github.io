@@ -30,8 +30,7 @@
       };
     }
 
-    //mapboxgl.accessToken = 'pk.eyJ1IjoiYWRhcmlhbiIsImEiOiJjajJvYWkzbncwMnRtMnJtaXljZjkzZm1tIn0.dadJW7Lq3wuEU6jr8B2Rcg';
-    mapboxgl.accessToken = 'undefined';
+    mapboxgl.accessToken = 'pk.eyJ1IjoiYWRhcmlhbiIsImEiOiJjajJvYWkzbncwMnRtMnJtaXljZjkzZm1tIn0.dadJW7Lq3wuEU6jr8B2Rcg';
 
     var bounds = [
       [-120.434492, 37.360587], //Southwest coordinates
@@ -44,9 +43,6 @@
       center: [-120.4295379, 37.3634714],
       zoom: 17,
       maxBounds: bounds,
-      pitch: 45,
-      bearing: -17.6,
-      hash: true,
     });
 
 
@@ -307,41 +303,6 @@
         'data': water,
       });
       buildLocationList(water);
-      /*map.addSource('vernalPools', {
-        'type': 'geojson',
-        'data': 'vernal',
-      });
-      buildLocationList(vernal);*/
-      var layers = map.getStyle().layers;
-      var labelLayerId;
-      for (var i = 0; i < layers.length; i++) {
-        if (layers[i].type === 'symbol' && layers[i].layout['text-field']) {
-          labelLayerId = layers[i].id;
-          break;
-        }
-      }
-      map.addLayer({
-        'id': '3d-buildings',
-        'source': 'composite',
-        'source-layer': 'building',
-        'filter': ['==', 'extrude', 'true'],
-        'type': 'fill-extrusion',
-        'minzoom': 15,
-        'paint': {
-          'fill-extrusion-color': '#aaa',
-          'fill-extrusion-height': [
-            "interpolate", ["linear"], ["zoom"],
-            15, 0,
-            15.05, ["get", "height"],
-          ],
-          'fill-extrusion-base': [
-            "interpolate", ["linear"], ["zoom"],
-            15, 0,
-            15.05, ["get", "min_height"],
-          ],
-          'fill-extrusion-opacity': 0.6,
-        }
-      }, labelLayerId);
     });
 
     map.addControl(new mapboxgl.GeolocateControl({
@@ -386,7 +347,7 @@
       var popUps = document.getElementsByClassName('mapboxgl-popup');
       if (popUps[0]) popUps[0].remove();
       var popup = new mapboxgl.Popup({
-          closeOnClick: false
+          closeOnClick: true
         })
         .setLngLat(currentFeature.geometry.coordinates)
         .setHTML('<h3>Water Refill Station</h3>' +
