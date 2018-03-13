@@ -9,17 +9,12 @@
   <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.css' rel='stylesheet' />
   <link href='./src/styles/index.css' type="text/css" rel="stylesheet" />
   <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
-  <!-- Geocoder plugin -->
-  <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.0.1/mapbox-gl-geocoder.js'></script>
-  <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.0.1/mapbox-gl-geocoder.css' type='text/css' />
-  <!-- Turf.js plugin -->
-  <script src='https://npmcdn.com/@turf/turf/turf.min.js'></script>
 </head>
 
 <body>
   <div class='sidebar'>
     <div class="heading">
-      <h1>Water Refill Stations</h1>
+      <h1>Ozone - Sustainable Site</h1>
     </div>
     <div id="listings" class="listings"></div>
   </div>
@@ -35,7 +30,8 @@
       };
     }
 
-    mapboxgl.accessToken = 'pk.eyJ1IjoiYWRhcmlhbiIsImEiOiJjajJvYWkzbncwMnRtMnJtaXljZjkzZm1tIn0.dadJW7Lq3wuEU6jr8B2Rcg';
+    //mapboxgl.accessToken = 'pk.eyJ1IjoiYWRhcmlhbiIsImEiOiJjajJvYWkzbncwMnRtMnJtaXljZjkzZm1tIn0.dadJW7Lq3wuEU6jr8B2Rcg';
+    mapboxgl.accessToken = 'undefined';
 
     var bounds = [
       [-120.434492, 37.360587], //Southwest coordinates
@@ -48,7 +44,26 @@
       center: [-120.4295379, 37.3634714],
       zoom: 17,
       maxBounds: bounds,
+      pitch: 45,
+      bearing: -17.6,
+      hash: true,
     });
+
+
+    var vernal = {
+      "type": "FeatureCollection",
+      "features": [{
+        "type": "Feature",
+        "properties": {
+          "title": "Brenda",
+          "description": "Vernal Pools",
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-120.4053216, 37.3799573],
+        }
+      }]
+    };
 
     var water = {
       "type": "FeatureCollection",
@@ -57,7 +72,6 @@
           "properties": {
             "title": "Water Refill Station",
             "description": "Description to be added...",
-            "icon": "star",
           },
           "geometry": {
             "type": "Point",
@@ -69,7 +83,6 @@
           "properties": {
             "title": "Water Refill Station",
             "description": "Description to be added...",
-            "icon": "star",
           },
           "geometry": {
             "type": "Point",
@@ -81,7 +94,6 @@
           "properties": {
             "title": "Water Refill Station",
             "description": "Description to be added...",
-            "icon": "star",
           },
           "geometry": {
             "type": "Point",
@@ -93,7 +105,6 @@
           "properties": {
             "title": "Water Refill Station",
             "description": "Description to be added...",
-            "icon": "star",
           },
           "geometry": {
             "type": "Point",
@@ -105,7 +116,6 @@
           "properties": {
             "title": "Water Refill Station",
             "description": "Description to be added...",
-            "icon": "star",
           },
           "geometry": {
             "type": "Point",
@@ -117,7 +127,6 @@
           "properties": {
             "title": "Water Refill Station",
             "description": "Description to be added...",
-            "icon": "star",
           },
           "geometry": {
             "type": "Point",
@@ -129,7 +138,6 @@
           "properties": {
             "title": "Water Refill Station",
             "description": "Description to be added...",
-            "icon": "star",
           },
           "geometry": {
             "type": "Point",
@@ -141,7 +149,6 @@
           "properties": {
             "title": "Water Refill Station",
             "description": "Description to be added...",
-            "icon": "star",
           },
           "geometry": {
             "type": "Point",
@@ -153,7 +160,6 @@
           "properties": {
             "title": "Water Refill Station",
             "description": "Description to be added...",
-            "icon": "star",
           },
           "geometry": {
             "type": "Point",
@@ -165,7 +171,6 @@
           "properties": {
             "title": "Water Refill Station",
             "description": "Description to be added...",
-            "icon": "star",
           },
           "geometry": {
             "type": "Point",
@@ -177,7 +182,6 @@
           "properties": {
             "title": "Water Refill Station",
             "description": "Description to be added...",
-            "icon": "star",
           },
           "geometry": {
             "type": "Point",
@@ -189,7 +193,6 @@
           "properties": {
             "title": "Water Refill Station",
             "description": "Description to be added...",
-            "icon": "star",
           },
           "geometry": {
             "type": "Point",
@@ -201,7 +204,6 @@
           "properties": {
             "title": "Water Refill Station",
             "description": "Description to be added...",
-            "icon": "star",
           },
           "geometry": {
             "type": "Point",
@@ -213,7 +215,6 @@
           "properties": {
             "title": "Water Refill Station",
             "description": "Description to be added...",
-            "icon": "star",
           },
           "geometry": {
             "type": "Point",
@@ -225,7 +226,6 @@
           "properties": {
             "title": "Water Refill Station",
             "description": "Description to be added...",
-            "icon": "star",
           },
           "geometry": {
             "type": "Point",
@@ -237,7 +237,6 @@
           "properties": {
             "title": "Water Refill Station",
             "description": "Description to be added...",
-            "icon": "star",
           },
           "geometry": {
             "type": "Point",
@@ -249,7 +248,6 @@
           "properties": {
             "title": "Water Refill Station",
             "description": "Description to be added...",
-            "icon": "star",
           },
           "geometry": {
             "type": "Point",
@@ -261,7 +259,6 @@
           "properties": {
             "title": "Water Refill Station",
             "description": "Description to be added...",
-            "icon": "star",
           },
           "geometry": {
             "type": "Point",
@@ -273,7 +270,6 @@
           "properties": {
             "title": "Water Refill Station",
             "description": "Description to be added...",
-            "icon": "star",
           },
           "geometry": {
             "type": "Point",
@@ -285,7 +281,6 @@
           "properties": {
             "title": "Water Refill Station",
             "description": "Description to be added...",
-            "icon": "star",
           },
           "geometry": {
             "type": "Point",
@@ -297,7 +292,6 @@
           "properties": {
             "title": "Water Refill Station",
             "description": "Description to be added...",
-            "icon": "star",
           },
           "geometry": {
             "type": "Point",
@@ -308,11 +302,46 @@
     };
 
     map.on('load', function(e) {
-      map.addSource('locations', {
+      map.addSource('water', {
         'type': 'geojson',
         'data': water,
       });
       buildLocationList(water);
+      /*map.addSource('vernalPools', {
+        'type': 'geojson',
+        'data': 'vernal',
+      });
+      buildLocationList(vernal);*/
+      var layers = map.getStyle().layers;
+      var labelLayerId;
+      for (var i = 0; i < layers.length; i++) {
+        if (layers[i].type === 'symbol' && layers[i].layout['text-field']) {
+          labelLayerId = layers[i].id;
+          break;
+        }
+      }
+      map.addLayer({
+        'id': '3d-buildings',
+        'source': 'composite',
+        'source-layer': 'building',
+        'filter': ['==', 'extrude', 'true'],
+        'type': 'fill-extrusion',
+        'minzoom': 15,
+        'paint': {
+          'fill-extrusion-color': '#aaa',
+          'fill-extrusion-height': [
+            "interpolate", ["linear"], ["zoom"],
+            15, 0,
+            15.05, ["get", "height"],
+          ],
+          'fill-extrusion-base': [
+            "interpolate", ["linear"], ["zoom"],
+            15, 0,
+            15.05, ["get", "min_height"],
+          ],
+          'fill-extrusion-opacity': 0.6,
+        }
+      }, labelLayerId);
     });
 
     map.addControl(new mapboxgl.GeolocateControl({
