@@ -15,7 +15,7 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=p
   id: 'mapbox.light',
   accessToken: 'your.mapbox.access.token'
 }).addTo(map);
-/*
+
 map.locate({
   setView: true,
   maxZoom: 16
@@ -37,7 +37,7 @@ function onLocationError(e) {
 }
 
 map.on('locationerror', onLocationError);
-*/
+
 L.control.scale().addTo(map);
 
 L.AwesomeMarkers.Icon.prototype.options.prefix = 'ion';
@@ -86,3 +86,23 @@ function onMapClick(e) {
     .openOn(map);
 }
 map.on('click', onMapClick);
+
+//load GeoJSON from an external file
+$.getJSON("https://adriandarian.github.io/Sustainable-Sites/src/scripts/waterRefillStations.geojson", function(data) {
+  var waterIcon = L.icon({
+    iconUrl: '../../src/styles/icons/fa-solids/tint.svg',
+    iconSize: [15, 15],
+  });
+  console.log(data);
+  //add GeoJSON layer to the map once the file is loaded
+  L.geoJson(data, {
+    pointToLayer: function(feature, latlng) {
+      var markerTest = L.marker(latlng, {
+        icon: waterIcon
+      });
+      console.log(data);
+      markerTest.bindPopup(feature.properties.Location + '<br/>' + feature.properties.OPEN_DT);
+      return markerTest;
+    }
+  }).addTo(map);
+});
