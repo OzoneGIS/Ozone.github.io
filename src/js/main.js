@@ -273,21 +273,10 @@ var water = {
   ],
 };
 
-var waterData = $.get("https://adriandarian.github.io/Sustainable-Sites/src/scripts/waterRefillStations.geojson", function() {
-  alert("success");
-}).done(function() {
-  waterData = waterData.responseText;
-  console.log(waterData);
-}).fail(function() {
-  alert("error");
-  console.log(vernal);
-});
+
 
 map.on('load', function(e) {
-  map.addSource('water', {
-    'type': 'geojson',
-    'data': water,
-  });
+
   buildLocationList(water);
 });
 map.addControl(new mapboxgl.GeolocateControl({
