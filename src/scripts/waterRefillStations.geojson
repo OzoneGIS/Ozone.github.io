@@ -1,4 +1,4 @@
-{
+[{
   "type": "FeatureCollection",
   "features": [{
       "type": "Feature",
@@ -265,4 +265,8 @@
       }
     }
   ]
+<<<<<<< HEAD
 }
+=======
+}]
+>>>>>>> c23e1707c6a8f1a619c7d80cc7ec466d6c9523b0
