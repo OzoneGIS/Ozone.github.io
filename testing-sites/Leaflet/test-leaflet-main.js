@@ -15,7 +15,7 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=p
   id: 'mapbox.light',
   accessToken: 'your.mapbox.access.token'
 }).addTo(map);
-
+/*
 map.locate({
   setView: true,
   maxZoom: 16
@@ -37,7 +37,7 @@ function onLocationError(e) {
 }
 
 map.on('locationerror', onLocationError);
-
+*/
 L.control.scale().addTo(map);
 
 L.AwesomeMarkers.Icon.prototype.options.prefix = 'ion';
