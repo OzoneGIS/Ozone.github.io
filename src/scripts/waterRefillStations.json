@@ -1,4 +1,4 @@
-{
+[{
   "id": "places",
   "type": "symbol",
   "source": {
@@ -225,11 +225,11 @@
           "type": "Point",
           "coordinates": [-120.4216203, 37.3659548],
         }
-      }, ]
+      }]
     }
   },
   "layout": {
     "icon-image": "{icon}-15",
     "icon-allow-overlap": true
   }
-}
+}]
