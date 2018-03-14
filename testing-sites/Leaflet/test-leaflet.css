@@ -7,3 +7,8 @@ html, body, #map {
   height: 100%;
   width: 100vw;
 }
+
+.awesome-marker i {
+  font-size: 18px;
+  margin-top: 8px;
+}
