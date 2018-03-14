@@ -273,18 +273,108 @@ var water = {
   ],
 };
 
+//var waterData = JSON.parse('./src/scripts/waterRefillStations.geojson');
 
+var linestring = {
+  'type': 'Feature',
+  'geometry': {
+    'type': 'LineString',
+    'coordinates': {}
+  }
+};
+
+var distanceContainer = document.getElementById('distance');
 
 map.on('load', function(e) {
-
+  map.addSource('waterSource', {
+    "type": "geojson",
+    "data": water,
+  });
+  map.addLayer({
+    'id': 'waterLayer',
+    'type': 'point',
+    'source': 'waterSource',
+    'layout': {
+      'visibility': 'visible'
+    },
+    'paint': {},
+  })
   buildLocationList(water);
 });
+
 map.addControl(new mapboxgl.GeolocateControl({
   positionOptions: {
     enableHighAccuracy: true
   },
   trackUserLocation: true,
 }));
+
+map.on('click', function(e) {
+  var features = map.queryRenderedFeatures(e.point, {
+    layers: ['waterLayer']
+  });
+
+  //Remove the linestring from the group
+  //so we can redraw it based on the points collection
+  if (water.features.length > 1) {
+    water.features.pop();
+  }
+
+  //Clear the distance container to populate it with a new value
+  distanceContainer.innerHTML = '';
+
+  //If a feature was clicked, remove it from the map
+  if (features.length) {
+    var id = features[0].properties.id;
+    water.features = water.features.filter(function(point) {
+      return point.properties.id !== id;
+    });
+  } else {
+    var point = {
+      'type': 'Feature',
+      'geometry': {
+        'type': 'Point',
+        'coordinates': [
+          e.lngLat.lng,
+          e.lngLat.lat
+        ]
+      },
+      'properties': {
+        'id': String(new Date().getTime())
+      }
+    };
+    water.features.push(point);
+  }
+
+  if (water.features.length > 1) {
+    linestring.geometry.coordinates = water.features.map(function(point) {
+      return point.geometry.coordinates;
+    });
+    water.features.push(linestring);
+
+    //populate the distanceContainer with total distance
+    var value = document.createElement('pre');
+    value.textContent = 'Total distance: ' + turf.lineDistance(linestring).toLocaleString() + 'km';
+    distanceContainer.appendChild(value);
+  }
+  map.getSource('waterSource').setData(water);
+});
+
+map.on('mousemove', function(e) {
+  var features = map.queryRenderedFeatures(e.point, {
+    layers: ['waterLayer']
+  });
+  //UI indicatore for clicking/hovering a point on the map
+  map.getCanvas().style.cursor = (features.length) ? 'pointer' : 'crosshair';
+});
+
+
+
+
+
+
+
+
 
 map.addControl(new mapboxgl.NavigationControl());
 
