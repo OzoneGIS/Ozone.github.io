@@ -12,6 +12,9 @@ body {
   box-sizing: border-box;
 }
 
+/* The page is split between map and sidebar - the sidebar gets 1/3, map
+gets 2/3 of the page. You can adjust this to your personal liking. */
+
 .sidebar {
   position: absolute;
   width: 33.3333%;
