@@ -35,8 +35,8 @@ var vernal = {
   "features": [{
     "type": "Feature",
     "properties": {
-      "title": "Brenda Gave Me This",
-      "description": "Vernal Pools",
+      "title": "Vernal Pools",
+      "description": "Brought to you by Brenda",
     },
     "geometry": {
       "type": "Point",
@@ -338,6 +338,8 @@ map.on('click', function(e) {
 
   //Clear the distance container to populate it with a new value
   distanceContainer.innerHTML = '';
+
+
 
   //If a feature was clicked, remove it from the map
   if (features.length) {
