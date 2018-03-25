@@ -12,6 +12,9 @@ body {
   box-sizing: border-box;
 }
 
+/* The page is split between map and sidebar - the sidebar gets 1/3, map
+gets 2/3 of the page. You can adjust this to your personal liking. */
+
 .sidebar {
   position: absolute;
   width: 33.3333%;
@@ -200,4 +203,22 @@ a:hover {
 .mapboxgl-ctrl-geocoder>div {
   min-width: 100%;
   margin-left: 0;
+}
+
+.distance-container {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 1;
+}
+
+.distance-container>* {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  font-size: 11px;
+  line-height: 18px;
+  display: block;
+  margin: 0;
+  padding: 5px 10px;
+  border-radius: 3px;
 }
