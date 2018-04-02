@@ -120,7 +120,7 @@ a:hover {
   cursor: pointer;
   height: 15px;
   width: 15px;
-  background: url(./icons/tint.svg);
+  background: url(./icons/fa-solids/tint.svg);
   background-color: rgba(0, 0, 0, 0);
   background-repeat: no-repeat;
 }
