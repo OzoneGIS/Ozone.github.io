@@ -4,9 +4,11 @@
 
 .App-leed {
   animation: App-leed-spin infinite 20s linear;
-  height: 80px;
-  position: relative;
+  height: 5em;
+  position: absolute;
   z-index: 1;
+  bottom: 0;
+  right: 0;
 }
 
 .App-header {
@@ -49,5 +51,5 @@
 }
 
 #long-lat-info {
-  
+
 }

@@ -2,8 +2,60 @@ import React, {Component} from 'react';
 import leed from './leed.png';
 import './App.css';
 import mapboxgl from 'mapbox-gl';
+import XLSX from 'xlsx';
 
-//https://ucmerced.box.com/s/gvaizp4esghg3f9823lz68eol7goi8a6
+
+var url = 'https://ucmerced.box.com/s/gvaizp4esghg3f9823lz68eol7goi8a6';
+
+/*set up async GET request*/
+var req = new XMLHttpRequest();
+req.open("GET", url, true);
+req.responseType = "arraybuffer";
+
+req.onload = function() {
+  var data = new Uint8Array(req.response);
+  var workbook = XLSX.read(data, {type: "array"});
+
+  var first_worksheet = workbook.Sheets[workbook.SheetNames[0]];
+  var information = XLSX.utils.sheet_to_json(first_worksheet, {header:1});
+  console.log(data);
+  console.log(workbook);
+  console.log(first_worksheet);
+  console.log(information);
+}
+
+req.send();
+
+function createCORSRequest(method, url) {
+  var xhr = new XMLHttpRequest();
+  if ("withCredentials" in xhr) {
+
+    // Check if the XMLHttpRequest object has a "withCredentials" property.
+    // "withCredentials" only exists on XMLHTTPRequest2 objects.
+    xhr.open(method, url, true);
+
+  } else if (typeof XDomainRequest !== "undefined") {
+
+    // Otherwise, check if XDomainRequest.
+    // XDomainRequest only exists in IE, and is IE's way of making CORS requests.
+    xhr = new XDomainRequest();
+    xhr.open(method, url);
+
+  } else {
+
+    // Otherwise, CORS is not supported by the browser.
+    xhr = null;
+
+  }
+  return xhr;
+}
+
+var xhr = createCORSRequest('GET', url);
+if (!xhr) {
+  throw new Error('CORS not supported');
+}
+
+
 
 mapboxgl.accessToken = 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4M29iazA2Z2gycXA4N2pmbDZmangifQ.-g_vE53SD2WrJ6tFX7QHmA';
 
@@ -46,10 +98,6 @@ class App extends Component {
     }));
 
     map.addControl(new mapboxgl.NavigationControl());
-
-    /*map.addControl(new MapboxGeocoder({
-        accessToken: mapboxgl.accessToken
-    }));*/
 
     var waterStation = {
       type: 'FeatureCollection',
@@ -282,7 +330,7 @@ class App extends Component {
 
     return (<div>
       <img src={leed} className="App-leed" alt="leed"/>
-      <div className="inline-block absolute top left mt12 ml120 bg-darken75 color-white z1 py6 px12 round-full txt-s txt-bold">
+      <div className="inline-block absolute top left mt12 ml12 bg-darken75 color-white z1 py6 px12 round-full txt-s txt-bold">
         <div>{`Longitude: ${lng} Latitude: ${lat} Zoom: ${zoom}`}</div>
       </div>
       <div ref={el => (this.mapContainer = el)} className="absolute top right left bottom"/>
