@@ -4,13 +4,13 @@ import './App.css';
 import mapboxgl from 'mapbox-gl';
 import XLSX from 'xlsx';
 
+//var url = "https://github.com/adriandarian/sustainable/blob/master/dist/Geotags.xlsx";
+var workbook = XLSX.read('../dist/Geotags.xlsx');
+var first_worksheet = workbook.Sheets[workbook.SheetNames[0]];
+var information = XLSX.utils.sheet_to_json(first_worksheet, {header: 1});
+console.log(information);
 
-//var url = 'https://ucmerced.box.com/s/gvaizp4esghg3f9823lz68eol7goi8a6';
-
-var url = "https://github.com/adriandarian/sustainable/blob/master/dist/Geotags.xlsx";
-
-
-/*set up async GET request*/
+/*set up async GET request
 var req = new XMLHttpRequest();
 req.open("GET", url, true);
 req.responseType = "arraybuffer";
@@ -27,10 +27,7 @@ req.onload = function() {
   console.log(information);
 }
 
-req.send();
-
-
-
+req.send();*/
 
 mapboxgl.accessToken = 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4M29iazA2Z2gycXA4N2pmbDZmangifQ.-g_vE53SD2WrJ6tFX7QHmA';
 
