@@ -2,25 +2,37 @@
   "name": "sustainable",
   "version": "0.1.0",
   "private": true,
+  "license": "MIT",
+  "description": "create-react-app and nodejs server",
+  "author": {
+    "name": "Sustainable Sites"
+  },
   "dependencies": {
-    "ajv": "^6.4.0",
-    "mapbox-gl": "^0.44.0",
-    "react": "^16.3.0",
-    "react-dom": "^16.3.0",
-    "react-mapbox-gl": "^3.8.0",
-    "react-scripts": "1.1.1",
-    "xlsx": "^0.12.7"
+    "express": "^4.16.2"
   },
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "client": "cd client && npm start",
+    "server": "nodemon server.js",
+    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
   },
   "devDependencies": {
-    "gh-pages": "^1.1.0"
+    "concurrently": "^3.5.0"
   },
-  "homepage": "http://adriandarian.github.io/sustainable"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adriandarian/sustainable.git"
+  },
+  "bugs": {
+    "url": "https://github.com/adriandarian/sustainable/issues"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "create-react-app",
+    "mapbox-gl",
+    "fontawesome",
+    "bootstrap",
+    "excel-to-json",
+    "googleapis"
+  ]
 }
