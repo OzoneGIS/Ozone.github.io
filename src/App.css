@@ -42,7 +42,7 @@
 
 
 .water-station {
-  background-image: url('./icons/solid/tint.svg');
+  background-image: url('./views/icons/solid/tint.svg');
   background-size: cover;
   width: 0.95em;
   height: 0.95em;
