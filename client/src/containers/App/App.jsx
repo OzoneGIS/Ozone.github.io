@@ -47,7 +47,7 @@ class App extends Component {
     this.state._notificationSystem.addNotification({title: (<span data-notify="icon" className="pe-7s-gift"></span>), message: (<div>
       Welcome to
       <b>Ozone</b>
-      - Web map and information for UC Merced.
+      - Your one-stop shop to understanding sustainability at UC Merced.
     </div>), level: level, position: position, autoDismiss: 15});
   }
 
@@ -78,7 +78,7 @@ class App extends Component {
     _notificationSystem.addNotification({title: (<span data-notify="icon" className="pe-7s-gift"></span>), message: (<div>
       Welcome to
       <b>Ozone</b>
-      - Web map and information for UC Merced.
+      - Your one-stop shop to understanding sustainability at UC Merced.
     </div>), level: level, position: "tr", autoDismiss: 15});
   }
 

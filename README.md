@@ -1,36 +1,24 @@
-# [Light Bootstrap Dashboard React](http://lbd-react.creative-tim.com/)
-[![version][version-badge]][CHANGELOG] [![license][license-badge]][LICENSE]
+# [Sustainable Sites](http://sustainability.ucmerced.edu)
+[![version][version-badge]][CHANGELOG]
+[![license][license-badge]][LICENSE]
 
-![alt text](http://s3.amazonaws.com/creativetim_bucket/products/64/opt_lbdr_thumbnail.jpg)
 
-**[Light Bootstrap Dashboard React](http://lbd-react.creative-tim.com/)** is an admin dashboard template designed to be beautiful and simple. It is built on top of [React Bootstrap](https://react-bootstrap.github.io/), using [Light Bootstrap Dashboard](https://www.creative-tim.com/product/light-bootstrap) and it is fully responsive. It comes with a big collections of elements that will offer you multiple possibilities to create the app that best fits your needs. It can be used to create admin panels, project management systems, web applications backend, CMS or CRM.
+**[Engineering Service Learning @ UC Merced](http://engineeringservicelearning.ucmerced.edu)** Working with the Department of Sustainability to provide access to sustainable initiatives in an interactive, hands-on manner.
 
-The product represents a big suite of front-end developer tools that can help you jump start your project. We have created it thinking about things you actually need in a dashboard. Light Bootstrap Dashboard React contains multiple handpicked and optimized plugins. Everything is designed to fit with one another. As you will be able to see, the dashboard you can access on Creative Tim is a customization of this product.
+**[Ozone](https://adriandarian.github.io/sustainable)** An interactive web app providing on-campus sustainable information. Ozone is Sustainable Sites' current project. Eventually hosted at [sustainability.ucmerced.edu/map](sustainability.ucmerced.edu/map), it will provide information to help students, faculty, and visitors understand the efforts going on campus and how they can make the campus a greener healthier place to be.
 
-It comes with 6 filter colors for the sidebar (`black`, `azure`,`green`,`orange`,`red`,`purple`) and an option to have a background image.
-
-## Links:
-
-+ [Live Preview](http://lbd-react.creative-tim.com/)
 
 ## Quick Start:
 
-Quick start options:
-
-+ [Download from Github](https://github.com/creativetimofficial/light-bootstrap-dashboard-react/archive/master.zip).
-+ [Download from Creative Tim](https://www.creative-tim.com/product/light-bootstrap-dashboard-react).
-+ Clone the repo: `git clone https://github.com/creativetimofficial/light-bootstrap-dashboard-react.git`.
-
-Other Products:
-
-+ [Download HTML Version](https://www.creative-tim.com/product/light-bootstrap-dashboard).
-+ [Download Angular 2+ Version ](https://www.creative-tim.com/product/light-bootstrap-dashboard-angular2).
+1. Install Git from [Github's Getting Started Page](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+2. Open Terminal
+3. Type: `git clone https://github.com/adriandarian/sustainable.git`
 
 ## Terminal Commands
 
 1. Install NodeJs from [NodeJs Official Page](https://nodejs.org/en).
 2. Open Terminal
-3. Go to your file project
+3.
 4. Run in terminal: ```npm install```
 5. Then: ```npm start```
 6. Navigate to `http://localhost:3000/`
@@ -40,95 +28,184 @@ Other Products:
 
 Within the download you'll find the following directories and files:
 ```
-Light Bootstrap Dashboard React
-├── Documentation
-│   ├── css
-│   ├── img
-│   └── tutorial-components.html
-├── README.md
+sustainable
+├── .git/
+├── node_modules/
+├── .gitignore
+├── LICENSE.md
+├── package-lock.json
 ├── package.json
-├── public
-│   ├── assets
-│   │   └── img
-│   │       └── faces
-│   ├── favicon.ico
-│   ├── index.html
-│   └── manifest.json
-└── src
-    ├── assets
-    │   ├── css
-    │   ├── fonts
-    │   ├── img
-    │   │   └── faces
-    │   └── sass
-    │       ├── lbd
-    │       └── light-bootstrap-dashboard.scss
-    ├── components
-    │   ├── Card
-    │   │   └── Card.jsx
-    │   ├── Footer
-    │   │   └── Footer.jsx
-    │   ├── FormInputs
-    │   │   └── FormInputs.jsx
-    │   ├── Header
-    │   │   ├── Header.jsx
-    │   │   └── HeaderLinks.jsx
-    │   ├── Sidebar
-    │   │   └── Sidebar.jsx
-    │   ├── Tasks
-    │   │   └── Tasks.jsx
-    │   └── UserCard
-    │       └── UserCard.jsx
-    ├── containers
-    │   └── App
-    │       └── App.jsx
-    ├── elements
-    │   ├── CustomButton
-    │   │   └── CustomButton.jsx
-    │   ├── CustomCheckbox
-    │   │   └── CustomCheckbox.jsx
-    │   └── CustomRadio
-    │       └── CustomRadio.jsx
-    ├── index.js
-    ├── variables
-    │   └── Variables.jsx
-    └── views
-        ├── Dashboard
-        │   └── Dashboard.jsx
-        ├── Icons
-        │   └── Icons.jsx
-        ├── Maps
-        │   └── Maps.jsx
-        ├── Notifications
-        │   └── Notifications.jsx
-        ├── TableList
-        │   └── TableList.jsx
-        ├── Typography
-        │   └── Typography.jsx
-        └── UserProfile
-            └── UserProfile.jsx
+├── README.md
+├── server.js
+├── yarn.lock
+└── client
+    ├── .env
+    ├── package.json
+    ├── yarn.lock
+    ├── node_modules/
+    ├── build
+    |   └── static
+    |       ├── apple-icon.png
+    |       ├── asset-manifest.json
+    |       ├── favicon.ico
+    |       ├── index.html
+    |       ├── maifest.json
+    |       ├── service-worker.js
+    |       ├── sidebar-5.jpg
+    |       ├── css
+    |       |   ├── main.d8c462c3.css
+    |       |   └── main.d8c462c3.css.map
+    |       ├── js
+    |       |   ├── main.8d470cf3.js
+    |       |   └── main.8d470cf3.js.map
+    |       └── media
+    |           ├── glyphicons-halflings-regular.448c34a5.woff2
+    |           ├── glyphicons-halflings-regular.89889688.svg
+    |           ├── glyphicons-halflings-regular.e18bbf61.ttf
+    |           ├── glyphicons-halflings-regular.f4769f9b.eot
+    |           ├── glyphicons-halflings-regular.fa277232.woff
+    |           ├── Pe-icon-7-stroke.01798bc1.ttf
+    |           ├── Pe-icon-7-stroke.71394c0c.eot
+    |           ├── Pe-icon-7-stroke.b38ef310.woff
+    |           ├── Pe-icon-7-stroke.c45f7de0.svg
+    |           ├── reactlogo.9b864b36.png
+    |           ├── sidebar-3.34535b95.jpg
+    |           └── tint.23d524f6.svg
+    ├── public
+    |   ├── apple-icon.png
+    |   ├── favicon.ico
+    │   ├── index.html
+    │   ├── manifest.json
+    │   └── sidebar-5.jpg
+    └── src
+       ├── assets
+       │   ├── css
+       |   |   ├── animate.min.css
+       |   |   ├── bootstrap.min.css
+       |   |   ├── demo.css
+       |   |   ├── Maps.css
+       |   |   └── pe-icon-7-stroke.css
+       │   ├── fonts
+       |   |   ├── glyphicons-halflings-regular.eot
+       |   |   ├── glyphicons-halflings-regular.svg
+       |   |   ├── glyphicons-halflings-regular.ttf
+       |   |   ├── glyphicons-halflings-regular.woff
+       |   |   ├── glyphicons-halflings-regular.woff2
+       |   |   ├── Pe-icon-7-stroke.eot
+       |   |   ├── Pe-icon-7-stroke.svg
+       |   |   ├── Pe-icon-7-stroke.ttf
+       |   |   └── Pe-icon-7-stroke.woff
+       │   ├── img
+       |   |   ├── default-avatar.png
+       |   |   ├── leed.png
+       |   |   ├── loading-bubbles.svg
+       |   |   ├── mask.png
+       |   |   ├── new_logo.png
+       |   |   ├── reactlogo.png
+       |   |   ├── sidebar-1.jpg
+       |   |   ├── sidebar-2.jpg
+       |   |   ├── sidebar-3.jpg
+       |   |   ├── sidebar-4.jpg
+       |   |   ├── sidebar-5.jpg
+       |   |   ├── tim_80x80.png
+       |   |   ├── icons
+       |   |   |   ├── brands/
+       |   |   |   ├── regular/
+       |   |   |   └── solid/
+       │   │   └── faces
+       |   |       ├── face-0.jpg
+       |   |       ├── face-1.jpg
+       |   |       ├── face-2.jpg
+       |   |       ├── face-3.jpg
+       |   |       ├── face-4.jpg
+       |   |       ├── face-5.jpg
+       |   |       ├── face-6.jpg
+       |   |       ├── face-7.jpg
+       |   |       └── tim_vector.jpe
+       │   └── sass
+       |       ├── light-bootstrap-dashboard.css
+       │       ├── light-bootstrap-dashboard.scss
+       │       └── lbd
+       |           ├── _alerts.scss
+       |           ├── _buttons.scss
+       |           ├── _cards.scss
+       |           ├── _chartist.scss
+       |           ├── _checkbox-radio-switch.scss
+       |           ├── _dropdown.scss
+       |           ├── _footers.scss
+       |           ├── _inputs.scss
+       |           ├── _misc.scss
+       |           ├── _mixins.scss
+       |           ├── _navbars.scss
+       |           ├── _responsive.scss
+       |           ├── _sidebar-and-main-panel.scss
+       |           ├── _tables.scss
+       |           ├── _typography.scss
+       |           ├── _variables.scss
+       |           └── mixins
+       |               ├── _buttons.scss
+       |               ├── _cards.scss
+       |               ├── _chartist.scss
+       |               ├── _icons.scss
+       |               ├── _inputs.scss
+       |               ├── _labels.scss
+       |               ├── _morphing-buttons.scss
+       |               ├── _navbars.scss
+       |               ├── _social-buttons.scss
+       |               ├── _tabs.scss
+       |               ├── _transparency.scss
+       |               └── _vendor-prefixes.scss
+       ├── components
+       │   ├── Card
+       │   │   └── Card.jsx
+       │   ├── Footer
+       │   │   └── Footer.jsx
+       │   ├── FormInputs
+       │   │   └── FormInputs.jsx
+       │   ├── Header
+       │   │   ├── Header.jsx
+       │   │   └── HeaderLinks.jsx
+       │   ├── Sidebar
+       │   │   └── Sidebar.jsx
+       │   ├── Tasks
+       │   │   └── Tasks.jsx
+       │   └── UserCard
+       │       └── UserCard.jsx
+       ├── containers
+       │   └── App
+       │       └── App.jsx
+       ├── elements
+       │   ├── CustomButton
+       │   │   └── CustomButton.jsx
+       │   ├── CustomCheckbox
+       │   │   └── CustomCheckbox.jsx
+       │   └── CustomRadio
+       │       └── CustomRadio.jsx
+       ├── index.js
+       ├── logo.svg
+       ├── registerServiceWorker.js
+       ├── routes
+       |   └── app.jsx
+       ├── variables
+       |   ├── Data.jsx
+       │   └── Variables.jsx
+       └── views
+           ├── Dashboard
+           │   └── Dashboard.jsx
+           ├── Icons
+           │   └── Icons.jsx
+           ├── Maps
+           │   └── Maps.jsx
+           ├── Notifications
+           │   └── Notifications.jsx
+           ├── TableList
+           │   └── TableList.jsx
+           ├── Typography
+           │   └── Typography.jsx
+           └── UserProfile
+               └── UserProfile.jsx
 ```
-## Useful Links
 
-More products from Creative Tim: <https://www.creative-tim.com/bootstrap-themes>
-
-Tutorials: <https://www.youtube.com/channel/UCVyTG4sCw-rOvB9oHkzZD1w>
-
-Freebies: <https://www.creative-tim.com/products>
-
-Affiliate Program (earn money): <https://www.creative-tim.com/affiliates/new>
-
-Social Media:
-
-Twitter: <https://twitter.com/CreativeTim>
-
-Facebook: <https://www.facebook.com/CreativeTim>
-
-Dribbble: <https://dribbble.com/creativetim>
-
-Google+: <https://plus.google.com/+CreativetimPage>
-
-Instagram: <https://instagram.com/creativetimofficial>
 
 [CHANGELOG]: ./CHANGELOG.md
 
