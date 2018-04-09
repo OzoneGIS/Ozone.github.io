@@ -3,6 +3,7 @@ import mapboxgl from 'mapbox-gl';
 
 import 'assets/css/Maps.css';
 import leed from 'assets/img/leed.png';
+import PitchToggle from 'views/Maps/PitchToggle.jsx';
 
 //import waterStation from 'variables/Data.jsx';
 
@@ -15,12 +16,14 @@ class Maps extends Component {
     this.state = {
       lng: -120.426,
       lat: 37.3646,
-      zoom: 15
+      zoom: 16.96,
+      pitch: 45,
+      bearing: -17.6
     };
   }
 
   componentDidMount() {
-    const {lng, lat, zoom} = this.state;
+    const {lng, lat, zoom, pitch, bearing} = this.state;
 
     const map = new mapboxgl.Map({
       container: this.mapContainer,
@@ -30,13 +33,24 @@ class Maps extends Component {
       ],
       attributionControl: false,
       zoom,
-      maxZoom: 17
+      maxZoom: 17,
+      pitch,
+      bearing
     });
 
     map.on('move', () => {
       const {lng, lat} = map.getCenter();
       this.setState({lng: lng.toFixed(4), lat: lat.toFixed(4), zoom: map.getZoom().toFixed(2)});
     });
+
+    map.on('mousemove', function (e) {
+    document.getElementById('info').innerHTML =
+        // e.point is the x, y coordinates of the mousemove event relative
+        // to the top-left corner of the map
+        JSON.stringify(e.point) + '<br />' +
+        // e.lngLat is the longitude, latitude geographical position of the event
+        JSON.stringify(e.lngLat);
+});
 
     ///////Controls
     map.addControl(new mapboxgl.GeolocateControl({
@@ -47,6 +61,8 @@ class Maps extends Component {
     }));
 
     map.addControl(new mapboxgl.NavigationControl());
+
+    map.addControl(new PitchToggle({minpitchzoom: 11}));
 
     var waterStation = {
       type: 'FeatureCollection',
@@ -264,7 +280,7 @@ class Maps extends Component {
         }
       ]
     };
-    
+
     waterStation.features.forEach(function(marker) {
       var refill = document.createElement('div');
       refill.className = 'water-station';
@@ -281,6 +297,7 @@ class Maps extends Component {
         <div>{`Longitude: ${lng} Latitude: ${lat} Zoom: ${zoom}`}</div>
       </div>
       <div ref={el => (this.mapContainer = el)} className="absolute top right left bottom"/>
+      <pre id="info"></pre>
     </div>)
   }
 }
