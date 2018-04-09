@@ -1,3 +1,4 @@
+var $ = require("jquery");
 
 //
 // //
@@ -243,7 +244,7 @@ var style = {
             padding: 0
         }
     }
-}
+};
 
 //
 // //
@@ -485,6 +486,11 @@ var legendPie = {
     names: ["Open","Bounce","Unsubscribe"],
     types: ["info","danger","warning"]
 };
+
+
+var bob = $.getJSON('cathedral_kwh_monthly.json', function (data) {console.log(data);} );
+console.log(bob);
+console.log($);
 
 // Data for Line Chart
 var dataSales = {

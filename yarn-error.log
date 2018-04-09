@@ -1,17 +1,17 @@
 Arguments: 
-  /usr/local/Cellar/node/9.11.1/bin/node /usr/local/Cellar/yarn/1.5.1_1/libexec/bin/yarn.js client
+  /usr/bin/nodejs /usr/share/yarn/bin/yarn.js client
 
 PATH: 
-  /Users/raranda/.npm-packages/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+  /home/areyes43/bin:/home/areyes43/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/mnt/c/Program Files (x86)/Intel/iCLS Client:/mnt/c/Program Files/Intel/iCLS Client:/mnt/c/Windows/System32:/mnt/c/Windows:/mnt/c/Windows/System32/wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0:/mnt/c/Program Files (x86)/Intel/Intel(R) Management Engine Components/DAL:/mnt/c/Program Files/Intel/Intel(R) Management Engine Components/DAL:/mnt/c/Program Files (x86)/Intel/Intel(R) Management Engine Components/IPT:/mnt/c/Program Files/Intel/Intel(R) Management Engine Components/IPT:/mnt/c/Program Files/MATLAB/R2017b/bin:/mnt/c/Users/Laptop/Anaconda3:/mnt/c/Users/Laptop/Anaconda3/Scripts:/mnt/c/Program Files (x86)/Brackets/command:/mnt/c/Program Files/Git/cmd:/mnt/c/Program Files/nodejs:/mnt/c/Users/Laptop/AppData/Local/Microsoft/WindowsApps:/mnt/c/texlive/2017/bin/win32:/mnt/c/Users/Laptop/AppData/Roaming/npm:/snap/bin
 
 Yarn version: 
   1.5.1
 
 Node version: 
-  9.11.1
+  4.2.6
 
 Platform: 
-  darwin x64
+  linux x64
 
 npm manifest: 
   {
@@ -25,6 +25,7 @@ npm manifest:
     },
     "dependencies": {
       "express": "^4.16.2",
+      "jquery": "^3.3.1",
       "node-sass": "^4.8.3",
       "yarn": "^1.5.1"
     },
@@ -457,15 +458,17 @@ Lockfile:
 
 Trace: 
   Error: Command failed.
-  Exit code: 1
+  Exit code: 2
   Command: sh
   Arguments: -c cd client && npm start
-  Directory: /Users/raranda/Desktop/sustainable
+  Directory: /mnt/c/xampp/htdocs/sustainable-master/sustainable
   Output:
   
-      at ProcessTermError.MessageError (/usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:186:110)
-      at new ProcessTermError (/usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:226:113)
-      at ChildProcess.<anonymous> (/usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:30281:17)
-      at ChildProcess.emit (events.js:180:13)
-      at maybeClose (internal/child_process.js:936:16)
-      at Process.ChildProcess._handle.onexit (internal/child_process.js:220:5)
+      at ProcessTermError.Error (native)
+      at ProcessTermError.MessageError (/usr/share/yarn/lib/cli.js:186:110)
+      at new ProcessTermError (/usr/share/yarn/lib/cli.js:226:113)
+      at ChildProcess.<anonymous> (/usr/share/yarn/lib/cli.js:30281:17)
+      at emitTwo (events.js:87:13)
+      at ChildProcess.emit (events.js:172:7)
+      at maybeClose (internal/child_process.js:821:16)
+      at Process.ChildProcess._handle.onexit (internal/child_process.js:211:5)

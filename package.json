@@ -8,9 +8,11 @@
     "name": "Sustainable Sites"
   },
   "dependencies": {
+    "connect": "^3.6.6",
     "express": "^4.16.2",
     "jquery": "^3.3.1",
     "node-sass": "^4.8.3",
+    "serve-static": "^1.13.2",
     "yarn": "^1.5.1"
   },
   "scripts": {
