@@ -1,8 +1,8 @@
 Arguments: 
-  /usr/local/Cellar/node/9.11.1/bin/node /usr/local/Cellar/yarn/1.5.1_1/libexec/bin/yarn.js client
+  /usr/local/Cellar/node/9.11.1/bin/node /usr/local/Cellar/yarn/1.5.1_1/libexec/bin/yarn.js run dev
 
 PATH: 
-  /Users/raranda/.npm-packages/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+  /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
 
 Yarn version: 
   1.5.1
@@ -25,6 +25,7 @@ npm manifest:
     },
     "dependencies": {
       "express": "^4.16.2",
+      "jquery": "^3.3.1",
       "node-sass": "^4.8.3",
       "yarn": "^1.5.1"
     },
@@ -459,8 +460,8 @@ Trace:
   Error: Command failed.
   Exit code: 1
   Command: sh
-  Arguments: -c cd client && npm start
-  Directory: /Users/raranda/Desktop/sustainable
+  Arguments: -c concurrently --kill-others-on-fail "yarn server" "yarn client"
+  Directory: /Users/adarian/sustainable
   Output:
   
       at ProcessTermError.MessageError (/usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:186:110)
