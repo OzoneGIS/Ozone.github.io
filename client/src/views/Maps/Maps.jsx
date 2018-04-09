@@ -35,12 +35,16 @@ class Maps extends Component {
       zoom,
       maxZoom: 17,
       pitch,
-      bearing
+      bearing,
+      hash: true
     });
 
     map.on('move', () => {
       const {lng, lat} = map.getCenter();
       this.setState({lng: lng.toFixed(4), lat: lat.toFixed(4), zoom: map.getZoom().toFixed(2)});
+      var layers = map.getStyle().layers;
+
+    
     });
 
     map.on('mousemove', function (e) {
