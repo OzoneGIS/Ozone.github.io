@@ -1,5 +1,4 @@
-import React, {Component} from 'react';
-import mapboxgl from 'mapbox-gl';
+import {Component} from 'react';
 
 const bearing = -20;
 const pitch = 70;
