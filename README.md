@@ -18,11 +18,17 @@
 
 1. Install NodeJs from [NodeJs Official Page](https://nodejs.org/en).
 2. Open Terminal
-3.
+3. Change your path to the repository directory: ```cd C://<path>/sustainable```
 4. Run in terminal: ```npm install```
-5. Then: ```npm start```
-6. Navigate to `http://localhost:3000/`
-7. (optional) Run in terminal `npm i -g cross-env`
+5. Change your path to the client folder: ```cd client```
+6. Run in terminal: ```npm install```
+7. Then run: ```npm start```
+8. (optional for servers) Go back to the main folder of your repository: ```cd ..```
+9. (optional for servers) Install Yarn []
+9. (optional for servers) Run in terminal: ```yarn run dev```
+10. Navigate to `http://localhost:3000/`
+11. (optional) Run in terminal `npm i -g cross-env`
+12. (optional for servers) The back-end server is hosted on `http://localhost:5000/`
 
 ### What's included
 
