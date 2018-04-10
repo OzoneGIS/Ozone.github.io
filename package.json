@@ -1,0 +1,42 @@
+{
+  "name": "sustainable",
+  "version": "0.1.0",
+  "private": true,
+  "license": "MIT",
+  "description": "create-react-app and nodejs server",
+  "author": {
+    "name": "Sustainable Sites"
+  },
+  "dependencies": {
+    "express": "^4.16.2",
+    "jquery": "^3.3.1",
+    "node-sass": "^4.8.3",
+    "nodemon": "^1.17.3",
+    "yarn": "^1.5.1"
+  },
+  "scripts": {
+    "client": "cd client && npm start",
+    "server": "nodemon server.js",
+    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
+  },
+  "devDependencies": {
+    "concurrently": "^3.5.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adriandarian/sustainable.git"
+  },
+  "bugs": {
+    "url": "https://github.com/adriandarian/sustainable/issues"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "create-react-app",
+    "mapbox-gl",
+    "fontawesome",
+    "bootstrap",
+    "excel-to-json",
+    "googleapis"
+  ]
+}
