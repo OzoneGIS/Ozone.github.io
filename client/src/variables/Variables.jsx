@@ -491,15 +491,15 @@ const iconsArray = [
 // Data for Pie Chart
 var dataPie = {
   labels: [
-    '40%', '20%', '40%'
+    '20%', '65%', '10%', "5%"
   ],
-  series: [40, 20, 40]
+  series: [20, 65, 10, 5]
 };
 var legendPie = {
   names: [
-    "Open", "Bounce", "Unsubscribe"
+    "Research", "Lectures", "Offices", "SSHA Advising"
   ],
-  types: ["info", "danger", "warning"]
+  types: ["info", "danger", "warning", "success"]
 };
 
 // Data for Line Chart
@@ -525,17 +525,21 @@ var dataSales = {
       554,
       586,
       698,
-      695
+      695,
+      723,
+      756
     ],
     [
-      67,
+      132,
       152,
-      143,
-      240,
-      287,
-      335,
-      435,
-      437
+      245,
+      253,
+      385,
+      432,
+      567,
+      698,
+      746,
+      934
     ],
     [
       23,
@@ -545,7 +549,9 @@ var dataSales = {
       190,
       239,
       307,
-      308
+      308,
+      367,
+      453
     ]
   ]
 };
@@ -578,7 +584,7 @@ var responsiveSales = [
 ];
 var legendSales = {
   names: [
-    "Electricity", "Water", "Air Conditioning"
+    "Electricity (kw)", "Water (gal)", "Air Conditioning Power Usage (kw)"
   ],
   types: ["info", "danger", "warning"]
 };

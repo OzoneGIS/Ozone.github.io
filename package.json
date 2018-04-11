@@ -9,14 +9,30 @@
   },
   "dependencies": {
     "body-parser": "^1.18.2",
+    "connect-ensure-login": "^0.1.1",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.3",
+    "cors": "^2.8.4",
+    "debug": "^3.1.0",
+    "dotenv": "^5.0.1",
     "express": "^4.16.3",
+    "express-jwt": "^5.3.1",
+    "express-session": "^1.15.6",
     "express-stormpath": "^4.0.0",
     "jquery": "^3.3.1",
+    "jwks-rsa": "^1.2.1",
+    "morgan": "^1.9.0",
     "node-sass": "^4.8.3",
     "nodemon": "^1.17.3",
+    "passport": "^0.4.0",
+    "passport-auth0": "^0.6.1",
+    "pug": "^2.0.3",
+    "serve-favicon": "^2.5.0",
     "yarn": "^1.5.1"
   },
   "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
     "client": "cd client && npm start",
     "server": "nodemon server.js",
     "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
@@ -39,6 +55,13 @@
     "fontawesome",
     "bootstrap",
     "excel-to-json",
-    "googleapis"
+    "googleapis",
+    "RS256",
+    "stormpath",
+    "cors",
+    "nodemon",
+    "OKTA",
+    "postman",
+    "jest"
   ]
 }
