@@ -26,6 +26,7 @@ class Dashboard extends Component {
       legend.push(<i className={type} key={i}></i>);
       legend.push(" ");
       legend.push(json["names"][i]);
+      legend.push(" ");
     }
     return legend;
   }
@@ -34,21 +35,21 @@ class Dashboard extends Component {
       <Grid fluid="fluid">
         <Row>
           <Col lg={3} sm={6}>
-            <StatsCard bigIcon={<i className = "pe-7s-server text-warning" > </i>} statsText="LEED Certification" statsValue="Gold" statsIcon={<i className = "fa fa-refresh" > </i>} statsIconText="Updated now"/>
+            <StatsCard bigIcon={<i className = "pe-7s-server text-warning" > </i>} statsText="LEED Certification" statsValue="Gold" statsIcon={<i className = "fa fa-refresh" > </i>} statsIconText="Last Day"/>
           </Col>
           <Col lg={3} sm={6}>
             <StatsCard bigIcon={<i className = "pe-7s-study text-success" > </i>} statsText="Year Constructed" statsValue="2008" statsIcon={<i className = "fa fa-calendar-o" > </i>} statsIconText="Last day"/>
           </Col>
           <Col lg={3} sm={6}>
-            <StatsCard bigIcon={<i className = "pe-7s-graph1 text-danger" > </i>} statsText="Errors" statsValue="23" statsIcon={<i className = "fa fa-clock-o" > </i>} statsIconText="In the last hour"/>
+            <StatsCard bigIcon={<i className = "pe-7s-add-user text-danger" > </i>} statsText="Number of Students" statsValue="7842" statsIcon={<i className = "fa fa-clock-o" > </i>} statsIconText="In the last hour"/>
           </Col>
           <Col lg={3} sm={6}>
-            <StatsCard bigIcon={<i className = "fa fa-twitter text-info" > </i>} statsText="Followers" statsValue="+45" statsIcon={<i className = "fa fa-refresh" > </i>} statsIconText="Updated now"/>
+            <StatsCard bigIcon={<i className = "fa fa-home text-info" > </i>} statsText="Buildings" statsValue="20" statsIcon={<i className = "fa fa-refresh" > </i>} statsIconText="Updated now"/>
           </Col>
         </Row>
         <Row>
           <Col md={8}>
-            <Card statsIcon="fa fa-history" id="chartHours" title="Users Behavior" category="24 Hours performance" stats="Updated 3 minutes ago" content={<div className = "ct-chart" > <ChartistGraph data={dataSales} type="Line" options={optionsSales} responsiveOptions={responsiveSales}/>
+            <Card statsIcon="fa fa-history" id="chartHours" title="Efficiency Data: COB1" category="24 Hours performance" stats="Updated 3 minutes ago" content={<div className = "ct-chart" > <ChartistGraph data={dataSales} type="Line" options={optionsSales} responsiveOptions={responsiveSales}/>
             </div>} legend={<div className = "legend" > {
                 this.createLegend(legendSales)
               }

@@ -55,8 +55,6 @@ class Maps extends Component {
 
     map.addControl(new PitchToggle({minpitchzoom: 11}));
 
-
-
     waterStation.features.forEach(function(marker) {
       var refill = document.createElement('div');
       refill.className = 'water-station';

@@ -8,7 +8,9 @@
     "name": "Sustainable Sites"
   },
   "dependencies": {
-    "express": "^4.16.2",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3",
+    "express-stormpath": "^4.0.0",
     "jquery": "^3.3.1",
     "node-sass": "^4.8.3",
     "nodemon": "^1.17.3",

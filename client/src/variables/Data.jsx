@@ -215,4 +215,6 @@ var waterStation = {
   ]
 };
 
-module.exports = {waterStation};
+module.exports = {
+  waterStation
+};
