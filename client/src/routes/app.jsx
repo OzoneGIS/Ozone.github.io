@@ -1,6 +1,6 @@
 import Dashboard from 'views/Dashboard/Dashboard';
 //import UserProfile from 'views/UserProfile/UserProfile';
-//import Icons from 'views/Icons/Icons';
+import Icons from 'views/Icons/Icons';
 import Maps from 'views/Maps/Maps';
 import DevMap from 'views/Maps/DevMap.jsx';
 
@@ -9,7 +9,7 @@ const appRoutes = [
     { path: "/dashboard", name: "Dashboard", icon: "pe-7s-graph", component: Dashboard},
     {path: "/devmaps", name: "DevMap", icon: "pe-7s-map-marker", component: DevMap},
     //{ path: "/user", name: "User Profile", icon: "pe-7s-user", component: UserProfile },
-    //{ path: "/icons", name: "Icons", icon: "pe-7s-science", component: Icons },
+    { path: "/icons", name: "Icons", icon: "pe-7s-science", component: Icons },
     { redirect: true, path:"/", to:"/maps", name: "Maps" }
 ];
 

@@ -34,10 +34,10 @@ class Dashboard extends Component {
       <Grid fluid="fluid">
         <Row>
           <Col lg={3} sm={6}>
-            <StatsCard bigIcon={<i className = "pe-7s-server text-warning" > </i>} statsText="Capacity" statsValue="105GB" statsIcon={<i className = "fa fa-refresh" > </i>} statsIconText="Updated now"/>
+            <StatsCard bigIcon={<i className = "pe-7s-server text-warning" > </i>} statsText="LEED Certification" statsValue="Gold" statsIcon={<i className = "fa fa-refresh" > </i>} statsIconText="Updated now"/>
           </Col>
           <Col lg={3} sm={6}>
-            <StatsCard bigIcon={<i className = "pe-7s-wallet text-success" > </i>} statsText="Revenue" statsValue="$1,345" statsIcon={<i className = "fa fa-calendar-o" > </i>} statsIconText="Last day"/>
+            <StatsCard bigIcon={<i className = "pe-7s-study text-success" > </i>} statsText="Year Constructed" statsValue="2008" statsIcon={<i className = "fa fa-calendar-o" > </i>} statsIconText="Last day"/>
           </Col>
           <Col lg={3} sm={6}>
             <StatsCard bigIcon={<i className = "pe-7s-graph1 text-danger" > </i>} statsText="Errors" statsValue="23" statsIcon={<i className = "fa fa-clock-o" > </i>} statsIconText="In the last hour"/>
