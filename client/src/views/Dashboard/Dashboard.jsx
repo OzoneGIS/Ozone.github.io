@@ -4,18 +4,13 @@ import {Grid, Row, Col} from 'react-bootstrap';
 
 import {Card} from 'components/Card/Card.jsx';
 import {StatsCard} from 'components/StatsCard/StatsCard.jsx';
-import {Tasks} from 'components/Tasks/Tasks.jsx';
 import {
   dataPie,
   legendPie,
   dataSales,
   optionsSales,
   responsiveSales,
-  legendSales,
-  dataBar,
-  optionsBar,
-  responsiveBar,
-  legendBar
+  legendSales
 } from 'variables/Variables.jsx';
 
 class Dashboard extends Component {
@@ -65,30 +60,9 @@ class Dashboard extends Component {
 }/>
           </Col>
         </Row>
-
-
-
       </Grid>
     </div>);
   }
 }
 
 export default Dashboard;
-
-/*  <Row>
-    <Col md={6}>
-      <Card id="chartActivity" title="2014 Sales" category="All products including Taxes" stats="Data information certified" statsIcon="fa fa-check" content={<div className = "ct-chart" > <ChartistGraph data={dataBar} type="Bar" options={optionsBar} responsiveOptions={responsiveBar}/>
-      </div>} legend={<div className = "legend" > {
-          this.createLegend(legendBar)
-        }
-        </div>
-}/>
-    </Col>
-
-    <Col md={6}>
-      <Card title="Tasks" category="Backend development" stats="Updated 3 minutes ago" statsIcon="fa fa-history" content={<div className = "table-full-width" > <table className="table">
-          <Tasks/>
-        </table>
-      </div>}/>
-    </Col>
-  </Row>*/
