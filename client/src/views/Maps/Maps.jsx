@@ -1,22 +1,20 @@
 import React, {Component} from 'react';
 import mapboxgl from 'mapbox-gl';
 import axios from 'axios';
+import Papa from 'papaparse';
 
 import 'assets/css/Maps.css';
 import leed from 'assets/img/leed.png';
 import PitchToggle from 'views/Maps/PitchToggle.jsx';
-import {waterStation} from 'variables/Data.jsx';
-import Papa from 'papaparse';
+//import {waterStation} from 'variables/Data.jsx';
 
 mapboxgl.accessToken = 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4M29iazA2Z2gycXA4N2pmbDZmangifQ.-g_vE53SD2WrJ6tFX7QHmA';
 
 var results = {};
-/*var featureValues = {};
 var geoJson = {
   type: 'FeatureCollection',
-  features: []
-};*/
-
+  features: [],
+};
 
 class Maps extends Component {
 
@@ -57,11 +55,21 @@ class Maps extends Component {
       });
     })
 
-    console.log(typeof results);
-
-    for (var value of results) {
-      console.log(typeof value);
+    for (var i = 0; i < results.length; i++) {
+      geoJson.features.push({
+        'type': 'Feature',
+        'geometry': {
+          'type': 'Point',
+          'coordinates': [results[i].coordinates]//[results[i].longitude, results[i].latitude]
+        },
+        'properties': {
+          'title': results[i].title,
+          'description': results[i].description
+        }
+      });
     }
+
+    console.log(typeof geoJson, "LOOK HERE: ", geoJson);
 
     ///////Controls
     map.addControl(new mapboxgl.GeolocateControl({
@@ -75,7 +83,7 @@ class Maps extends Component {
 
     map.addControl(new PitchToggle({minpitchzoom: 11}));
 
-    waterStation.features.forEach(function(marker) {
+    geoJson.features.forEach(function(marker) {
       var refill = document.createElement('div');
       refill.className = 'water-station';
       refill.appendChild(document.createElement('i'));
