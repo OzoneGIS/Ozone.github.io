@@ -46,14 +46,13 @@
   <script lang="javascript" src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
-
+  
 </head>
 
 <body>
   <noscript>
         You need to enable JavaScript to run this app.
         </noscript>
-  <script src="../src/variables/Geotags.csv" type="text/javascript"></script>
   <div id="root">
 
   </div>
@@ -67,25 +66,6 @@
         To begin the development, run `npm start` or `yarn start`.
         To create a production bundle, use `npm run build` or `yarn build`.
         -->
-  <script>
-    var request = $.ajax({
-      url: '',
-      method: 'GET',
-      data: {},
-      crossDomain: true,
-      dataType: 'html',
-      beforeSend: function() {
-        console.log('Before Sent...');
-        $('#root').html('Loading....');
-      }
-    });
-
-    request.done(function(data) {
-      console.log("Success");
-      var json_data = JSON.parse(data);
-      console.log();
-    })
-  </script>
 </body>
 
 </html>

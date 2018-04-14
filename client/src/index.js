@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import {HashRouter, Route, Switch} from 'react-router-dom';
 
 import App from 'containers/App/App.jsx';
-//import Admin from 'containers/Admin/Admin.jsx';
+import Admin from 'containers/Admin/Admin.jsx';
 
 import './assets/css/bootstrap.min.css';
 import './assets/css/animate.min.css';
@@ -14,6 +14,6 @@ import './assets/css/pe-icon-7-stroke.css';
 ReactDOM.render((<HashRouter>
   <Switch>
       <Route path="/" name="Home" component={App}/>
-
+      <Route path="/admin" name="admin" component={Admin}/>
   </Switch>
 </HashRouter>), document.getElementById('root'));

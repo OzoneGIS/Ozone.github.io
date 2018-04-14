@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import mapboxgl from 'mapbox-gl';
+import axios from 'axios';
 
 import 'assets/css/Maps.css';
 import leed from 'assets/img/leed.png';
@@ -9,6 +10,8 @@ import {waterStation} from 'variables/Data.jsx';
 
 mapboxgl.accessToken = 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4M29iazA2Z2gycXA4N2pmbDZmangifQ.-g_vE53SD2WrJ6tFX7QHmA';
 
+var csv_data = {};
+
 class Maps extends Component {
 
   constructor(props : Props) {
@@ -16,14 +19,12 @@ class Maps extends Component {
     this.state = {
       lng: -120.426,
       lat: 37.3646,
-      zoom: 16.96,
-      pitch: 45,
-      bearing: -17.6
+      zoom: 16.96
     };
   }
 
   componentDidMount() {
-    const {lng, lat, zoom, pitch, bearing} = this.state;
+    const {lng, lat, zoom} = this.state;
 
     const map = new mapboxgl.Map({
       container: this.mapContainer,
@@ -33,15 +34,37 @@ class Maps extends Component {
       ],
       attributionControl: false,
       zoom,
-      maxZoom: 17,
-      pitch,
-      bearing
+      maxZoom: 17
     });
 
     map.on('move', () => {
       const {lng, lat} = map.getCenter();
       this.setState({lng: lng.toFixed(4), lat: lat.toFixed(4), zoom: map.getZoom().toFixed(2)});
     });
+
+    axios.get(`https://raw.githubusercontent.com/adriandarian/DigestQuest/master/Geotags.csv`).then(res => {
+      csv_data = res.data;
+      console.log(typeof csv_data, "LOOK HERE:", csv_data);
+    })
+
+    var jsonString = JSON.stringify(csv_data, function(key, value) {
+      console.log(typeof csv_data, "\ncsv_data: ",  csv_data);
+      return (value && typeof value.toJSON === 'function')
+        ? value.toJSON()
+        : JSON.stringify(value);
+    });
+    console.log("jsonString: ", typeof jsonString);
+
+    function csvJSON(csv) {
+      console.log(typeof csv, "\ncsv: ", csv);
+    }
+
+
+    var output = csvJSON(jsonString);
+    console.log("Look here: ", typeof output);
+    console.log(output);
+
+
 
     ///////Controls
     map.addControl(new mapboxgl.GeolocateControl({

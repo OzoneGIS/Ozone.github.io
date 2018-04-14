@@ -75,6 +75,10 @@ app.get('/api/jokes/celebrity', (req, res) => {
   res.json(CelebrityJokes);
 })
 
+app.get('/api/hello', (req, res) => {
+  res.send("hello");
+});
+
 app.get('', (req, res) => {
   res.send({express: 'Hello From Express'});
 });
