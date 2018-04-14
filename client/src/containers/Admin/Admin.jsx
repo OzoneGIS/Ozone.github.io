@@ -3,7 +3,6 @@ import {Route, Switch, Redirect} from 'react-router-dom';
 import NotificationSystem from 'react-notification-system';
 
 import Header from 'components/Header/AdminHeader';
-//import Footer from 'components/Footer/Footer';
 import Sidebar from 'components/Sidebar/AdminSidebar';
 
 import {style} from "variables/Variables.jsx";

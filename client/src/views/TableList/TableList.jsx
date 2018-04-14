@@ -8,7 +8,7 @@ class TableList extends Component {
 
   render() {
     return (<div className="content">
-      <Grid fluid="fluid">
+      <Grid fluid>
         <Row>
           <Col md={12}>
             <Card title="Striped Table with Hover" category="Here is a subtitle for this table" ctTableFullWidth="ctTableFullWidth" ctTableResponsive="ctTableResponsive" content={<Table striped hover > <thead>

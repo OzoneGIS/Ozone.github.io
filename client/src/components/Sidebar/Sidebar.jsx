@@ -57,7 +57,7 @@ class Sidebar extends Component {
                 return (<li className={prop.upgrade
                     ? "active active-pro"
                     : this.activeRoute(prop.path)} key={key}>
-                  <NavLink to={prop.path} className="nav-link" activeClassName="active" activeStyle={{fontWeight: 'bold', color: 'rgb(126, 212, 145)'}}>
+                  <NavLink to={prop.path} className="nav-link" activeClassName="active" activeStyle={{fontWeight: 'bold', color: 'rgb(126, 212, 145)'}} >
                     <i className={prop.icon}></i>
                     <p>{prop.name}</p>
                   </NavLink>

@@ -5,12 +5,18 @@ import axios from 'axios';
 import 'assets/css/Maps.css';
 import leed from 'assets/img/leed.png';
 import PitchToggle from 'views/Maps/PitchToggle.jsx';
-
 import {waterStation} from 'variables/Data.jsx';
+import Papa from 'papaparse';
 
 mapboxgl.accessToken = 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4M29iazA2Z2gycXA4N2pmbDZmangifQ.-g_vE53SD2WrJ6tFX7QHmA';
 
-var csv_data = {};
+var results = {};
+/*var featureValues = {};
+var geoJson = {
+  type: 'FeatureCollection',
+  features: []
+};*/
+
 
 class Maps extends Component {
 
@@ -43,28 +49,19 @@ class Maps extends Component {
     });
 
     axios.get(`https://raw.githubusercontent.com/adriandarian/DigestQuest/master/Geotags.csv`).then(res => {
-      csv_data = res.data;
-      console.log(typeof csv_data, "LOOK HERE:", csv_data);
+      var csvString = res.data;
+      results = Papa.parse(csvString, {
+          delimiter: ",",
+          header: true,
+          dynamicTyping: true
+      });
     })
 
-    var jsonString = JSON.stringify(csv_data, function(key, value) {
-      console.log(typeof csv_data, "\ncsv_data: ",  csv_data);
-      return (value && typeof value.toJSON === 'function')
-        ? value.toJSON()
-        : JSON.stringify(value);
-    });
-    console.log("jsonString: ", typeof jsonString);
+    console.log(typeof results);
 
-    function csvJSON(csv) {
-      console.log(typeof csv, "\ncsv: ", csv);
+    for (var value of results) {
+      console.log(typeof value);
     }
-
-
-    var output = csvJSON(jsonString);
-    console.log("Look here: ", typeof output);
-    console.log(output);
-
-
 
     ///////Controls
     map.addControl(new mapboxgl.GeolocateControl({

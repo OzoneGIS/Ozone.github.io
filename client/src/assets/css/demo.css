@@ -498,3 +498,27 @@
 .table-upgrade td:nth-child(2), .table-upgrade td:nth-child(3) {
   text-align: center;
 }
+
+.login {
+  color: #9a9a9a;
+  padding: 10px 15px;
+  margin: 10px 3px;
+  position: relative;
+  line-height: 20px;
+  display: inline-flex;
+  cursor: pointer;
+  -webkit-font-smoothing: antialiased;
+  font-family: Roboto, Helvetica Neue, Arial, sans-serif;
+  font-weight: 400;
+  text-decoration: none;
+  background-color: transparent;
+  border: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  box-sizing: border-box;
+  text-align: -webkit-match-parent;
+}
+
+.login:hover {
+  color: #1DC7EA;
+}

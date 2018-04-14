@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
-import {NavItem, Nav, NavDropdown, MenuItem} from 'react-bootstrap';
-import {NavLink} from 'react-router-dom';
-
+import {NavItem, Nav} from 'react-bootstrap';
 
 class HeaderLinks extends Component {
   render() {
@@ -13,21 +11,12 @@ class HeaderLinks extends Component {
           <p className="hidden-lg hidden-md">Dashboard</p>
         </NavItem>
       </Nav>
-      <Nav pullRight="pullRight">
-        <NavDropdown eventKey={2} title="Dropdown" id="basic-nav-dropdown-right">
-          <MenuItem eventKey={2.1}>Action</MenuItem>
-          <MenuItem eventKey={2.2}>Another action</MenuItem>
-          <MenuItem eventKey={2.3}>Something</MenuItem>
-          <MenuItem eventKey={2.4}>Another action</MenuItem>
-          <MenuItem eventKey={2.5}>Something</MenuItem>
-          <MenuItem divider="divider"/>
-          <MenuItem eventKey={2.5}>Separated link</MenuItem>
-        </NavDropdown>
+      <Nav pullRight>
         <NavItem eventKey={3} href="#">
           <i className="fa fa-search"></i>
           <p className="hidden-lg hidden-md">Search</p>
         </NavItem>
-        <NavLink eventKey={1} href="/">Logout</NavLink>
+        <NavItem to="/maps">Logout</NavItem>
       </Nav>
     </div>);
   }
