@@ -6,14 +6,14 @@ import Papa from 'papaparse';
 import 'assets/css/Maps.css';
 import leed from 'assets/img/leed.png';
 import PitchToggle from 'views/Maps/PitchToggle.jsx';
-//import {waterStation} from 'variables/Data.jsx';
+import {waterStation} from 'variables/Data.jsx';
 
 mapboxgl.accessToken = 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4M29iazA2Z2gycXA4N2pmbDZmangifQ.-g_vE53SD2WrJ6tFX7QHmA';
 
 var results = {};
 var geoJson = {
   type: 'FeatureCollection',
-  features: [],
+  features: []
 };
 
 class Maps extends Component {
@@ -49,25 +49,28 @@ class Maps extends Component {
     axios.get(`https://raw.githubusercontent.com/adriandarian/DigestQuest/master/Geotags.csv`).then(res => {
       var csvString = res.data;
       results = Papa.parse(csvString, {
-          delimiter: ",",
-          header: true,
-          dynamicTyping: true
+        delimiter: ",",
+        header: true,
+        dynamicTyping: true
       });
-    })
 
-    for (var i = 0; i < results.length; i++) {
-      geoJson.features.push({
-        'type': 'Feature',
-        'geometry': {
-          'type': 'Point',
-          'coordinates': [results[i].coordinates]//[results[i].longitude, results[i].latitude]
-        },
-        'properties': {
-          'title': results[i].title,
-          'description': results[i].description
-        }
-      });
-    }
+      for (var i = 0; i < results.data.length; i++) {
+        geoJson.features.push({
+          'type': 'Feature',
+          'geometry': {
+            'type': 'Point',
+            'coordinates': [
+              results.data[i].longitude,
+              results.data[i].latitude
+            ]
+          },
+          'properties': {
+            'title': results.data[i].title,
+            'description': results.data[i].description
+          }
+        });
+      }
+    });
 
     console.log(typeof geoJson, "LOOK HERE: ", geoJson);
 
@@ -83,7 +86,9 @@ class Maps extends Component {
 
     map.addControl(new PitchToggle({minpitchzoom: 11}));
 
-    geoJson.features.forEach(function(marker) {
+    waterStation.features.forEach(function(marker) {
+      console.log(geoJson.features[1]);
+      console.log(marker);
       var refill = document.createElement('div');
       refill.className = 'water-station';
       refill.appendChild(document.createElement('i'));
