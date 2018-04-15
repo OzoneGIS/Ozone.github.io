@@ -1,13 +1,11 @@
 import React, {Component} from 'react';
 import {Route, Switch, Redirect} from 'react-router-dom';
 import NotificationSystem from 'react-notification-system';
-
-import Header from 'components/Header/AdminHeader';
-import Sidebar from 'components/Sidebar/AdminSidebar';
-
+import Header from 'components/Header/Header';
+import Sidebar from 'components/Sidebar/Sidebar';
 import {style} from "variables/Variables.jsx";
-
-import appRoutes from 'routes/adminApp.jsx';
+import appRoutes from 'routes/app.jsx';
+import TableList from 'views/TableList/TableList.jsx';
 
 
 class App extends Component {
@@ -106,7 +104,7 @@ class App extends Component {
             })
           }
         </Switch>
-
+        <TableList/>
       </div>
     </div>
 
