@@ -10,10 +10,9 @@ import {waterStation} from 'variables/Data.jsx';
 
 mapboxgl.accessToken = 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4M29iazA2Z2gycXA4N2pmbDZmangifQ.-g_vE53SD2WrJ6tFX7QHmA';
 
-var results = {};
 var geoJson = {
-  type: 'FeatureCollection',
-  features: []
+  'type': 'FeatureCollection',
+  'features': []
 };
 
 class Maps extends Component {
@@ -47,8 +46,7 @@ class Maps extends Component {
     });
 
     axios.get(`https://raw.githubusercontent.com/adriandarian/DigestQuest/master/Geotags.csv`).then(res => {
-      var csvString = res.data;
-      results = Papa.parse(csvString, {
+      var results = Papa.parse(res.data, {
         delimiter: ",",
         header: true,
         dynamicTyping: true
@@ -71,8 +69,9 @@ class Maps extends Component {
         });
       }
     });
+    var uhh = geoJson;
+    console.log(typeof uhh, "HELP: ", uhh);
 
-    console.log(typeof geoJson, "LOOK HERE: ", geoJson);
 
     ///////Controls
     map.addControl(new mapboxgl.GeolocateControl({
@@ -87,8 +86,6 @@ class Maps extends Component {
     map.addControl(new PitchToggle({minpitchzoom: 11}));
 
     waterStation.features.forEach(function(marker) {
-      console.log(geoJson.features[1]);
-      console.log(marker);
       var refill = document.createElement('div');
       refill.className = 'water-station';
       refill.appendChild(document.createElement('i'));
