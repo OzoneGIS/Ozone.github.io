@@ -9,6 +9,7 @@ import {style} from "variables/Variables.jsx";
 
 import appRoutes from 'routes/adminApp.jsx';
 
+
 class App extends Component {
   state = {
     response: ''
@@ -81,21 +82,12 @@ class App extends Component {
     </div>), level: level, position: "tr", autoDismiss: 15});
   }
 
-  callApi = async () => {
-    const response = await fetch('/api/hello');
-    const body = await response.json();
-
-    if (response.status !== 200)
-      throw Error(body.message);
-
-    return body;
-  };
-
   componentDidUpdate(e) {
     if (window.innerWidth < 993 && e.history.location.pathname !== e.location.pathname && document.documentElement.className.indexOf('nav-open') !== -1) {
       document.documentElement.classList.toggle('nav-open');
     }
   }
+
 
   render() {
     return (<div className="wrapper">
@@ -116,7 +108,10 @@ class App extends Component {
         </Switch>
 
       </div>
-    </div>);
+    </div>
+
+
+  );
   }
 }
 

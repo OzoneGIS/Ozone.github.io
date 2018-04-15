@@ -6,7 +6,6 @@ import Papa from 'papaparse';
 import 'assets/css/Maps.css';
 import leed from 'assets/img/leed.png';
 import PitchToggle from 'views/Maps/PitchToggle.jsx';
-import {waterStation} from 'variables/Data.jsx';
 
 mapboxgl.accessToken = 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4M29iazA2Z2gycXA4N2pmbDZmangifQ.-g_vE53SD2WrJ6tFX7QHmA';
 
@@ -45,32 +44,41 @@ class Maps extends Component {
       this.setState({lng: lng.toFixed(4), lat: lat.toFixed(4), zoom: map.getZoom().toFixed(2)});
     });
 
-    axios.get(`https://raw.githubusercontent.com/adriandarian/DigestQuest/master/Geotags.csv`).then(res => {
-      var results = Papa.parse(res.data, {
-        delimiter: ",",
-        header: true,
-        dynamicTyping: true
-      });
-
-      for (var i = 0; i < results.data.length; i++) {
-        geoJson.features.push({
-          'type': 'Feature',
-          'geometry': {
-            'type': 'Point',
-            'coordinates': [
-              results.data[i].longitude,
-              results.data[i].latitude
-            ]
-          },
-          'properties': {
-            'title': results.data[i].title,
-            'description': results.data[i].description
-          }
+    axios.get(`https://raw.githubusercontent.com/adriandarian/DigestQuest/master/Geotags.csv`)
+      .then(res => {
+        let results = Papa.parse(res.data, {
+          delimiter: ",",
+          header: true,
+          dynamicTyping: true
         });
-      }
-    });
-    var uhh = geoJson;
-    console.log(typeof uhh, "HELP: ", uhh);
+
+        for (let i = 0; i < results.data.length; i++) {
+          geoJson.features.push({
+            'type': 'Feature',
+            'geometry': {
+              'type': 'Point',
+              'coordinates': [
+                results.data[i].longitude,
+                results.data[i].latitude
+              ]
+            },
+            'properties': {
+              'title': results.data[i].title,
+              'description': results.data[i].description
+            }
+          });
+        }
+
+          geoJson.features.forEach(marker => {
+            var refill = document.createElement('div');
+            refill.className = 'water-station';
+            refill.appendChild(document.createElement('i'));
+            new mapboxgl.Marker(refill).setLngLat(marker.geometry.coordinates).setPopup(new mapboxgl.Popup({offset: 25}).setHTML('<h3>' + marker.properties.title + '</h3><p>' + marker.properties.description + '</p>')).addTo(map);
+          });
+
+      	console.log(geoJson);
+    	});
+
 
 
     ///////Controls
@@ -85,12 +93,10 @@ class Maps extends Component {
 
     map.addControl(new PitchToggle({minpitchzoom: 11}));
 
-    waterStation.features.forEach(function(marker) {
-      var refill = document.createElement('div');
-      refill.className = 'water-station';
-      refill.appendChild(document.createElement('i'));
-      new mapboxgl.Marker(refill).setLngLat(marker.geometry.coordinates).setPopup(new mapboxgl.Popup({offset: 25}).setHTML('<h3>' + marker.properties.title + '</h3><p>' + marker.properties.description + '</p>')).addTo(map);
-    });
+
+
+
+    ////I want to change the variable waterStation here to geoJson so that it can display all the points cause later I will edit the map so you can select which icons you want to display
   }
 
   render() {
