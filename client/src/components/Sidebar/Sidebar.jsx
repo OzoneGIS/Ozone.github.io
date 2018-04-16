@@ -34,7 +34,7 @@ class Sidebar extends Component {
     return (<div id="sidebar" className="sidebar" data-color="black" data-image={imagine}>
       <div className="sidebar-background" style={sidebarBackground}></div>
       <div className="logo">
-        <a href="https://adriandarian.github.io/sustainable" className="simple-text logo-mini">
+        <a className="simple-text logo-mini">
           <div className="logo-img">
             <img src={logo} alt="logo_image"/>
           </div>

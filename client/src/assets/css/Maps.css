@@ -48,15 +48,6 @@ a.mapboxgl-ctrl-logo {
   z-index: 1;
 }
 
-.water-station {
-  background-image: url('../img/icons/solid/tint.svg');
-  background-size: cover;
-  width: 0.95em;
-  height: 0.95em;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
 #map {
   overflow: hidden;
   overflow-y: hidden;

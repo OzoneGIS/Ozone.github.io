@@ -27,7 +27,7 @@ class Dashboard extends Component {
   }
   render() {
     return (<div className="content">
-      <Grid fluid="fluid">
+      <Grid fluid>
         <Row>
           <Col lg={3} sm={6}>
             <StatsCard bigIcon={<i className = "pe-7s-server text-warning" > </i>} statsText="LEED Certification" statsValue="Gold" statsIcon={<i className = "fa fa-refresh" > </i>} statsIconText="Last Day"/>

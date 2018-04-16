@@ -21,7 +21,7 @@ class Maps extends Component {
     this.state = {
       lng: -120.426,
       lat: 37.3646,
-      zoom: 16.96
+      zoom: 15.5
     };
   }
 
@@ -44,42 +44,58 @@ class Maps extends Component {
       this.setState({lng: lng.toFixed(4), lat: lat.toFixed(4), zoom: map.getZoom().toFixed(2)});
     });
 
-    axios.get(`https://raw.githubusercontent.com/adriandarian/DigestQuest/master/Geotags.csv`)
-      .then(res => {
-        let results = Papa.parse(res.data, {
-          delimiter: ",",
-          header: true,
-          dynamicTyping: true
-        });
+    axios.get(`https://raw.githubusercontent.com/adriandarian/DigestQuest/master/Geotags.csv`).then(res => {
+      let results = Papa.parse(res.data, {
+        delimiter: ",",
+        header: true,
+        dynamicTyping: true
+      });
 
-        for (let i = 0; i < results.data.length; i++) {
-          geoJson.features.push({
-            'type': 'Feature',
-            'geometry': {
-              'type': 'Point',
-              'coordinates': [
-                results.data[i].longitude,
-                results.data[i].latitude
-              ]
-            },
-            'properties': {
-              'title': results.data[i].title,
-              'description': results.data[i].description
-            }
-          });
+      for (let i = 0; i < results.data.length; i++) {
+        geoJson.features.push({
+          'type': 'Feature',
+          'geometry': {
+            'type': 'Point',
+            'coordinates': [
+              results.data[i].longitude,
+              results.data[i].latitude
+            ]
+          },
+          'properties': {
+            'title': results.data[i].title,
+            'description': results.data[i].description
+          }
+        });
+      }
+
+      geoJson.features.forEach(marker => {
+        var refill = document.createElement('div');
+        var icon = document.createElement('i');
+
+        switch (marker.properties.title) {
+          case 'Water Refill Station':
+            icon.className = 'fas fa-tint';
+            icon.style.color = 'rgb(6, 129, 208)'
+            break;
+          case 'Trash Can':
+            icon.className = 'fas fa-trash-alt';
+            icon.style.color = 'rgb(87, 86, 87)'
+            break;
+          case 'Bike Rack':
+            icon.className = 'fas fa-bicycle';
+            icon.style.color = 'rgb(230, 7, 7)'
+            break;
+          default:
+            icon.className = 'fas fa-question';
+            icon.style.color = 'rgb(57, 153, 108)'
+            break;
         }
 
-          geoJson.features.forEach(marker => {
-            var refill = document.createElement('div');
-            refill.className = 'water-station';
-            refill.appendChild(document.createElement('i'));
-            new mapboxgl.Marker(refill).setLngLat(marker.geometry.coordinates).setPopup(new mapboxgl.Popup({offset: 25}).setHTML('<h3>' + marker.properties.title + '</h3><p>' + marker.properties.description + '</p>')).addTo(map);
-          });
+        refill.appendChild(icon);
+        new mapboxgl.Marker(refill).setLngLat(marker.geometry.coordinates).setPopup(new mapboxgl.Popup({offset: 25}).setHTML('<h3>' + marker.properties.title + '</h3><p>' + marker.properties.description + '</p>')).addTo(map);
+      });
 
-      	console.log(geoJson);
-    	});
-
-
+    });
 
     ///////Controls
     map.addControl(new mapboxgl.GeolocateControl({
@@ -92,9 +108,6 @@ class Maps extends Component {
     map.addControl(new mapboxgl.NavigationControl());
 
     map.addControl(new PitchToggle({minpitchzoom: 11}));
-
-
-
 
     ////I want to change the variable waterStation here to geoJson so that it can display all the points cause later I will edit the map so you can select which icons you want to display
   }

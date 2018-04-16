@@ -3,13 +3,10 @@ import {Route, Switch, Redirect} from 'react-router-dom';
 import NotificationSystem from 'react-notification-system';
 
 import Header from 'components/Header/Header';
-//import Footer from 'components/Footer/Footer';
 import Sidebar from 'components/Sidebar/Sidebar';
 import {style} from "variables/Variables.jsx";
 
 import appRoutes from 'routes/app.jsx';
-
-import Map from 'views/Maps/Maps.jsx';
 
 class App extends Component {
   state = {
@@ -46,12 +43,12 @@ class App extends Component {
     }
 
     this.state._notificationSystem.addNotification({title: (<span data-notify="icon" className="pe-7s-gift"></span>), message: (<div>
-      Welcome to <b>Ozone</b> - Your one-stop shop to understanding sustainability at UC Merced.
+      Welcome to &nbsp;<b>Ozone</b> - Your one-stop shop to understanding sustainability at UC Merced.
     </div>), level: level, position: position, autoDismiss: 15});
   }
 
   componentDidMount() {
-    this.callApi().then(res => this.setState({response: res.express})).catch(err => console.log(err));
+    //this.callApi().then(res => this.setState({response: res.express})).catch(err => console.log(err));
 
     this.setState({_notificationSystem: this.refs.notificationSystem});
     var _notificationSystem = this.refs.notificationSystem;
@@ -75,7 +72,7 @@ class App extends Component {
     }
 
     _notificationSystem.addNotification({title: (<span data-notify="icon" className="pe-7s-gift"></span>), message: (<div>
-      Welcome to <b>Ozone</b> - Your one-stop shop to understanding sustainability at UC Merced.
+      Welcome to &nbsp;<b>Ozone</b> - Your one-stop shop to understanding sustainability at UC Merced.
     </div>), level: level, position: "tr", autoDismiss: 15});
   }
 
@@ -112,7 +109,6 @@ class App extends Component {
             })
           }
         </Switch>
-				<Map/>
       </div>
     </div>);
   }
