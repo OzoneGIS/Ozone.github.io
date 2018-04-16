@@ -25,7 +25,6 @@
     left: 0;
   }
 }
-
 @mixin ct-align-justify($ct-text-align: $ct-text-align, $ct-text-justify: $ct-text-justify) {
   -webkit-box-align: $ct-text-align;
   -webkit-align-items: $ct-text-align;
@@ -38,13 +37,13 @@
   // Fallback to text-align for non-flex browsers
   @if($ct-text-justify == 'flex-start') {
     text-align: left;
-  } @else if ($ct-text-justify == 'flex-end') {
+  } @else
+  if ($ct-text-justify == 'flex-end') {
     text-align: right;
   } @else {
     text-align: center;
   }
 }
-
 @mixin ct-flex() {
   // Fallback to block
   display: block;
@@ -54,70 +53,62 @@
   display: -webkit-flex;
   display: flex;
 }
-
 @mixin ct-chart-label($ct-text-color: $ct-text-color, $ct-text-size: $ct-text-size, $ct-text-line-height: $ct-text-line-height) {
   fill: $ct-text-color;
   color: $ct-text-color;
   font-size: $ct-text-size;
   line-height: $ct-text-line-height;
 }
-
 @mixin ct-chart-grid($ct-grid-color: $ct-grid-color, $ct-grid-width: $ct-grid-width, $ct-grid-dasharray: $ct-grid-dasharray) {
   stroke: $ct-grid-color;
   stroke-width: $ct-grid-width;
-
   @if ($ct-grid-dasharray) {
     stroke-dasharray: $ct-grid-dasharray;
   }
 }
-
 @mixin ct-chart-point($ct-point-size: $ct-point-size, $ct-point-shape: $ct-point-shape) {
   stroke-width: $ct-point-size;
   stroke-linecap: $ct-point-shape;
 }
-
 @mixin ct-chart-line($ct-line-width: $ct-line-width, $ct-line-dasharray: $ct-line-dasharray) {
   fill: none;
   stroke-width: $ct-line-width;
-
   @if ($ct-line-dasharray) {
     stroke-dasharray: $ct-line-dasharray;
   }
 }
-
 @mixin ct-chart-area($ct-area-opacity: $ct-area-opacity) {
   stroke: none;
   fill-opacity: $ct-area-opacity;
 }
-
 @mixin ct-chart-bar($ct-bar-width: $ct-bar-width) {
   fill: none;
   stroke-width: $ct-bar-width;
 }
-
 @mixin ct-chart-donut($ct-donut-width: $ct-donut-width) {
   fill: none;
   stroke-width: $ct-donut-width;
 }
-
 @mixin ct-chart-series-color($color) {
-  .#{$ct-class-point}, .#{$ct-class-line}, .#{$ct-class-bar}, .#{$ct-class-slice-donut} {
+  .#{$ct-class-bar},
+  .#{$ct-class-line},
+  .#{$ct-class-point},
+  .#{$ct-class-slice-donut} {
     stroke: $color;
   }
 
-  .#{$ct-class-slice-pie}, .#{$ct-class-area} {
+  .#{$ct-class-area},
+  .#{$ct-class-slice-pie} {
     fill: $color;
   }
 }
-
 @mixin ct-chart($ct-container-ratio: $ct-container-ratio, $ct-text-color: $ct-text-color, $ct-text-size: $ct-text-size, $ct-grid-color: $ct-grid-color, $ct-grid-width: $ct-grid-width, $ct-grid-dasharray: $ct-grid-dasharray, $ct-point-size: $ct-point-size, $ct-point-shape: $ct-point-shape, $ct-line-width: $ct-line-width, $ct-bar-width: $ct-bar-width, $ct-donut-width: $ct-donut-width, $ct-series-names: $ct-series-names, $ct-series-colors: $ct-series-colors) {
-
   .#{$ct-class-label} {
     @include ct-chart-label($ct-text-color, $ct-text-size);
   }
 
-  .#{$ct-class-chart-line} .#{$ct-class-label},
-  .#{$ct-class-chart-bar} .#{$ct-class-label} {
+  .#{$ct-class-chart-bar} .#{$ct-class-label},
+  .#{$ct-class-chart-line} .#{$ct-class-label} {
     @include ct-flex();
   }
 
@@ -205,21 +196,17 @@
   .#{$ct-class-slice-donut} {
     @include ct-chart-donut($ct-donut-width);
   }
-
   @if $ct-include-colored-series {
     @for $i from 0 to length($ct-series-names) {
       .#{$ct-class-series}-#{nth($ct-series-names, $i + 1)} {
         $color: nth($ct-series-colors, $i + 1);
-
         @include ct-chart-series-color($color);
       }
     }
   }
 }
-
 @if $ct-include-classes {
   @include ct-chart();
-
   @if $ct-include-alternative-responsive-containers {
     @for $i from 0 to length($ct-scales-names) {
       .#{nth($ct-scales-names, $i + 1)} {

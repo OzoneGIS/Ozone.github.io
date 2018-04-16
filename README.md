@@ -1,11 +1,13 @@
 # [Sustainable Sites](http://sustainability.ucmerced.edu)
 [![version][version-badge]][CHANGELOG]
 [![license][license-badge]][LICENSE]
+[![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)
+[![jest](https://facebook.github.io/jest/img/jest-badge.svg)](https://github.com/facebook/jest)
 
 
 **[Engineering Service Learning @ UC Merced](http://engineeringservicelearning.ucmerced.edu)** Working with the Department of Sustainability to provide access to sustainable initiatives in an interactive, hands-on manner.
 
-**[Ozone](https://adriandarian.github.io/sustainable)** An interactive web app providing on-campus sustainable information. Ozone is Sustainable Sites' current project. Eventually hosted at [sustainability.ucmerced.edu/map](sustainability.ucmerced.edu/map), it will provide information to help students, faculty, and visitors understand the efforts going on campus and how they can make the campus a greener healthier place to be.
+**[Ozone](https://adriandarian.github.io/sustainable)** An interactive web app providing on-campus sustainable information. Ozone is Sustainable Sites' current project. Eventually hosted at [//sustainability.ucmerced.edu/map](http://sustainability.ucmerced.edu/map), it will provide information to help students, faculty, and visitors understand the efforts going on campus and how they can make the campus a greener healthier place to be.
 
 
 ## Quick Start:
@@ -49,34 +51,7 @@ sustainable
     ├── package.json
     ├── yarn.lock
     ├── node_modules/
-    ├── build
-    |   └── static
-    |       ├── apple-icon.png
-    |       ├── asset-manifest.json
-    |       ├── favicon.ico
-    |       ├── index.html
-    |       ├── maifest.json
-    |       ├── service-worker.js
-    |       ├── sidebar-5.jpg
-    |       ├── css
-    |       |   ├── main.d8c462c3.css
-    |       |   └── main.d8c462c3.css.map
-    |       ├── js
-    |       |   ├── main.8d470cf3.js
-    |       |   └── main.8d470cf3.js.map
-    |       └── media
-    |           ├── glyphicons-halflings-regular.448c34a5.woff2
-    |           ├── glyphicons-halflings-regular.89889688.svg
-    |           ├── glyphicons-halflings-regular.e18bbf61.ttf
-    |           ├── glyphicons-halflings-regular.f4769f9b.eot
-    |           ├── glyphicons-halflings-regular.fa277232.woff
-    |           ├── Pe-icon-7-stroke.01798bc1.ttf
-    |           ├── Pe-icon-7-stroke.71394c0c.eot
-    |           ├── Pe-icon-7-stroke.b38ef310.woff
-    |           ├── Pe-icon-7-stroke.c45f7de0.svg
-    |           ├── reactlogo.9b864b36.png
-    |           ├── sidebar-3.34535b95.jpg
-    |           └── tint.23d524f6.svg
+    ├── build/
     ├── public
     |   ├── apple-icon.png
     |   ├── favicon.ico
