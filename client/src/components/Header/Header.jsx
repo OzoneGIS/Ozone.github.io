@@ -13,6 +13,7 @@ class Header extends Component {
       sidebarExists: false
     };
   }
+
   mobileSidebarToggle(e) {
     if (this.state.sidebarExists === false) {
       this.setState({sidebarExists: true});
@@ -28,6 +29,7 @@ class Header extends Component {
     };
     document.body.appendChild(node);
   }
+
   getBrand() {
     var name;
     appRoutes.map((prop, key) => {
@@ -53,6 +55,7 @@ class Header extends Component {
     })
     return name;
   }
+  
   render() {
     return (<Navbar fluid>
       <Navbar.Header>

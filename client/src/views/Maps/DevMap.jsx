@@ -1,29 +1,33 @@
 import React, {Component} from 'react';
 import mapboxgl from 'mapbox-gl';
+import axios from 'axios';
+import Papa from 'papaparse';
 
 import 'assets/css/Maps.css';
 import leed from 'assets/img/leed.png';
 import PitchToggle from 'views/Maps/PitchToggle.jsx';
 
-import {waterStation} from 'variables/Data.jsx';
-
 mapboxgl.accessToken = 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4M29iazA2Z2gycXA4N2pmbDZmangifQ.-g_vE53SD2WrJ6tFX7QHmA';
 
-class Maps extends Component {
+var geoJson = {
+  'type': 'FeatureCollection',
+  'features': []
+};
+
+
+class DevMap extends Component {
 
   constructor(props : Props) {
     super(props);
     this.state = {
       lng: -120.426,
       lat: 37.3646,
-      zoom: 16.96,
-      pitch: 45,
-      bearing: -17.6
+      zoom: 15.5
     };
   }
 
   componentDidMount() {
-    const {lng, lat, zoom, pitch, bearing} = this.state;
+    const {lng, lat, zoom} = this.state;
 
     const map = new mapboxgl.Map({
       container: this.mapContainer,
@@ -33,9 +37,7 @@ class Maps extends Component {
       ],
       attributionControl: false,
       zoom,
-      maxZoom: 17,
-      pitch,
-      bearing
+      maxZoom: 17
     });
 
     map.on('move', () => {
@@ -52,6 +54,59 @@ class Maps extends Component {
       JSON.stringify(e.lngLat);
     });
 
+    axios.get(`https://raw.githubusercontent.com/adriandarian/DigestQuest/master/Geotags.csv`).then(res => {
+      let results = Papa.parse(res.data, {
+        delimiter: ",",
+        header: true,
+        dynamicTyping: true
+      });
+
+      for (let i = 0; i < results.data.length; i++) {
+        geoJson.features.push({
+          'type': 'Feature',
+          'geometry': {
+            'type': 'Point',
+            'coordinates': [
+              results.data[i].longitude,
+              results.data[i].latitude
+            ]
+          },
+          'properties': {
+            'title': results.data[i].title,
+            'description': results.data[i].description
+          }
+        });
+      }
+
+      geoJson.features.forEach(marker => {
+        var refill = document.createElement('div');
+        var icon = document.createElement('i');
+
+        switch (marker.properties.title) {
+          case 'Water Refill Station':
+            icon.className = 'fas fa-tint';
+            icon.style.color = 'rgb(6, 129, 208)'
+            break;
+          case 'Trash Can':
+            icon.className = 'fas fa-trash-alt';
+            icon.style.color = 'rgb(87, 86, 87)'
+            break;
+          case 'Bike Rack':
+            icon.className = 'fas fa-bicycle';
+            icon.style.color = 'rgb(230, 7, 7)'
+            break;
+          default:
+            icon.className = 'fas fa-question';
+            icon.style.color = 'rgb(57, 153, 108)'
+            break;
+        }
+
+        refill.appendChild(icon);
+        new mapboxgl.Marker(refill).setLngLat(marker.geometry.coordinates).setPopup(new mapboxgl.Popup({offset: 25}).setHTML('<h3>' + marker.properties.title + '</h3><p>' + marker.properties.description + '</p>')).addTo(map);
+      });
+
+    });
+
     ///////Controls
     map.addControl(new mapboxgl.GeolocateControl({
       positionOptions: {
@@ -64,11 +119,6 @@ class Maps extends Component {
 
     map.addControl(new PitchToggle({minpitchzoom: 11}));
 
-    waterStation.features.forEach(function(marker) {
-      var refill = document.createElement('div');
-      refill.className = 'water-station';
-      new mapboxgl.Marker(refill).setLngLat(marker.geometry.coordinates).setPopup(new mapboxgl.Popup({offset: 25}).setHTML('<h3>' + marker.properties.title + '</h3><p>' + marker.properties.description + '</p>')).addTo(map);
-    });
   }
 
   render() {
@@ -85,4 +135,4 @@ class Maps extends Component {
   }
 }
 
-export default Maps;
+export default DevMap;

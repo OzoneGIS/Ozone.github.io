@@ -7,7 +7,7 @@ import {iconsArray} from 'variables/Variables.jsx';
 class Icons extends Component {
   render() {
     return (<div className="content">
-      <Grid fluid="fluid">
+      <Grid fluid>
         <Row>
           <Col md={12}>
             <Card title="202 Awesome Stroke Icons" ctAllIcons="ctAllIcons" category={<span > Handcrafted by our friends from < a target = "_blank" rel = "noopener noreferrer" href = "http://themes-pixeden.com/font-demos/7-stroke/index.html" > Pixeden</a> < /span>} content={<Row > {

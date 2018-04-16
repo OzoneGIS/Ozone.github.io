@@ -8,7 +8,7 @@ import {style} from "variables/Variables.jsx";
 
 import appRoutes from 'routes/app.jsx';
 
-import Map from 'views/Maps/Maps.jsx';
+//import Map from 'views/Maps/Maps.jsx';
 
 class App extends Component {
   state = {
@@ -111,7 +111,6 @@ class App extends Component {
             })
           }
         </Switch>
-				<Map/>
       </div>
     </div>);
   }

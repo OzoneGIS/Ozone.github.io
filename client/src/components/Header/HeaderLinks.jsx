@@ -20,10 +20,10 @@ class HeaderLinks extends Component {
       </Nav>
       <Nav pullRight>
         <NavItem eventKey={3} href="#">
-          <i className="fa fa-search"></i>
+          <i className="pe-7s-search"></i>
           <p className="hidden-lg hidden-md">Search</p>
         </NavItem>
-        <NavItem href='/admin'>Login</NavItem>
+        <NavItem href='/'>Login</NavItem>
       </Nav>
     </div>);
   }

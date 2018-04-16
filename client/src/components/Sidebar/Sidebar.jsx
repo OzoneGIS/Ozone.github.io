@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {NavLink} from 'react-router-dom';
-
-import HeaderLinks from '../Header/HeaderLinks.jsx';
+import {NavItem, Nav} from 'react-bootstrap';
 
 import imagine from 'assets/img/newBeginnings-5.jpg';
 import logo from 'assets/img/reactlogo.png';
@@ -48,7 +47,13 @@ class Sidebar extends Component {
         <ul className="nav">
           {
             this.state.width <= 991
-              ? (<HeaderLinks/>)
+              ? (<Nav>
+                <NavItem eventKey={3} href="#">
+                  <i className="fa fa-search"></i>
+                  <p className="hidden-lg hidden-md">Search</p>
+                </NavItem>
+                <NavItem href='/'>Login</NavItem>
+              </Nav>)
               : null
           }
           {
@@ -58,7 +63,7 @@ class Sidebar extends Component {
                     ? "active active-pro"
                     : this.activeRoute(prop.path)} key={key}>
                   <NavLink to={prop.path} className="nav-link" activeClassName="active" activeStyle={{fontWeight: 'bold', color: 'rgb(126, 212, 145)'}} >
-                    <i className={prop.icon}></i>
+                    <i className={prop.icon} style={{width: '28px', height: '28px'}}></i>
                     <p>{prop.name}</p>
                   </NavLink>
                 </li>);

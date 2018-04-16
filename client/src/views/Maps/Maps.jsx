@@ -109,7 +109,6 @@ class Maps extends Component {
 
     map.addControl(new PitchToggle({minpitchzoom: 11}));
 
-    ////I want to change the variable waterStation here to geoJson so that it can display all the points cause later I will edit the map so you can select which icons you want to display
   }
 
   render() {
