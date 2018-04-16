@@ -12,6 +12,6 @@ import './assets/css/pe-icon-7-stroke.css';
 
 ReactDOM.render((<BrowserRouter>
   <Switch>
-      <Route path="/maps" name="Home" component={App}/>
+      <Route path="/" name="Home" component={App}/>
   </Switch>
 </BrowserRouter>), document.getElementById('root'));

@@ -68,6 +68,9 @@
     "postman",
     "jest",
     "csvtojson",
-    "auth0"
+    "auth0",
+    "axios",
+    "papaparse",
+    "icons8"
   ]
 }
