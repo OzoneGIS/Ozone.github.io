@@ -1,14 +1,11 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { Nav, Collapse } from "reactstrap";
-// react plugin for creating notifications over the dashboard
 import NotificationAlert from "react-notification-alert";
-// javascript plugin used to create scrollbars on windows
 import PerfectScrollbar from "perfect-scrollbar";
 
 import { Button } from "components";
 
-import avatar from "assets/img/ryan.jpg";
 import logo from "logo-white.svg";
 
 var ps;
@@ -17,12 +14,8 @@ class Sidebar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      openAvatar: false,
       openComponents: this.activeRoute("/components") !== "" ? true : false,
-      openForms: this.activeRoute("/forms") !== "" ? true : false,
-      openTables: this.activeRoute("/tables") !== "" ? true : false,
-      openMaps: this.activeRoute("/maps") !== "" ? true : false,
-      openPages: this.activeRoute("/pages") !== "" ? true : false
+      openMaps: this.activeRoute("/maps") !== "" ? true : false
     };
     this.activeRoute.bind(this);
     this.minimizeSidebar = this.minimizeSidebar.bind(this);
@@ -98,48 +91,6 @@ class Sidebar extends React.Component {
           </div>
 
           <div className="sidebar-wrapper" ref="sidebar">
-            <div className="user">
-              <div className="photo">
-                <img src={avatar} alt="Avatar" />
-              </div>
-              <div className="info">
-                <a
-                  data-toggle="collapse"
-                  aria-expanded={this.state.openAvatar}
-                  onClick={() =>
-                    this.setState({ openAvatar: !this.state.openAvatar })
-                  }
-                >
-                  <span>
-                    Ryan Gosling
-                    <b className="caret" />
-                  </span>
-                </a>
-                <Collapse isOpen={this.state.openAvatar}>
-                  <ul className="nav">
-                    <li>
-                      <a>
-                        <span className="sidebar-mini-icon">MP</span>
-                        <span className="sidebar-normal">My Profile</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a>
-                        <span className="sidebar-mini-icon">EP</span>
-                        <span className="sidebar-normal">Edit Profile</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a>
-                        <span className="sidebar-mini-icon">S</span>
-                        <span className="sidebar-normal">Settings</span>
-                      </a>
-                    </li>
-                  </ul>
-                </Collapse>
-              </div>
-            </div>
-
             <Nav>
               {this.props.routes.map((prop, key) => {
                 if (prop.redirect) return null;

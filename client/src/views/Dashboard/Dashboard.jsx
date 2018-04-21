@@ -33,10 +33,6 @@ import {
   dashboardActiveCountriesCard
 } from "variables/charts.jsx";
 
-import jacket from "assets/img/saint-laurent.jpg";
-import shirt from "assets/img/balmain.jpg";
-import swim from "assets/img/prada.jpg";
-
 import { table_data } from "variables/general.jsx";
 
 var mapData = {
@@ -273,102 +269,6 @@ class Dashboard extends React.Component {
                     {[{ i: "now-ui-icons ui-2_time-alarm", t: "Last 7 days" }]}
                   </Stats>
                 </CardFooter>
-              </Card>
-            </Col>
-          </Row>
-          <Row>
-            <Col xs={12} md={12}>
-              <Card>
-                <CardHeader>
-                  <CardTitle>Best Selling Products</CardTitle>
-                </CardHeader>
-                <CardBody>
-                  <Table responsive className="table-shopping">
-                    <thead>
-                      <tr>
-                        <th className="text-center" />
-                        <th>PRODUCT</th>
-                        <th>COLOR</th>
-                        <th>Size</th>
-                        <th className="text-right">PRICE</th>
-                        <th className="text-right">QTY</th>
-                        <th className="text-right">AMOUNT</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>
-                          <div className="img-container">
-                            <img src={jacket} alt="..." />
-                          </div>
-                        </td>
-                        <td className="td-name">
-                          <a href="#jacket">Suede Biker Jacket</a>
-                          <br />
-                          <small>by Saint Laurent</small>
-                        </td>
-                        <td>Black</td>
-                        <td>M</td>
-                        <td className="td-number">
-                          <small>€</small>3,390
-                        </td>
-                        <td className="td-number">1</td>
-                        <td className="td-number">
-                          <small>€</small>549
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <div className="img-container">
-                            <img src={shirt} alt="..." />
-                          </div>
-                        </td>
-                        <td className="td-name">
-                          <a href="#shirt">Jersey T-Shirt</a>
-                          <br />
-                          <small>by Balmain</small>
-                        </td>
-                        <td>Black</td>
-                        <td>M</td>
-                        <td className="td-number">
-                          <small>€</small>499
-                        </td>
-                        <td className="td-number">2</td>
-                        <td className="td-number">
-                          <small>€</small>998
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <div className="img-container">
-                            <img src={swim} alt="..." />
-                          </div>
-                        </td>
-                        <td className="td-name">
-                          <a href="#pants">Slim-Fit Swim Short </a>
-                          <br />
-                          <small>by Prada</small>
-                        </td>
-                        <td>Red</td>
-                        <td>M</td>
-                        <td className="td-number">
-                          <small>€</small>200
-                        </td>
-                        <td className="td-number">3</td>
-                        <td className="td-number">
-                          <small>€</small>799
-                        </td>
-                      </tr>
-                      <tr>
-                        <td colSpan="5" />
-                        <td className="td-total">Total</td>
-                        <td className="td-price">
-                          <small>€</small>2,346
-                        </td>
-                      </tr>
-                    </tbody>
-                  </Table>
-                </CardBody>
               </Card>
             </Col>
           </Row>

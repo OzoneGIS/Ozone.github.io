@@ -7,10 +7,6 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  Dropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
   Container,
   InputGroup,
   InputGroupAddon,
@@ -108,13 +104,13 @@ class Header extends React.Component {
       // add or remove classes depending if we are on full-screen-maps page or not
       <Navbar
         color={
-          this.props.location.pathname.indexOf("full-screen-maps") !== -1
+          this.props.location.pathname.indexOf("maps") !== -1
             ? "white"
             : this.state.color
         }
         expand="lg"
         className={
-          this.props.location.pathname.indexOf("full-screen-maps") !== -1
+          this.props.location.pathname.indexOf("maps") !== -1
             ? "navbar-absolute fixed-top"
             : "navbar-absolute fixed-top " +
               (this.state.color === "transparent" ? "navbar-transparent " : "")
@@ -149,37 +145,12 @@ class Header extends React.Component {
             <form>
               <InputGroup className="no-border">
                 <Input placeholder="Search..." />
-                <InputGroupAddon>
+                <InputGroupAddon addontype="append">
                   <i className="now-ui-icons ui-1_zoom-bold" />
                 </InputGroupAddon>
               </InputGroup>
             </form>
             <Nav navbar>
-              <NavItem>
-                <Link to="#pablo" className="nav-link">
-                  <i className="now-ui-icons media-2_sound-wave" />
-                  <p>
-                    <span className="d-lg-none d-md-block">Stats</span>
-                  </p>
-                </Link>
-              </NavItem>
-              <Dropdown
-                nav
-                isOpen={this.state.dropdownOpen}
-                toggle={e => this.dropdownToggle(e)}
-              >
-                <DropdownToggle caret nav>
-                  <i className="now-ui-icons location_world" />
-                  <p>
-                    <span className="d-lg-none d-md-block">Some Actions</span>
-                  </p>
-                </DropdownToggle>
-                <DropdownMenu right>
-                  <DropdownItem tag="a">Action</DropdownItem>
-                  <DropdownItem tag="a">Another Action</DropdownItem>
-                  <DropdownItem tag="a">Something else here</DropdownItem>
-                </DropdownMenu>
-              </Dropdown>
               <NavItem>
                 <Link to="#pablo" className="nav-link">
                   <i className="now-ui-icons users_single-02" />

@@ -44,14 +44,14 @@ class Maps extends Component {
       this.setState({lng: lng.toFixed(4), lat: lat.toFixed(4), zoom: map.getZoom().toFixed(2)});
     });
 
-    axios.get(`https://raw.githubusercontent.com/adriandarian/DigestQuest/master/Geotags.csv`).then(res => {
+    axios.get(`https://raw.githubusercontent.com/adriandarian/GhettoDatabase/master/Environmental.csv`).then(res => {
       let results = Papa.parse(res.data, {
         delimiter: ",",
         header: true,
         dynamicTyping: true
       });
 
-      for (let i = 0; i < results.data.length; i++) {
+      for (let i = 0; i < results.data.length - 1; i++) {
         geoJson.features.push({
           'type': 'Feature',
           'geometry': {
@@ -63,7 +63,8 @@ class Maps extends Component {
           },
           'properties': {
             'title': results.data[i].title,
-            'description': results.data[i].description
+            'description': results.data[i].description,
+            'location': results.data[i].location,
           }
         });
       }
@@ -92,7 +93,7 @@ class Maps extends Component {
         }
 
         refill.appendChild(icon);
-        new mapboxgl.Marker(refill).setLngLat(marker.geometry.coordinates).setPopup(new mapboxgl.Popup({offset: 25}).setHTML('<h3>' + marker.properties.title + '</h3><p>' + marker.properties.description + '</p>')).addTo(map);
+        new mapboxgl.Marker(refill).setLngLat(marker.geometry.coordinates).setPopup(new mapboxgl.Popup({offset: 25}).setHTML('<h3>' + marker.properties.title + '</h3><p>' + marker.properties.description +  '</br>' + marker.properties.location + '</p>')).addTo(map);
       });
 
     });
