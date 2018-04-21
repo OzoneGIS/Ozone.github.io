@@ -1,12 +1,9 @@
 import Dashboard from "views/Dashboard/Dashboard.jsx";
-import Icons from "views/Components/Icons.jsx";
-import Charts from "views/Charts/Charts.jsx";
 
 //Maps
 import Environmental from "views/Maps/EnvironmentalMap.jsx";
 import Economic from "views/Maps/EconomicMap.jsx";
 import Social from "views/Maps/SocialMap.jsx";
-import FullScreenMap from "views/Maps/FullScreenMap.jsx";
 
 var dashRoutes = [
   {
@@ -31,11 +28,6 @@ var dashRoutes = [
         name: 'Social',
         mini: "SM",
         component: Social
-      }, {
-        path: '/maps/full-screen-map',
-        name: 'Full Screen Map',
-        mini: 'FSM',
-        component: FullScreenMap
       }
     ]
   }, {
@@ -43,25 +35,6 @@ var dashRoutes = [
     name: "Dashboard",
     icon: "design_app",
     component: Dashboard
-  }, {
-    path: "/charts",
-    name: "Charts",
-    icon: "business_chart-pie-36",
-    component: Charts
-  }, {
-    collapse: true,
-    path: "/components",
-    name: "Components",
-    state: "openComponents",
-    icon: "education_atom",
-    views: [
-      {
-        path: "/components/icons",
-        name: "Icons",
-        mini: "I",
-        component: Icons
-      }
-    ]
   }, {
     redirect: true,
     path: "/",

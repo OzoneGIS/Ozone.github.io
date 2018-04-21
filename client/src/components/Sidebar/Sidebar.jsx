@@ -73,7 +73,7 @@ class Sidebar extends React.Component {
               href="https://www.creative-tim.com"
               className="simple-text logo-normal"
             >
-              Creative Tim
+              Ozone
             </a>
             <div className="navbar-minimize">
               <Button
@@ -93,6 +93,7 @@ class Sidebar extends React.Component {
           <div className="sidebar-wrapper" ref="sidebar">
             <Nav>
               {this.props.routes.map((prop, key) => {
+                if (prop.invisible) return null;
                 if (prop.redirect) return null;
                 if (prop.collapse) {
                   var st = {};

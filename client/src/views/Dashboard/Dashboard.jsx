@@ -90,8 +90,8 @@ class Dashboard extends React.Component {
                       <Statistics
                         iconState="primary"
                         icon="ui-2_chat-round"
-                        title="859"
-                        subtitle="Messages"
+                        title="Gold"
+                        subtitle="LEED Certification"
                       />
                     </Col>
                     <Col xs={12} md={3}>
