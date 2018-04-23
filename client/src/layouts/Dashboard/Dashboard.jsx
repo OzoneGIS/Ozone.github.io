@@ -41,15 +41,7 @@ class Dashboard extends React.Component {
         </Switch>
         {
           // we don't want the Footer to be rendered on full screen maps page
-          this.props.location.pathname.indexOf("environmental") !== -1
-            ? null
-            : (<Footer fluid/>)
-        }, {
-          this.props.location.pathname.indexOf("economic") !== -1
-            ? null
-            : (<Footer fluid/>)
-        }, {
-          this.props.location.pathname.indexOf("social") !== -1
+          (this.props.location.pathname.indexOf("environmental") || this.props.location.pathname.indexOf("economic") || this.props.location.pathname.indexOf("social")) !== -1
             ? null
             : (<Footer fluid/>)
         }

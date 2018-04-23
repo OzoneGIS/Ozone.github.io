@@ -97,29 +97,25 @@ class Dashboard extends React.Component {
                     <Col xs={12} md={3}>
                       <Statistics
                         iconState="success"
-                        icon="business_money-coins"
-                        title={
-                          <span>
-                            <small>$</small>3,521
-                          </span>
-                        }
-                        subtitle="Today Revenue"
+                        icon="business_bank"
+                        title="2005"
+                        subtitle="Built"
                       />
                     </Col>
                     <Col xs={12} md={3}>
                       <Statistics
                         iconState="info"
-                        icon="users_single-02"
-                        title="562"
-                        subtitle="Customers"
+                        icon="shopping_shop"
+                        title="50"
+                        subtitle="Number of Rooms"
                       />
                     </Col>
                     <Col xs={12} md={3}>
                       <Statistics
                         iconState="danger"
-                        icon="objects_support-17"
-                        title="353"
-                        subtitle="Support Requests"
+                        icon="location_bookmark"
+                        title="1st"
+                        subtitle="Efficiency"
                       />
                     </Col>
                   </Row>

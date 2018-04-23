@@ -1,8 +1,9 @@
 {
-  "name": "nud-pro-react",
+  "name": "Ozone",
   "version": "1.1.0",
   "private": true,
-  "homepage": "https://timcreative.github.io/now-ui-dashboard-pro-react",
+  "license": "MIT",
+  "description": "react, mapboxgl, axios, papaparse, reactstrap, bootstrap, fontawesome, googleapis, and custom code in one project",
   "dependencies": {
     "axios": "^0.18.0",
     "bootstrap": "4.0.0-beta",
@@ -41,6 +42,11 @@
     "build": "npm run build-css && react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "deploy": "npm run build&&gh-pages -d build"
-  }
+    "deploy": "npm run build && gh-pages -d build"
+  },
+  "devDependencies": {
+    "gh-pages": "^1.1.0"
+  },
+  "homepage": "http://adriandarian.github.io/sustainable",
+  "proxy": "http://localhost:5000/"
 }

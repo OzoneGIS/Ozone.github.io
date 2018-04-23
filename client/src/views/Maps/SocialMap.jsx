@@ -44,6 +44,16 @@ class Maps extends Component {
       this.setState({lng: lng.toFixed(4), lat: lat.toFixed(4), zoom: map.getZoom().toFixed(2)});
     });
 
+    // Change the cursor to a pointer when the mouse is over the states layer.
+    map.on('mouseenter', 'building-layer', function() {
+      map.getCanvas().style.cursor = 'pointer';
+    });
+
+    // Change it back to a pointer when it leaves.
+    map.on('mouseleave', 'building-layer', function() {
+      map.getCanvas().style.cursor = '';
+    });
+
     map.on('load', () => {
       map.addSource("building-data", {
         "type": "geojson",
@@ -515,15 +525,21 @@ class Maps extends Component {
       });
 
       map.addLayer({
-        "id": "KL",
+        "id": "building-layer",
         "type": "fill",
         "source": "building-data",
         "paint": {
           "fill-color": "#888888",
           "fill-opacity": 0.4
         },
-        "filter": ["==", "$title", "KL"]
+        "filter": ["==", "$type", "Polygon"]
       });
+    });
+
+    // When a click event occurs on a feature in the states layer, open a popup at the
+    // location of the click, with description HTML from its properties.
+    map.on('click', 'building-layer', function(e) {
+      new mapboxgl.Popup().setLngLat(e.lngLat).setHTML(e.features[0].properties.name).addTo(map);
     });
 
     axios.get(`https://raw.githubusercontent.com/adriandarian/GhettoDatabase/master/Social.csv`).then(res => {

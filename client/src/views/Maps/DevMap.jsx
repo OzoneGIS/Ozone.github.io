@@ -3,7 +3,7 @@ import mapboxgl from 'mapbox-gl';
 import axios from 'axios';
 import Papa from 'papaparse';
 
-import 'assets/css/Maps.css';
+import 'assets/css/devMaps.css';
 import leed from 'assets/img/leed.png';
 import PitchToggle from 'views/Maps/PitchToggle.jsx';
 
@@ -126,7 +126,7 @@ class DevMap extends Component {
 
     return (<div id="map">
       <img src={leed} className="App-leed" alt="leed"/>
-      <div className="inline-block absolute top left mt12 ml12 bg-darken75 color-white z1 py6 px12 round-full txt-s txt-bold">
+      <div className="inline-block absolute top left mt60 ml12 bg-darken75 color-white z1 py6 px12 round-full txt-s txt-bold">
         <div>{`Longitude: ${lng} Latitude: ${lat} Zoom: ${zoom}`}</div>
       </div>
       <div ref={el => (this.mapContainer = el)} className="absolute top right left bottom"/>
