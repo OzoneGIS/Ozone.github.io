@@ -5,6 +5,7 @@
   "license": "MIT",
   "description": "react, mapboxgl, axios, papaparse, reactstrap, bootstrap, fontawesome, googleapis, and custom code in one project",
   "dependencies": {
+    "@fortawesome/react-fontawesome": "0.0.18",
     "axios": "^0.18.0",
     "bootstrap": "4.0.0-beta",
     "chart.js": "2.7.1",

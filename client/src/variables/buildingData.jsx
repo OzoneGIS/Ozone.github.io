@@ -1,4 +1,4 @@
-const buildingData = {
+var buildingData = {
   "type": "geojson",
   "data": {
     "type": "FeatureCollection",

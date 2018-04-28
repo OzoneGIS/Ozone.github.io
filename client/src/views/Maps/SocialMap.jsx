@@ -10,8 +10,15 @@ import PitchToggle from 'views/Maps/PitchToggle.jsx';
 mapboxgl.accessToken = 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4M29iazA2Z2gycXA4N2pmbDZmangifQ.-g_vE53SD2WrJ6tFX7QHmA';
 
 var geoJson = {
-  'type': 'FeatureCollection',
-  'features': []
+  'id': 'points',
+  'type': 'symbol',
+  'source': {
+    'type': 'geojson',
+    'data': {
+      'type': 'FeatureCollection',
+      'features': []
+    }
+  }
 };
 
 class Maps extends Component {
@@ -21,7 +28,7 @@ class Maps extends Component {
     this.state = {
       lng: -120.426,
       lat: 37.3646,
-      zoom: 15.5
+      zoom: 16.07
     };
   }
 
@@ -35,23 +42,12 @@ class Maps extends Component {
         lng, lat
       ],
       attributionControl: false,
-      zoom,
-      maxZoom: 17
+      zoom
     });
 
     map.on('move', () => {
       const {lng, lat} = map.getCenter();
       this.setState({lng: lng.toFixed(4), lat: lat.toFixed(4), zoom: map.getZoom().toFixed(2)});
-    });
-
-    // Change the cursor to a pointer when the mouse is over the states layer.
-    map.on('mouseenter', 'building-layer', function() {
-      map.getCanvas().style.cursor = 'pointer';
-    });
-
-    // Change it back to a pointer when it leaves.
-    map.on('mouseleave', 'building-layer', function() {
-      map.getCanvas().style.cursor = '';
     });
 
     map.on('load', () => {
@@ -529,17 +525,23 @@ class Maps extends Component {
         "type": "fill",
         "source": "building-data",
         "paint": {
-          "fill-color": "#888888",
+          "fill-color": "rgba(0,0,0,0)",
           "fill-opacity": 0.4
         },
         "filter": ["==", "$type", "Polygon"]
       });
     });
 
-    // When a click event occurs on a feature in the states layer, open a popup at the
-    // location of the click, with description HTML from its properties.
+    map.on('mouseenter', 'building-layer', function() {
+      map.getCanvas().style.cursor = 'pointer';
+    });
+
+    map.on('mouseleave', 'building-layer', function() {
+      map.getCanvas().style.cursor = '';
+    });
+
     map.on('click', 'building-layer', function(e) {
-      new mapboxgl.Popup().setLngLat(e.lngLat).setHTML(e.features[0].properties.name).addTo(map);
+      new mapboxgl.Popup().setLngLat(e.lngLat).setHTML(e.features[0].properties.title).addTo(map);
     });
 
     axios.get(`https://raw.githubusercontent.com/adriandarian/GhettoDatabase/master/Social.csv`).then(res => {
@@ -550,7 +552,7 @@ class Maps extends Component {
       });
 
       for (let i = 0; i < results.data.length - 1; i++) {
-        geoJson.features.push({
+        geoJson.source.data.features.push({
           'type': 'Feature',
           'geometry': {
             'type': 'Point',
@@ -567,22 +569,14 @@ class Maps extends Component {
         });
       }
 
-      geoJson.features.forEach(marker => {
+      geoJson.source.data.features.forEach(marker => {
         var refill = document.createElement('div');
         var icon = document.createElement('i');
 
         switch (marker.properties.title) {
-          case 'Water Refill Station':
-            icon.className = 'fas fa-tint';
-            icon.style.color = 'rgb(6, 129, 208)'
-            break;
-          case 'Trash Can':
-            icon.className = 'fas fa-trash-alt';
-            icon.style.color = 'rgb(87, 86, 87)'
-            break;
-          case 'Bike Rack':
-            icon.className = 'fas fa-bicycle';
-            icon.style.color = 'rgb(230, 7, 7)'
+          case 'ASUCM':
+            icon.className = 'fas fa-map-marker';
+            icon.style.color = 'rgb(136, 27, 127)';
             break;
           default:
             icon.className = 'fas fa-question';
@@ -593,7 +587,6 @@ class Maps extends Component {
         refill.appendChild(icon);
         new mapboxgl.Marker(refill).setLngLat(marker.geometry.coordinates).setPopup(new mapboxgl.Popup({offset: 25}).setHTML('<h3>' + marker.properties.title + '</h3><p>' + marker.properties.description + '</br>' + marker.properties.location + '</p>')).addTo(map);
       });
-
     });
 
     ///////Controls
