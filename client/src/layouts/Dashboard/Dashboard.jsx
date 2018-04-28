@@ -1,9 +1,8 @@
 import React from "react";
-// javascript plugin used to create scrollbars on windows
 import PerfectScrollbar from "perfect-scrollbar";
-import { Route, Switch, Redirect } from "react-router-dom";
+import {Route, Switch, Redirect} from "react-router-dom";
 
-import { Header, Footer, Sidebar } from "components";
+import {Header, Footer, Sidebar} from "components";
 
 import dashboardRoutes from "routes/dashboard.jsx";
 
@@ -21,39 +20,32 @@ class Dashboard extends React.Component {
     }
   }
   render() {
-    return (
-      <div className="wrapper">
-        <Sidebar {...this.props} routes={dashboardRoutes} />
-        <div className="main-panel" ref="mainPanel">
-          <Header {...this.props} />
-          <Switch>
-            {dashboardRoutes.map((prop, key) => {
+    return (<div className="wrapper">
+      <Sidebar {...this.props} routes={dashboardRoutes}/>
+      <div className="main-panel" ref="mainPanel">
+        <Header {...this.props}/>
+        <Switch>
+          {
+            dashboardRoutes.map((prop, key) => {
               if (prop.collapse) {
                 return prop.views.map((prop2, key2) => {
-                  return (
-                    <Route
-                      path={prop2.path}
-                      component={prop2.component}
-                      key={key2}
-                    />
-                  );
+                  return (<Route path={prop2.path} component={prop2.component} key={key2}/>);
                 });
               }
               if (prop.redirect)
-                return <Redirect from={prop.path} to={prop.pathTo} key={key} />;
-              return (
-                <Route path={prop.path} component={prop.component} key={key} />
-              );
-            })}
-          </Switch>
-          {// we don't want the Footer to be rendered on full screen maps page
-          this.props.location.pathname.indexOf("full-screen-maps") !==
-          -1 ? null : (
-            <Footer fluid />
-          )}
-        </div>
+                return <Redirect from={prop.path} to={prop.pathTo} key={key}/>;
+              return (<Route path={prop.path} component={prop.component} key={key}/>);
+            })
+          }
+        </Switch>
+        {
+          // we don't want the Footer to be rendered on full screen maps page
+          (this.props.location.pathname.indexOf("environmental") || this.props.location.pathname.indexOf("economic") || this.props.location.pathname.indexOf("social")) !== -1
+            ? null
+            : (<Footer fluid/>)
+        }
       </div>
-    );
+    </div>);
   }
 }
 

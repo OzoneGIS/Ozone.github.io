@@ -1,5 +1,5 @@
 // ##############################
-// // // Function that converts a hex color number to a RGB color number
+//   Function that converts a hex color number to a RGB color number
 // #############################
 function hexToRGB(hex, alpha) {
   var r = parseInt(hex.slice(1, 3), 16),
@@ -14,66 +14,16 @@ function hexToRGB(hex, alpha) {
 }
 
 // ##############################
-// // // general variables for charts
+//   general variables for charts
 // #############################
 
 const chartColor = "#FFFFFF";
 
-// General configuration for the charts with Line gradientStroke
-const gradientChartOptionsConfiguration = {
-  maintainAspectRatio: false,
-  legend: {
-    display: false
-  },
-  tooltips: {
-    bodySpacing: 4,
-    mode: "nearest",
-    intersect: 0,
-    position: "nearest",
-    xPadding: 10,
-    yPadding: 10,
-    caretPadding: 10
-  },
-  responsive: 1,
-  scales: {
-    yAxes: [
-      {
-        display: 0,
-        ticks: {
-          display: false
-        },
-        gridLines: {
-          zeroLineColor: "transparent",
-          drawTicks: false,
-          display: false,
-          drawBorder: false
-        }
-      }
-    ],
-    xAxes: [
-      {
-        display: 0,
-        ticks: {
-          display: false
-        },
-        gridLines: {
-          zeroLineColor: "transparent",
-          drawTicks: false,
-          display: false,
-          drawBorder: false
-        }
-      }
-    ]
-  },
-  layout: {
-    padding: { left: 0, right: 0, top: 15, bottom: 15 }
-  }
-};
 
 var gradientChartOptionsConfigurationWithNumbersAndGrid = {
   maintainAspectRatio: false,
   legend: {
-    display: false
+    display: true
   },
   tooltips: {
     bodySpacing: 4,
@@ -110,15 +60,20 @@ var gradientChartOptionsConfigurationWithNumbersAndGrid = {
     ]
   },
   layout: {
-    padding: { left: 0, right: 0, top: 15, bottom: 15 }
+    padding: {
+      left: 0,
+      right: 0,
+      top: 15,
+      bottom: 15
+    }
   }
 };
 
 // ##############################
-// // // Dashboard view - Panel chart
+//   Dashboard COB1 view - Panel chart
 // #############################
 
-const dashboardPanelChart = {
+const dashboardCOB1ElectricityChart = {
   data: canvas => {
     const ctx = canvas.getContext("2d");
     var chartColor = "#FFFFFF";
@@ -131,22 +86,19 @@ const dashboardPanelChart = {
 
     return {
       labels: [
-        "JAN",
-        "FEB",
-        "MAR",
-        "APR",
-        "MAY",
-        "JUN",
-        "JUL",
-        "AUG",
-        "SEP",
-        "OCT",
-        "NOV",
-        "DEC"
+        "12AM",
+        "3AM",
+        "6AM",
+        "9AM",
+        "12PM",
+        "3PM",
+        "6PM",
+        "9PM",
+        "12AM"
       ],
       datasets: [
         {
-          label: "Data",
+          label: "Electricity",
           borderColor: chartColor,
           pointBorderColor: chartColor,
           pointBackgroundColor: "#2c2c2c",
@@ -159,7 +111,17 @@ const dashboardPanelChart = {
           fill: true,
           backgroundColor: gradientFill,
           borderWidth: 2,
-          data: [50, 150, 100, 190, 130, 90, 150, 160, 120, 140, 190, 95]
+          data: [
+            25,
+            50,
+            75,
+            125,
+            200,
+            250,
+            150,
+            100,
+            50
+          ]
         }
       ]
     };
@@ -187,7 +149,8 @@ const dashboardPanelChart = {
     legend: {
       position: "bottom",
       fillStyle: "#FFF",
-      display: false
+      display: true,
+      fontColor: '#fff'
     },
     scales: {
       yAxes: [
@@ -226,36 +189,59 @@ const dashboardPanelChart = {
 };
 
 // ##############################
-// // // Dashboard view - Active Users - Card
+//   Dashboard COB1 view - Water Usage - Card
 // #############################
 
-const dashboardActiveUsersChart = {
+const dashboardCOB1WaterUsageChart = {
   data: canvas => {
     var ctx = canvas.getContext("2d");
     var gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
     gradientStroke.addColorStop(0, "#80b6f4");
     gradientStroke.addColorStop(1, chartColor);
-    var gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
-    gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
-    gradientFill.addColorStop(1, "rgba(249, 99, 59, 0.40)");
+    var gradientFillHot = ctx.createLinearGradient(0, 170, 0, 50);
+    var gradientFillChill = ctx.createLinearGradient(0, 170,0,50);
+    gradientFillHot.addColorStop(0, "rgba(128, 182, 244, 0)");
+    gradientFillHot.addColorStop(1, "rgba(249, 99, 59, 0.40)");
+    gradientFillChill.addColorStop(0, "rgba(128,182,244,0)");
+    gradientFillChill.addColorStop(1, "rgba(17, 163, 224, 0.4)");
     return {
       labels: [
-        "Jan",
-        "Feb",
-        "Mar",
-        "Apr",
-        "May",
-        "Jun",
-        "Jul",
-        "Aug",
-        "Sep",
-        "Oct",
-        "Nov",
-        "Dec"
+        "12AM",
+        "3AM",
+        "6AM",
+        "9AM",
+        "12PM",
+        "3PM",
+        "6PM",
+        "9PM",
+        "12AM"
       ],
       datasets: [
         {
-          label: "Active Users",
+          label: "Chill Water",
+          borderColor: "#32f9db",
+          pointBorderColor: "#FFF",
+          pointBackgroundColor: "#32f9db",
+          pointBorderWidth: 2,
+          pointHoverRadius: 4,
+          pointHoverBorderWidth: 1,
+          pointRadius: 4,
+          fill: true,
+          backgroundColor: gradientFillChill,
+          borderWidth: 2,
+          data: [
+            456,
+            487,
+            597,
+            684,
+            546,
+            498,
+            467,
+            489,
+            432
+          ]
+        }, {
+          label: "Hot Water",
           borderColor: "#f96332",
           pointBorderColor: "#FFF",
           pointBackgroundColor: "#f96332",
@@ -264,177 +250,19 @@ const dashboardActiveUsersChart = {
           pointHoverBorderWidth: 1,
           pointRadius: 4,
           fill: true,
-          backgroundColor: gradientFill,
+          backgroundColor: gradientFillHot,
           borderWidth: 2,
-          data: [542, 480, 430, 550, 530, 453, 380, 434, 568, 610, 700, 630]
-        }
-      ]
-    };
-  },
-  options: gradientChartOptionsConfiguration
-};
-
-// ##############################
-// // // Dashboard view - Summer Email Campaign - Card
-// #############################
-
-const dashboardSummerChart = {
-  data: canvas => {
-    var ctx = canvas.getContext("2d");
-    var gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
-    gradientStroke.addColorStop(0, "#18ce0f");
-    gradientStroke.addColorStop(1, chartColor);
-    var gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
-    gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
-    gradientFill.addColorStop(1, hexToRGB("#18ce0f", 0.4));
-    return {
-      labels: ["12pm,", "3pm", "6pm", "9pm", "12am", "3am", "6am", "9am"],
-      datasets: [
-        {
-          label: "Email Stats",
-          borderColor: "#18ce0f",
-          pointBorderColor: "#FFF",
-          pointBackgroundColor: "#18ce0f",
-          pointBorderWidth: 2,
-          pointHoverRadius: 4,
-          pointHoverBorderWidth: 1,
-          pointRadius: 4,
-          fill: true,
-          backgroundColor: gradientFill,
-          borderWidth: 2,
-          data: [40, 500, 650, 700, 1200, 1250, 1300, 1900]
-        }
-      ]
-    };
-  },
-  options: gradientChartOptionsConfiguration
-};
-
-// ##############################
-// // // Dashboard view - Active Countries - Card
-// #############################
-
-const dashboardActiveCountriesCard = {
-  data: canvas => {
-    var ctx = canvas.getContext("2d");
-    var gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
-    gradientStroke.addColorStop(0, "#2CA8FF");
-    gradientStroke.addColorStop(1, chartColor);
-    var gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
-    gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
-    gradientFill.addColorStop(1, hexToRGB("#2CA8FF", 0.4));
-    return {
-      labels: [
-        "January",
-        "February",
-        "March",
-        "April",
-        "May",
-        "June",
-        "July",
-        "August",
-        "September",
-        "October"
-      ],
-      datasets: [
-        {
-          label: "Active Countries",
-          backgroundColor: gradientFill,
-          borderColor: "#2CA8FF",
-          pointBorderColor: "#FFF",
-          pointBackgroundColor: "#2CA8FF",
-          pointBorderWidth: 2,
-          pointHoverRadius: 4,
-          pointHoverBorderWidth: 1,
-          pointRadius: 4,
-          fill: true,
-          borderWidth: 2,
-          data: [80, 78, 86, 96, 83, 85, 76, 75, 88, 90]
-        }
-      ]
-    };
-  },
-  options: gradientChartOptionsConfiguration
-};
-
-// ##############################
-// // // Charts view - Line Chart - Card
-// #############################
-
-const chartsLine1 = {
-  data: canvas => {
-    var ctx = canvas.getContext("2d");
-    var gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
-    gradientStroke.addColorStop(0, "#80b6f4");
-    gradientStroke.addColorStop(1, chartColor);
-    var gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
-    gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
-    gradientFill.addColorStop(1, "rgba(249, 99, 59, 0.40)");
-    return {
-      labels: [
-        "Jan",
-        "Feb",
-        "Mar",
-        "Apr",
-        "May",
-        "Jun",
-        "Jul",
-        "Aug",
-        "Sep",
-        "Oct",
-        "Nov",
-        "Dec"
-      ],
-      datasets: [
-        {
-          label: "Active Users",
-          borderColor: "#f96332",
-          pointBorderColor: "#FFF",
-          pointBackgroundColor: "#f96332",
-          pointBorderWidth: 2,
-          pointHoverRadius: 4,
-          pointHoverBorderWidth: 1,
-          pointRadius: 4,
-          fill: true,
-          backgroundColor: gradientFill,
-          borderWidth: 2,
-          data: [542, 480, 430, 550, 530, 453, 380, 434, 568, 610, 700, 630]
-        }
-      ]
-    };
-  },
-  options: gradientChartOptionsConfiguration
-};
-
-// ##############################
-// // // Charts view - Line Chart 2 - Card
-// #############################
-
-const chartsLine2 = {
-  data: canvas => {
-    var ctx = canvas.getContext("2d");
-    var gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
-    gradientStroke.addColorStop(0, "#18ce0f");
-    gradientStroke.addColorStop(1, chartColor);
-    var gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
-    gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
-    gradientFill.addColorStop(1, hexToRGB("#18ce0f", 0.4));
-    return {
-      labels: ["12pm,", "3pm", "6pm", "9pm", "12am", "3am", "6am", "9am"],
-      datasets: [
-        {
-          label: "Email Stats",
-          borderColor: "#18ce0f",
-          pointBorderColor: "#FFF",
-          pointBackgroundColor: "#18ce0f",
-          pointBorderWidth: 2,
-          pointHoverRadius: 4,
-          pointHoverBorderWidth: 1,
-          pointRadius: 4,
-          fill: true,
-          backgroundColor: gradientFill,
-          borderWidth: 2,
-          data: [40, 500, 650, 700, 1200, 1250, 1300, 1900]
+          data: [
+            647,
+            583,
+            512,
+            467,
+            432,
+            493,
+            543,
+            586,
+            634
+          ]
         }
       ]
     };
@@ -443,174 +271,1609 @@ const chartsLine2 = {
 };
 
 // ##############################
-// // // Charts view - Bar Chart - Card
+//   Dashboard COB1 view - Gas - Card
 // #############################
 
-const chartsBar1 = {
+const dashboardCOB1GasChart = {
   data: canvas => {
     var ctx = canvas.getContext("2d");
+    var gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
+    gradientStroke.addColorStop(0, "#18ce0f");
+    gradientStroke.addColorStop(1, chartColor);
     var gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
     gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
-    gradientFill.addColorStop(1, hexToRGB("#2CA8FF", 0.6));
+    gradientFill.addColorStop(1, hexToRGB("#18ce0f", 0.4));
     return {
       labels: [
-        "January",
-        "February",
-        "March",
-        "April",
-        "May",
-        "June",
-        "July",
-        "August",
-        "September",
-        "October",
-        "November",
-        "December"
+        "12pm,",
+        "3pm",
+        "6pm",
+        "9pm",
+        "12am",
+        "3am",
+        "6am",
+        "9am"
       ],
       datasets: [
         {
-          label: "Active Countries",
-          backgroundColor: gradientFill,
-          borderColor: "#2CA8FF",
+          label: "Gasoline",
+          borderColor: "#18ce0f",
           pointBorderColor: "#FFF",
-          pointBackgroundColor: "#2CA8FF",
+          pointBackgroundColor: "#18ce0f",
           pointBorderWidth: 2,
           pointHoverRadius: 4,
           pointHoverBorderWidth: 1,
           pointRadius: 4,
           fill: true,
-          borderWidth: 1,
-          data: [80, 99, 86, 96, 123, 85, 100, 75, 88, 90, 123, 155]
+          backgroundColor: gradientFill,
+          borderWidth: 2,
+          data: [
+            347,
+            423,
+            496,
+            523,
+            564,
+            493,
+            473,
+            389
+          ]
+        }
+      ]
+    };
+  },
+  options: gradientChartOptionsConfigurationWithNumbersAndGrid
+};
+
+// ##############################
+//   Dashboard COB2 view - Panel chart
+// #############################
+
+const dashboardCOB2ElectricityChart = {
+  data: canvas => {
+    const ctx = canvas.getContext("2d");
+    var chartColor = "#FFFFFF";
+    var gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
+    gradientStroke.addColorStop(0, "#80b6f4");
+    gradientStroke.addColorStop(1, chartColor);
+    var gradientFill = ctx.createLinearGradient(0, 200, 0, 50);
+    gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
+    gradientFill.addColorStop(1, "rgba(255, 255, 255, 0.14)");
+
+    return {
+      labels: [
+        "12AM",
+        "3AM",
+        "6AM",
+        "9AM",
+        "12PM",
+        "3PM",
+        "6PM",
+        "9PM",
+        "12AM"
+      ],
+      datasets: [
+        {
+          label: "Electricity",
+          borderColor: chartColor,
+          pointBorderColor: chartColor,
+          pointBackgroundColor: "#2c2c2c",
+          pointHoverBackgroundColor: "#2c2c2c",
+          pointHoverBorderColor: chartColor,
+          pointBorderWidth: 1,
+          pointHoverRadius: 7,
+          pointHoverBorderWidth: 2,
+          pointRadius: 5,
+          fill: true,
+          backgroundColor: gradientFill,
+          borderWidth: 2,
+          data: [
+            24,
+            56,
+            73,
+            115,
+            190,
+            243,
+            167,
+            113,
+            53
+          ]
         }
       ]
     };
   },
   options: {
-    maintainAspectRatio: false,
-    legend: {
-      display: false
+    layout: {
+      padding: {
+        left: 20,
+        right: 20,
+        top: 0,
+        bottom: 0
+      }
     },
+    maintainAspectRatio: false,
     tooltips: {
+      backgroundColor: "#fff",
+      titleFontColor: "#333",
+      bodyFontColor: "#666",
       bodySpacing: 4,
+      xPadding: 12,
       mode: "nearest",
       intersect: 0,
-      position: "nearest",
-      xPadding: 10,
-      yPadding: 10,
-      caretPadding: 10
+      position: "nearest"
     },
-    responsive: 1,
+    legend: {
+      position: "bottom",
+      fillStyle: "#FFF",
+      display: true,
+      fontColor: '#fff'
+    },
     scales: {
       yAxes: [
         {
+          ticks: {
+            fontColor: "rgba(255,255,255,0.4)",
+            fontStyle: "bold",
+            beginAtZero: true,
+            maxTicksLimit: 5,
+            padding: 10
+          },
           gridLines: {
-            zeroLineColor: "transparent",
-            drawBorder: false
+            drawTicks: true,
+            drawBorder: false,
+            display: true,
+            color: "rgba(255,255,255,0.1)",
+            zeroLineColor: "transparent"
           }
         }
       ],
       xAxes: [
         {
-          display: 0,
-          ticks: {
-            display: false
-          },
           gridLines: {
-            zeroLineColor: "transparent",
-            drawTicks: false,
             display: false,
-            drawBorder: false
+            color: "rgba(255,255,255,0.1)"
+          },
+          ticks: {
+            padding: 10,
+            fontColor: "rgba(255,255,255,0.4)",
+            fontStyle: "bold"
           }
         }
       ]
-    },
-    layout: {
-      padding: { left: 0, right: 0, top: 15, bottom: 15 }
     }
   }
 };
 
 // ##############################
-// // // Charts view - Bar Chart 2 - Card
+//   Dashboard COB2 view - Water Usage - Card
 // #############################
 
-const chartsBar2 = {
-  data: {
-    labels: [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December"
-    ],
-    datasets: [
-      {
-        backgroundColor: "#f96332",
-        data: [40, 26, 28, 45, 20, 25, 30, 25, 20, 25, 20, 15]
-      },
-      {
-        backgroundColor: "#2CA8FF",
-        data: [15, 20, 25, 30, 25, 20, 15, 20, 25, 30, 25, 20]
-      }
-    ]
+const dashboardCOB2WaterUsageChart = {
+  data: canvas => {
+    var ctx = canvas.getContext("2d");
+    var gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
+    gradientStroke.addColorStop(0, "#80b6f4");
+    gradientStroke.addColorStop(1, chartColor);
+    var gradientFillHot = ctx.createLinearGradient(0, 170, 0, 50);
+    var gradientFillChill = ctx.createLinearGradient(0, 170,0,50);
+    gradientFillHot.addColorStop(0, "rgba(128, 182, 244, 0)");
+    gradientFillHot.addColorStop(1, "rgba(249, 99, 59, 0.40)");
+    gradientFillChill.addColorStop(0, "rgba(128,182,244,0)");
+    gradientFillChill.addColorStop(1, "rgba(17, 163, 224, 0.4)");
+    return {
+      labels: [
+        "12AM",
+        "3AM",
+        "6AM",
+        "9AM",
+        "12PM",
+        "3PM",
+        "6PM",
+        "9PM",
+        "12AM"
+      ],
+      datasets: [
+        {
+          label: "Chill Water",
+          borderColor: "#32f9db",
+          pointBorderColor: "#FFF",
+          pointBackgroundColor: "#32f9db",
+          pointBorderWidth: 2,
+          pointHoverRadius: 4,
+          pointHoverBorderWidth: 1,
+          pointRadius: 4,
+          fill: true,
+          backgroundColor: gradientFillChill,
+          borderWidth: 2,
+          data: [
+            446,
+            468,
+            596,
+            674,
+            535,
+            486,
+            453,
+            476,
+            445
+          ]
+        }, {
+          label: "Hot Water",
+          borderColor: "#f96332",
+          pointBorderColor: "#FFF",
+          pointBackgroundColor: "#f96332",
+          pointBorderWidth: 2,
+          pointHoverRadius: 4,
+          pointHoverBorderWidth: 1,
+          pointRadius: 4,
+          fill: true,
+          backgroundColor: gradientFillHot,
+          borderWidth: 2,
+          data: [
+            636,
+            594,
+            512,
+            473,
+            412,
+            484,
+            553,
+            592,
+            623
+          ]
+        }
+      ]
+    };
+  },
+  options: gradientChartOptionsConfigurationWithNumbersAndGrid
+};
+
+// ##############################
+//   Dashboard COB2 view - Gas - Card
+// #############################
+
+const dashboardCOB2GasChart = {
+  data: canvas => {
+    var ctx = canvas.getContext("2d");
+    var gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
+    gradientStroke.addColorStop(0, "#18ce0f");
+    gradientStroke.addColorStop(1, chartColor);
+    var gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
+    gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
+    gradientFill.addColorStop(1, hexToRGB("#18ce0f", 0.4));
+    return {
+      labels: [
+        "12pm,",
+        "3pm",
+        "6pm",
+        "9pm",
+        "12am",
+        "3am",
+        "6am",
+        "9am"
+      ],
+      datasets: [
+        {
+          label: "Gasoline",
+          borderColor: "#18ce0f",
+          pointBorderColor: "#FFF",
+          pointBackgroundColor: "#18ce0f",
+          pointBorderWidth: 2,
+          pointHoverRadius: 4,
+          pointHoverBorderWidth: 1,
+          pointRadius: 4,
+          fill: true,
+          backgroundColor: gradientFill,
+          borderWidth: 2,
+          data: [
+            356,
+            418,
+            485,
+            535,
+            575,
+            483,
+            464,
+            370
+          ]
+        }
+      ]
+    };
+  },
+  options: gradientChartOptionsConfigurationWithNumbersAndGrid
+};
+
+// ##############################
+//   Dashboard KL view - Panel chart
+// #############################
+
+const dashboardKLElectricityChart = {
+  data: canvas => {
+    const ctx = canvas.getContext("2d");
+    var chartColor = "#FFFFFF";
+    var gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
+    gradientStroke.addColorStop(0, "#80b6f4");
+    gradientStroke.addColorStop(1, chartColor);
+    var gradientFill = ctx.createLinearGradient(0, 200, 0, 50);
+    gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
+    gradientFill.addColorStop(1, "rgba(255, 255, 255, 0.14)");
+
+    return {
+      labels: [
+        "12AM",
+        "3AM",
+        "6AM",
+        "9AM",
+        "12PM",
+        "3PM",
+        "6PM",
+        "9PM",
+        "12AM"
+      ],
+      datasets: [
+        {
+          label: "Electricity",
+          borderColor: chartColor,
+          pointBorderColor: chartColor,
+          pointBackgroundColor: "#2c2c2c",
+          pointHoverBackgroundColor: "#2c2c2c",
+          pointHoverBorderColor: chartColor,
+          pointBorderWidth: 1,
+          pointHoverRadius: 7,
+          pointHoverBorderWidth: 2,
+          pointRadius: 5,
+          fill: true,
+          backgroundColor: gradientFill,
+          borderWidth: 2,
+          data: [
+            26,
+            52,
+            77,
+            124,
+            203,
+            254,
+            151,
+            130,
+            75
+          ]
+        }
+      ]
+    };
   },
   options: {
-    maintainAspectRatio: false,
-    legend: {
-      display: false
+    layout: {
+      padding: {
+        left: 20,
+        right: 20,
+        top: 0,
+        bottom: 0
+      }
     },
+    maintainAspectRatio: false,
     tooltips: {
+      backgroundColor: "#fff",
+      titleFontColor: "#333",
+      bodyFontColor: "#666",
       bodySpacing: 4,
+      xPadding: 12,
       mode: "nearest",
       intersect: 0,
-      position: "nearest",
-      xPadding: 10,
-      yPadding: 10,
-      caretPadding: 10
+      position: "nearest"
     },
-    responsive: 1,
+    legend: {
+      position: "bottom",
+      fillStyle: "#FFF",
+      display: true,
+      fontColor: '#fff'
+    },
     scales: {
       yAxes: [
         {
+          ticks: {
+            fontColor: "rgba(255,255,255,0.4)",
+            fontStyle: "bold",
+            beginAtZero: true,
+            maxTicksLimit: 5,
+            padding: 10
+          },
           gridLines: {
-            zeroLineColor: "transparent",
-            drawBorder: false
+            drawTicks: true,
+            drawBorder: false,
+            display: true,
+            color: "rgba(255,255,255,0.1)",
+            zeroLineColor: "transparent"
           }
         }
       ],
       xAxes: [
         {
-          ticks: {
-            display: false
-          },
           gridLines: {
-            zeroLineColor: "transparent",
-            drawTicks: false,
-            drawBorder: false
+            display: false,
+            color: "rgba(255,255,255,0.1)"
+          },
+          ticks: {
+            padding: 10,
+            fontColor: "rgba(255,255,255,0.4)",
+            fontStyle: "bold"
           }
         }
       ]
-    },
-    layout: {
-      padding: { left: 0, right: 0, top: 15, bottom: 15 }
     }
   }
 };
 
+// ##############################
+//   Dashboard KL view - Water Usage - Card
+// #############################
+
+const dashboardKLWaterUsageChart = {
+  data: canvas => {
+    var ctx = canvas.getContext("2d");
+    var gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
+    gradientStroke.addColorStop(0, "#80b6f4");
+    gradientStroke.addColorStop(1, chartColor);
+    var gradientFillHot = ctx.createLinearGradient(0, 170, 0, 50);
+    var gradientFillChill = ctx.createLinearGradient(0, 170,0,50);
+    gradientFillHot.addColorStop(0, "rgba(128, 182, 244, 0)");
+    gradientFillHot.addColorStop(1, "rgba(249, 99, 59, 0.40)");
+    gradientFillChill.addColorStop(0, "rgba(128,182,244,0)");
+    gradientFillChill.addColorStop(1, "rgba(17, 163, 224, 0.4)");
+    return {
+      labels: [
+        "12AM",
+        "3AM",
+        "6AM",
+        "9AM",
+        "12PM",
+        "3PM",
+        "6PM",
+        "9PM",
+        "12AM"
+      ],
+      datasets: [
+        {
+          label: "Chill Water",
+          borderColor: "#32f9db",
+          pointBorderColor: "#FFF",
+          pointBackgroundColor: "#32f9db",
+          pointBorderWidth: 2,
+          pointHoverRadius: 4,
+          pointHoverBorderWidth: 1,
+          pointRadius: 4,
+          fill: true,
+          backgroundColor: gradientFillChill,
+          borderWidth: 2,
+          data: [
+            447,
+            472,
+            581,
+            690,
+            552,
+            475,
+            467,
+            489,
+            412
+          ]
+        }, {
+          label: "Hot Water",
+          borderColor: "#f96332",
+          pointBorderColor: "#FFF",
+          pointBackgroundColor: "#f96332",
+          pointBorderWidth: 2,
+          pointHoverRadius: 4,
+          pointHoverBorderWidth: 1,
+          pointRadius: 4,
+          fill: true,
+          backgroundColor: gradientFillHot,
+          borderWidth: 2,
+          data: [
+            628,
+            590,
+            542,
+            464,
+            472,
+            443,
+            574,
+            572,
+            694
+          ]
+        }
+      ]
+    };
+  },
+  options: gradientChartOptionsConfigurationWithNumbersAndGrid
+};
+
+// ##############################
+//   Dashboard KL view - Gas - Card
+// #############################
+
+const dashboardKLGasChart = {
+  data: canvas => {
+    var ctx = canvas.getContext("2d");
+    var gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
+    gradientStroke.addColorStop(0, "#18ce0f");
+    gradientStroke.addColorStop(1, chartColor);
+    var gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
+    gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
+    gradientFill.addColorStop(1, hexToRGB("#18ce0f", 0.4));
+    return {
+      labels: [
+        "12pm,",
+        "3pm",
+        "6pm",
+        "9pm",
+        "12am",
+        "3am",
+        "6am",
+        "9am"
+      ],
+      datasets: [
+        {
+          label: "Gasoline",
+          borderColor: "#18ce0f",
+          pointBorderColor: "#FFF",
+          pointBackgroundColor: "#18ce0f",
+          pointBorderWidth: 2,
+          pointHoverRadius: 4,
+          pointHoverBorderWidth: 1,
+          pointRadius: 4,
+          fill: true,
+          backgroundColor: gradientFill,
+          borderWidth: 2,
+          data: [
+            336,
+            486,
+            434,
+            564,
+            575,
+            486,
+            434,
+            367
+          ]
+        }
+      ]
+    };
+  },
+  options: gradientChartOptionsConfigurationWithNumbersAndGrid
+};
+
+// ##############################
+//   Dashboard SSB view - Panel chart
+// #############################
+
+const dashboardSSBElectricityChart = {
+  data: canvas => {
+    const ctx = canvas.getContext("2d");
+    var chartColor = "#FFFFFF";
+    var gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
+    gradientStroke.addColorStop(0, "#80b6f4");
+    gradientStroke.addColorStop(1, chartColor);
+    var gradientFill = ctx.createLinearGradient(0, 200, 0, 50);
+    gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
+    gradientFill.addColorStop(1, "rgba(255, 255, 255, 0.14)");
+
+    return {
+      labels: [
+        "12AM",
+        "3AM",
+        "6AM",
+        "9AM",
+        "12PM",
+        "3PM",
+        "6PM",
+        "9PM",
+        "12AM"
+      ],
+      datasets: [
+        {
+          label: "Electricity",
+          borderColor: chartColor,
+          pointBorderColor: chartColor,
+          pointBackgroundColor: "#2c2c2c",
+          pointHoverBackgroundColor: "#2c2c2c",
+          pointHoverBorderColor: chartColor,
+          pointBorderWidth: 1,
+          pointHoverRadius: 7,
+          pointHoverBorderWidth: 2,
+          pointRadius: 5,
+          fill: true,
+          backgroundColor: gradientFill,
+          borderWidth: 2,
+          data: [
+            23,
+            57,
+            72,
+            120,
+            223,
+            267,
+            186,
+            143,
+            64
+          ]
+        }
+      ]
+    };
+  },
+  options: {
+    layout: {
+      padding: {
+        left: 20,
+        right: 20,
+        top: 0,
+        bottom: 0
+      }
+    },
+    maintainAspectRatio: false,
+    tooltips: {
+      backgroundColor: "#fff",
+      titleFontColor: "#333",
+      bodyFontColor: "#666",
+      bodySpacing: 4,
+      xPadding: 12,
+      mode: "nearest",
+      intersect: 0,
+      position: "nearest"
+    },
+    legend: {
+      position: "bottom",
+      fillStyle: "#FFF",
+      display: true,
+      fontColor: '#fff'
+    },
+    scales: {
+      yAxes: [
+        {
+          ticks: {
+            fontColor: "rgba(255,255,255,0.4)",
+            fontStyle: "bold",
+            beginAtZero: true,
+            maxTicksLimit: 5,
+            padding: 10
+          },
+          gridLines: {
+            drawTicks: true,
+            drawBorder: false,
+            display: true,
+            color: "rgba(255,255,255,0.1)",
+            zeroLineColor: "transparent"
+          }
+        }
+      ],
+      xAxes: [
+        {
+          gridLines: {
+            display: false,
+            color: "rgba(255,255,255,0.1)"
+          },
+          ticks: {
+            padding: 10,
+            fontColor: "rgba(255,255,255,0.4)",
+            fontStyle: "bold"
+          }
+        }
+      ]
+    }
+  }
+};
+
+// ##############################
+//   Dashboard SSB view - Water Usage - Card
+// #############################
+
+const dashboardSSBWaterUsageChart = {
+  data: canvas => {
+    var ctx = canvas.getContext("2d");
+    var gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
+    gradientStroke.addColorStop(0, "#80b6f4");
+    gradientStroke.addColorStop(1, chartColor);
+    var gradientFillHot = ctx.createLinearGradient(0, 170, 0, 50);
+    var gradientFillChill = ctx.createLinearGradient(0, 170,0,50);
+    gradientFillHot.addColorStop(0, "rgba(128, 182, 244, 0)");
+    gradientFillHot.addColorStop(1, "rgba(249, 99, 59, 0.40)");
+    gradientFillChill.addColorStop(0, "rgba(128,182,244,0)");
+    gradientFillChill.addColorStop(1, "rgba(17, 163, 224, 0.4)");
+    return {
+      labels: [
+        "12AM",
+        "3AM",
+        "6AM",
+        "9AM",
+        "12PM",
+        "3PM",
+        "6PM",
+        "9PM",
+        "12AM"
+      ],
+      datasets: [
+        {
+          label: "Chill Water",
+          borderColor: "#32f9db",
+          pointBorderColor: "#FFF",
+          pointBackgroundColor: "#32f9db",
+          pointBorderWidth: 2,
+          pointHoverRadius: 4,
+          pointHoverBorderWidth: 1,
+          pointRadius: 4,
+          fill: true,
+          backgroundColor: gradientFillChill,
+          borderWidth: 2,
+          data: [
+            437,
+            497,
+            572,
+            656,
+            583,
+            494,
+            473,
+            492,
+            410
+          ]
+        }, {
+          label: "Hot Water",
+          borderColor: "#f96332",
+          pointBorderColor: "#FFF",
+          pointBackgroundColor: "#f96332",
+          pointBorderWidth: 2,
+          pointHoverRadius: 4,
+          pointHoverBorderWidth: 1,
+          pointRadius: 4,
+          fill: true,
+          backgroundColor: gradientFillHot,
+          borderWidth: 2,
+          data: [
+            654,
+            586,
+            545,
+            413,
+            465,
+            423,
+            586,
+            556,
+            645
+          ]
+        }
+      ]
+    };
+  },
+  options: gradientChartOptionsConfigurationWithNumbersAndGrid
+};
+
+// ##############################
+//   Dashboard SSB view - Gas - Card
+// #############################
+
+const dashboardSSBGasChart = {
+  data: canvas => {
+    var ctx = canvas.getContext("2d");
+    var gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
+    gradientStroke.addColorStop(0, "#18ce0f");
+    gradientStroke.addColorStop(1, chartColor);
+    var gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
+    gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
+    gradientFill.addColorStop(1, hexToRGB("#18ce0f", 0.4));
+    return {
+      labels: [
+        "12pm,",
+        "3pm",
+        "6pm",
+        "9pm",
+        "12am",
+        "3am",
+        "6am",
+        "9am"
+      ],
+      datasets: [
+        {
+          label: "Gasoline",
+          borderColor: "#18ce0f",
+          pointBorderColor: "#FFF",
+          pointBackgroundColor: "#18ce0f",
+          pointBorderWidth: 2,
+          pointHoverRadius: 4,
+          pointHoverBorderWidth: 1,
+          pointRadius: 4,
+          fill: true,
+          backgroundColor: gradientFill,
+          borderWidth: 2,
+          data: [
+            363,
+            487,
+            497,
+            523,
+            576,
+            454,
+            412,
+            376
+          ]
+        }
+      ]
+    };
+  },
+  options: gradientChartOptionsConfigurationWithNumbersAndGrid
+};
+
+// ##############################
+//   Dashboard SSM view - Panel chart
+// #############################
+
+const dashboardSSMElectricityChart = {
+  data: canvas => {
+    const ctx = canvas.getContext("2d");
+    var chartColor = "#FFFFFF";
+    var gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
+    gradientStroke.addColorStop(0, "#80b6f4");
+    gradientStroke.addColorStop(1, chartColor);
+    var gradientFill = ctx.createLinearGradient(0, 200, 0, 50);
+    gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
+    gradientFill.addColorStop(1, "rgba(255, 255, 255, 0.14)");
+
+    return {
+      labels: [
+        "12AM",
+        "3AM",
+        "6AM",
+        "9AM",
+        "12PM",
+        "3PM",
+        "6PM",
+        "9PM",
+        "12AM"
+      ],
+      datasets: [
+        {
+          label: "Electricity",
+          borderColor: chartColor,
+          pointBorderColor: chartColor,
+          pointBackgroundColor: "#2c2c2c",
+          pointHoverBackgroundColor: "#2c2c2c",
+          pointHoverBorderColor: chartColor,
+          pointBorderWidth: 1,
+          pointHoverRadius: 7,
+          pointHoverBorderWidth: 2,
+          pointRadius: 5,
+          fill: true,
+          backgroundColor: gradientFill,
+          borderWidth: 2,
+          data: [
+            34,
+            65,
+            89,
+            132,
+            204,
+            243,
+            164,
+            143,
+            93
+          ]
+        }
+      ]
+    };
+  },
+  options: {
+    layout: {
+      padding: {
+        left: 20,
+        right: 20,
+        top: 0,
+        bottom: 0
+      }
+    },
+    maintainAspectRatio: false,
+    tooltips: {
+      backgroundColor: "#fff",
+      titleFontColor: "#333",
+      bodyFontColor: "#666",
+      bodySpacing: 4,
+      xPadding: 12,
+      mode: "nearest",
+      intersect: 0,
+      position: "nearest"
+    },
+    legend: {
+      position: "bottom",
+      fillStyle: "#FFF",
+      display: true,
+      fontColor: '#fff'
+    },
+    scales: {
+      yAxes: [
+        {
+          ticks: {
+            fontColor: "rgba(255,255,255,0.4)",
+            fontStyle: "bold",
+            beginAtZero: true,
+            maxTicksLimit: 5,
+            padding: 10
+          },
+          gridLines: {
+            drawTicks: true,
+            drawBorder: false,
+            display: true,
+            color: "rgba(255,255,255,0.1)",
+            zeroLineColor: "transparent"
+          }
+        }
+      ],
+      xAxes: [
+        {
+          gridLines: {
+            display: false,
+            color: "rgba(255,255,255,0.1)"
+          },
+          ticks: {
+            padding: 10,
+            fontColor: "rgba(255,255,255,0.4)",
+            fontStyle: "bold"
+          }
+        }
+      ]
+    }
+  }
+};
+
+// ##############################
+//   Dashboard SSM view - Water Usage - Card
+// #############################
+
+const dashboardSSMWaterUsageChart = {
+  data: canvas => {
+    var ctx = canvas.getContext("2d");
+    var gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
+    gradientStroke.addColorStop(0, "#80b6f4");
+    gradientStroke.addColorStop(1, chartColor);
+    var gradientFillHot = ctx.createLinearGradient(0, 170, 0, 50);
+    var gradientFillChill = ctx.createLinearGradient(0, 170,0,50);
+    gradientFillHot.addColorStop(0, "rgba(128, 182, 244, 0)");
+    gradientFillHot.addColorStop(1, "rgba(249, 99, 59, 0.40)");
+    gradientFillChill.addColorStop(0, "rgba(128,182,244,0)");
+    gradientFillChill.addColorStop(1, "rgba(17, 163, 224, 0.4)");
+    return {
+      labels: [
+        "12AM",
+        "3AM",
+        "6AM",
+        "9AM",
+        "12PM",
+        "3PM",
+        "6PM",
+        "9PM",
+        "12AM"
+      ],
+      datasets: [
+        {
+          label: "Chill Water",
+          borderColor: "#32f9db",
+          pointBorderColor: "#FFF",
+          pointBackgroundColor: "#32f9db",
+          pointBorderWidth: 2,
+          pointHoverRadius: 4,
+          pointHoverBorderWidth: 1,
+          pointRadius: 4,
+          fill: true,
+          backgroundColor: gradientFillChill,
+          borderWidth: 2,
+          data: [
+            434,
+            497,
+            554,
+            665,
+            523,
+            475,
+            453,
+            486,
+            454
+          ]
+        }, {
+          label: "Hot Water",
+          borderColor: "#f96332",
+          pointBorderColor: "#FFF",
+          pointBackgroundColor: "#f96332",
+          pointBorderWidth: 2,
+          pointHoverRadius: 4,
+          pointHoverBorderWidth: 1,
+          pointRadius: 4,
+          fill: true,
+          backgroundColor: gradientFillHot,
+          borderWidth: 2,
+          data: [
+            665,
+            584,
+            532,
+            445,
+            464,
+            490,
+            545,
+            576,
+            624
+          ]
+        }
+      ]
+    };
+  },
+  options: gradientChartOptionsConfigurationWithNumbersAndGrid
+};
+
+// ##############################
+//   Dashboard SSM view - Gas - Card
+// #############################
+
+const dashboardSSMGasChart = {
+  data: canvas => {
+    var ctx = canvas.getContext("2d");
+    var gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
+    gradientStroke.addColorStop(0, "#18ce0f");
+    gradientStroke.addColorStop(1, chartColor);
+    var gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
+    gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
+    gradientFill.addColorStop(1, hexToRGB("#18ce0f", 0.4));
+    return {
+      labels: [
+        "12pm,",
+        "3pm",
+        "6pm",
+        "9pm",
+        "12am",
+        "3am",
+        "6am",
+        "9am"
+      ],
+      datasets: [
+        {
+          label: "Gasoline",
+          borderColor: "#18ce0f",
+          pointBorderColor: "#FFF",
+          pointBackgroundColor: "#18ce0f",
+          pointBorderWidth: 2,
+          pointHoverRadius: 4,
+          pointHoverBorderWidth: 1,
+          pointRadius: 4,
+          fill: true,
+          backgroundColor: gradientFill,
+          borderWidth: 2,
+          data: [
+            323,
+            465,
+            486,
+            554,
+            572,
+            486,
+            457,
+            373
+          ]
+        }
+      ]
+    };
+  },
+  options: gradientChartOptionsConfigurationWithNumbersAndGrid
+};
+
+// ##############################
+//   Dashboard SE1 view - Panel chart
+// #############################
+
+const dashboardSE1ElectricityChart = {
+  data: canvas => {
+    const ctx = canvas.getContext("2d");
+    var chartColor = "#FFFFFF";
+    var gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
+    gradientStroke.addColorStop(0, "#80b6f4");
+    gradientStroke.addColorStop(1, chartColor);
+    var gradientFill = ctx.createLinearGradient(0, 200, 0, 50);
+    gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
+    gradientFill.addColorStop(1, "rgba(255, 255, 255, 0.14)");
+
+    return {
+      labels: [
+        "12AM",
+        "3AM",
+        "6AM",
+        "9AM",
+        "12PM",
+        "3PM",
+        "6PM",
+        "9PM",
+        "12AM"
+      ],
+      datasets: [
+        {
+          label: "Electricity",
+          borderColor: chartColor,
+          pointBorderColor: chartColor,
+          pointBackgroundColor: "#2c2c2c",
+          pointHoverBackgroundColor: "#2c2c2c",
+          pointHoverBorderColor: chartColor,
+          pointBorderWidth: 1,
+          pointHoverRadius: 7,
+          pointHoverBorderWidth: 2,
+          pointRadius: 5,
+          fill: true,
+          backgroundColor: gradientFill,
+          borderWidth: 2,
+          data: [
+            43,
+            65,
+            87,
+            123,
+            243,
+            273,
+            132,
+            153,
+            64
+          ]
+        }
+      ]
+    };
+  },
+  options: {
+    layout: {
+      padding: {
+        left: 20,
+        right: 20,
+        top: 0,
+        bottom: 0
+      }
+    },
+    maintainAspectRatio: false,
+    tooltips: {
+      backgroundColor: "#fff",
+      titleFontColor: "#333",
+      bodyFontColor: "#666",
+      bodySpacing: 4,
+      xPadding: 12,
+      mode: "nearest",
+      intersect: 0,
+      position: "nearest"
+    },
+    legend: {
+      position: "bottom",
+      fillStyle: "#FFF",
+      display: true,
+      fontColor: '#fff'
+    },
+    scales: {
+      yAxes: [
+        {
+          ticks: {
+            fontColor: "rgba(255,255,255,0.4)",
+            fontStyle: "bold",
+            beginAtZero: true,
+            maxTicksLimit: 5,
+            padding: 10
+          },
+          gridLines: {
+            drawTicks: true,
+            drawBorder: false,
+            display: true,
+            color: "rgba(255,255,255,0.1)",
+            zeroLineColor: "transparent"
+          }
+        }
+      ],
+      xAxes: [
+        {
+          gridLines: {
+            display: false,
+            color: "rgba(255,255,255,0.1)"
+          },
+          ticks: {
+            padding: 10,
+            fontColor: "rgba(255,255,255,0.4)",
+            fontStyle: "bold"
+          }
+        }
+      ]
+    }
+  }
+};
+
+// ##############################
+//   Dashboard SE1 view - Water Usage - Card
+// #############################
+
+const dashboardSE1WaterUsageChart = {
+  data: canvas => {
+    var ctx = canvas.getContext("2d");
+    var gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
+    gradientStroke.addColorStop(0, "#80b6f4");
+    gradientStroke.addColorStop(1, chartColor);
+    var gradientFillHot = ctx.createLinearGradient(0, 170, 0, 50);
+    var gradientFillChill = ctx.createLinearGradient(0, 170,0,50);
+    gradientFillHot.addColorStop(0, "rgba(128, 182, 244, 0)");
+    gradientFillHot.addColorStop(1, "rgba(249, 99, 59, 0.40)");
+    gradientFillChill.addColorStop(0, "rgba(128,182,244,0)");
+    gradientFillChill.addColorStop(1, "rgba(17, 163, 224, 0.4)");
+    return {
+      labels: [
+        "12AM",
+        "3AM",
+        "6AM",
+        "9AM",
+        "12PM",
+        "3PM",
+        "6PM",
+        "9PM",
+        "12AM"
+      ],
+      datasets: [
+        {
+          label: "Chill Water",
+          borderColor: "#32f9db",
+          pointBorderColor: "#FFF",
+          pointBackgroundColor: "#32f9db",
+          pointBorderWidth: 2,
+          pointHoverRadius: 4,
+          pointHoverBorderWidth: 1,
+          pointRadius: 4,
+          fill: true,
+          backgroundColor: gradientFillChill,
+          borderWidth: 2,
+          data: [
+            456,
+            432,
+            565,
+            645,
+            583,
+            476,
+            445,
+            465,
+            443
+          ]
+        }, {
+          label: "Hot Water",
+          borderColor: "#f96332",
+          pointBorderColor: "#FFF",
+          pointBackgroundColor: "#f96332",
+          pointBorderWidth: 2,
+          pointHoverRadius: 4,
+          pointHoverBorderWidth: 1,
+          pointRadius: 4,
+          fill: true,
+          backgroundColor: gradientFillHot,
+          borderWidth: 2,
+          data: [
+            675,
+            545,
+            586,
+            423,
+            475,
+            498,
+            554,
+            575,
+            643
+          ]
+        }
+      ]
+    };
+  },
+  options: gradientChartOptionsConfigurationWithNumbersAndGrid
+};
+
+// ##############################
+//   Dashboard SE1 view - Gas - Card
+// #############################
+
+const dashboardSE1GasChart = {
+  data: canvas => {
+    var ctx = canvas.getContext("2d");
+    var gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
+    gradientStroke.addColorStop(0, "#18ce0f");
+    gradientStroke.addColorStop(1, chartColor);
+    var gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
+    gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
+    gradientFill.addColorStop(1, hexToRGB("#18ce0f", 0.4));
+    return {
+      labels: [
+        "12pm,",
+        "3pm",
+        "6pm",
+        "9pm",
+        "12am",
+        "3am",
+        "6am",
+        "9am"
+      ],
+      datasets: [
+        {
+          label: "Gasoline",
+          borderColor: "#18ce0f",
+          pointBorderColor: "#FFF",
+          pointBackgroundColor: "#18ce0f",
+          pointBorderWidth: 2,
+          pointHoverRadius: 4,
+          pointHoverBorderWidth: 1,
+          pointRadius: 4,
+          fill: true,
+          backgroundColor: gradientFill,
+          borderWidth: 2,
+          data: [
+            354,
+            434,
+            476,
+            534,
+            575,
+            486,
+            454,
+            396
+          ]
+        }
+      ]
+    };
+  },
+  options: gradientChartOptionsConfigurationWithNumbersAndGrid
+};
+
+// ##############################
+//   Dashboard SE2 view - Panel chart
+// #############################
+
+const dashboardSE2ElectricityChart = {
+  data: canvas => {
+    const ctx = canvas.getContext("2d");
+    var chartColor = "#FFFFFF";
+    var gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
+    gradientStroke.addColorStop(0, "#80b6f4");
+    gradientStroke.addColorStop(1, chartColor);
+    var gradientFill = ctx.createLinearGradient(0, 200, 0, 50);
+    gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
+    gradientFill.addColorStop(1, "rgba(255, 255, 255, 0.14)");
+
+    return {
+      labels: [
+        "12AM",
+        "3AM",
+        "6AM",
+        "9AM",
+        "12PM",
+        "3PM",
+        "6PM",
+        "9PM",
+        "12AM"
+      ],
+      datasets: [
+        {
+          label: "Electricity",
+          borderColor: chartColor,
+          pointBorderColor: chartColor,
+          pointBackgroundColor: "#2c2c2c",
+          pointHoverBackgroundColor: "#2c2c2c",
+          pointHoverBorderColor: chartColor,
+          pointBorderWidth: 1,
+          pointHoverRadius: 7,
+          pointHoverBorderWidth: 2,
+          pointRadius: 5,
+          fill: true,
+          backgroundColor: gradientFill,
+          borderWidth: 2,
+          data: [
+            12,
+            23,
+            56,
+            104,
+            187,
+            234,
+            156,
+            123,
+            74
+          ]
+        }
+      ]
+    };
+  },
+  options: {
+    layout: {
+      padding: {
+        left: 20,
+        right: 20,
+        top: 0,
+        bottom: 0
+      }
+    },
+    maintainAspectRatio: false,
+    tooltips: {
+      backgroundColor: "#fff",
+      titleFontColor: "#333",
+      bodyFontColor: "#666",
+      bodySpacing: 4,
+      xPadding: 12,
+      mode: "nearest",
+      intersect: 0,
+      position: "nearest"
+    },
+    legend: {
+      position: "bottom",
+      fillStyle: "#FFF",
+      display: true,
+      fontColor: '#fff'
+    },
+    scales: {
+      yAxes: [
+        {
+          ticks: {
+            fontColor: "rgba(255,255,255,0.4)",
+            fontStyle: "bold",
+            beginAtZero: true,
+            maxTicksLimit: 5,
+            padding: 10
+          },
+          gridLines: {
+            drawTicks: true,
+            drawBorder: false,
+            display: true,
+            color: "rgba(255,255,255,0.1)",
+            zeroLineColor: "transparent"
+          }
+        }
+      ],
+      xAxes: [
+        {
+          gridLines: {
+            display: false,
+            color: "rgba(255,255,255,0.1)"
+          },
+          ticks: {
+            padding: 10,
+            fontColor: "rgba(255,255,255,0.4)",
+            fontStyle: "bold"
+          }
+        }
+      ]
+    }
+  }
+};
+
+// ##############################
+//   Dashboard SE2 view - Water Usage - Card
+// #############################
+
+const dashboardSE2WaterUsageChart = {
+  data: canvas => {
+    var ctx = canvas.getContext("2d");
+    var gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
+    gradientStroke.addColorStop(0, "#80b6f4");
+    gradientStroke.addColorStop(1, chartColor);
+    var gradientFillHot = ctx.createLinearGradient(0, 170, 0, 50);
+    var gradientFillChill = ctx.createLinearGradient(0, 170,0,50);
+    gradientFillHot.addColorStop(0, "rgba(128, 182, 244, 0)");
+    gradientFillHot.addColorStop(1, "rgba(249, 99, 59, 0.40)");
+    gradientFillChill.addColorStop(0, "rgba(128,182,244,0)");
+    gradientFillChill.addColorStop(1, "rgba(17, 163, 224, 0.4)");
+    return {
+      labels: [
+        "12AM",
+        "3AM",
+        "6AM",
+        "9AM",
+        "12PM",
+        "3PM",
+        "6PM",
+        "9PM",
+        "12AM"
+      ],
+      datasets: [
+        {
+          label: "Chill Water",
+          borderColor: "#32f9db",
+          pointBorderColor: "#FFF",
+          pointBackgroundColor: "#32f9db",
+          pointBorderWidth: 2,
+          pointHoverRadius: 4,
+          pointHoverBorderWidth: 1,
+          pointRadius: 4,
+          fill: true,
+          backgroundColor: gradientFillChill,
+          borderWidth: 2,
+          data: [
+            454,
+            426,
+            576,
+            654,
+            573,
+            456,
+            434,
+            476,
+            423
+          ]
+        }, {
+          label: "Hot Water",
+          borderColor: "#f96332",
+          pointBorderColor: "#FFF",
+          pointBackgroundColor: "#f96332",
+          pointBorderWidth: 2,
+          pointHoverRadius: 4,
+          pointHoverBorderWidth: 1,
+          pointRadius: 4,
+          fill: true,
+          backgroundColor: gradientFillHot,
+          borderWidth: 2,
+          data: [
+            656,
+            534,
+            598,
+            454,
+            423,
+            456,
+            523,
+            545,
+            634
+          ]
+        }
+      ]
+    };
+  },
+  options: gradientChartOptionsConfigurationWithNumbersAndGrid
+};
+
+// ##############################
+//   Dashboard SE2 view - Gas - Card
+// #############################
+
+const dashboardSE2GasChart = {
+  data: canvas => {
+    var ctx = canvas.getContext("2d");
+    var gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
+    gradientStroke.addColorStop(0, "#18ce0f");
+    gradientStroke.addColorStop(1, chartColor);
+    var gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
+    gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
+    gradientFill.addColorStop(1, hexToRGB("#18ce0f", 0.4));
+    return {
+      labels: [
+        "12pm,",
+        "3pm",
+        "6pm",
+        "9pm",
+        "12am",
+        "3am",
+        "6am",
+        "9am"
+      ],
+      datasets: [
+        {
+          label: "Gasoline",
+          borderColor: "#18ce0f",
+          pointBorderColor: "#FFF",
+          pointBackgroundColor: "#18ce0f",
+          pointBorderWidth: 2,
+          pointHoverRadius: 4,
+          pointHoverBorderWidth: 1,
+          pointRadius: 4,
+          fill: true,
+          backgroundColor: gradientFill,
+          borderWidth: 2,
+          data: [
+            334,
+            476,
+            493,
+            545,
+            554,
+            497,
+            463,
+            356
+          ]
+        }
+      ]
+    };
+  },
+  options: gradientChartOptionsConfigurationWithNumbersAndGrid
+};
+
 module.exports = {
-  dashboardPanelChart, // Chart for Dashboard view - Will be rendered in panel
-  dashboardActiveUsersChart, // Chart for Dashboard view - Active Users Card
-  dashboardSummerChart, // Chart for Dashboard view - Summer Email Campaign Card
-  dashboardActiveCountriesCard, // Chart for Dashboard view - New Orders Card
-  chartsLine1, // Chart for Charts view - Line Chart - Card
-  chartsLine2, // Chart for Charts view - Line Chart 2 - Card
-  chartsBar1, // Chart for Charts view - Bar Chart - Card
-  chartsBar2 // Chart for Charts view - Bar Chart 2 - Card
+  dashboardKLElectricityChart,
+  dashboardKLWaterUsageChart,
+  dashboardKLGasChart,
+  dashboardCOB1ElectricityChart,
+  dashboardCOB1WaterUsageChart,
+  dashboardCOB1GasChart,
+  dashboardCOB2ElectricityChart,
+  dashboardCOB2WaterUsageChart,
+  dashboardCOB2GasChart,
+  dashboardSSBElectricityChart,
+  dashboardSSBWaterUsageChart,
+  dashboardSSBGasChart,
+  dashboardSSMElectricityChart,
+  dashboardSSMWaterUsageChart,
+  dashboardSSMGasChart,
+  dashboardSE1ElectricityChart,
+  dashboardSE1WaterUsageChart,
+  dashboardSE1GasChart,
+  dashboardSE2ElectricityChart,
+  dashboardSE2WaterUsageChart,
+  dashboardSE2GasChart
 };
