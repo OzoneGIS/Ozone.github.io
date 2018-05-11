@@ -578,6 +578,54 @@ class Maps extends Component {
             icon.className = 'fas fa-map-marker';
             icon.style.color = 'rgb(136, 27, 127)';
             break;
+          case 'Pop Up Produce':
+            icon.className = 'fab fa-product-hunt';
+            icon.style.color = 'rgb(198, 16, 149)';
+            break;
+          case 'Community Garden':
+            icon.className = 'fab fa-pagelines';
+            icon.style.color = 'rgb(230, 197, 25)';
+            break;
+          case 'CalFresh':
+            icon.className = 'fab fa-cloudversify';
+            icon.style.color = 'rgb(98, 137, 249)';
+            break;
+          case 'Engineers for a Sustainable World Aquaponics Farm':
+            icon.className = 'fas fa-tint';
+            icon.style.color = 'rgb(65, 170, 20)';
+            break;
+          case 'InterCultural Hub':
+            icon.className = 'fab fa-hubspot';
+            icon.style.color = 'rgb(237, 181, 182)';
+            break;
+          case 'Gender Neutral Bathrooms':
+            icon.className = 'fas fa-genderless';
+            icon.style.color = 'rgb(28, 165, 193)';
+            break;
+          case 'CAPS':
+            icon.className = 'fas fa-globe';
+            icon.style.color = 'rgb(198, 166, 26)';
+            break;
+          case 'Wellness Clinic':
+            icon.className = 'fab fa-accessible-icon';
+            icon.style.color = 'rgb(63, 184, 24)';
+            break;
+          case 'CARE':
+            icon.className = 'fas fa-graduation-cap';
+            icon.style.color = 'rgb(21, 8, 68)';
+            break;
+          case 'OSL':
+            icon.className = 'fas fa-calendar-alt';
+            icon.style.color = 'rgb(197, 33, 207)';
+            break;
+          case 'Basic Needs':
+            icon.className = 'fas fa-utensils';
+            icon.style.color = 'rgb(235, 165, 54)';
+            break;
+          case 'Health Promotion':
+            icon.className = 'fas fa-briefcase-medical';
+            icon.style.color = 'rgb(96, 96, 124)';
+            break;
           default:
             icon.className = 'fas fa-question';
             icon.style.color = 'rgb(57, 153, 108)'

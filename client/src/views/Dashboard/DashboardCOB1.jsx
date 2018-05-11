@@ -42,7 +42,6 @@ class DashboardCOB1 extends React.Component {
                   <Col xs={12} md={4}>
                     <Statistics iconState="info" icon="fab fa-laravel" title="103,007 sq ft" subtitle="Area of Building"/>
                   </Col>
-
                 </Row>
               </CardBody>
             </Card>
@@ -65,7 +64,7 @@ class DashboardCOB1 extends React.Component {
                     [
                       {
                         i: "now-ui-icons arrows-1_refresh-69",
-                        t: "Just Updated"
+                        t: "Updated Yesterday"
                       }
                     ]
                   }
@@ -76,7 +75,7 @@ class DashboardCOB1 extends React.Component {
           <Col xs={12} md={6}>
             <Card className="card-chart">
               <CardHeader>
-                <CardCategory><b>Gas</b></CardCategory>
+                <CardCategory><b>Natural Gas</b></CardCategory>
               </CardHeader>
               <CardBody>
                 <div className="chart-area">
@@ -89,7 +88,7 @@ class DashboardCOB1 extends React.Component {
                     [
                       {
                         i: "now-ui-icons arrows-1_refresh-69",
-                        t: "Just Updated"
+                        t: "Updated Yesterday"
                       }
                     ]
                   }

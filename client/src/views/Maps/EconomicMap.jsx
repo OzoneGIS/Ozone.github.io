@@ -586,6 +586,22 @@ class Maps extends Component {
             icon.className = 'fas fa-archive';
             icon.style.color = 'rgb(118, 230, 90)';
             break;
+          case 'Buses':
+            icon.className = 'fas fa-bus';
+            icon.style.color = 'rgb(235, 33, 189)';
+            break;
+          case 'Zipcar':
+            icon.className = 'fas fa-car';
+            icon.style.color = 'rgb(96, 30, 22)';
+            break;
+          case 'Financial Aid Office':
+            icon.className = 'far fa-building';
+            icon.style.color = 'rgb(226, 7, 226)';
+            break;
+          case 'Career Services':
+            icon.className = 'fas fa-share-alt';
+            icon.style.color = 'rgb(37, 164, 157)';
+            break;
           default:
             icon.className = 'fas fa-question';
             icon.style.color = 'rgb(57, 153, 108)'

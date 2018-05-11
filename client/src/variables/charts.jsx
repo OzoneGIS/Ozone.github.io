@@ -98,7 +98,7 @@ const dashboardCOB1ElectricityChart = {
       ],
       datasets: [
         {
-          label: "Electricity",
+          label: "Electricity (kwh)",
           borderColor: chartColor,
           pointBorderColor: chartColor,
           pointBackgroundColor: "#2c2c2c",
@@ -218,7 +218,7 @@ const dashboardCOB1WaterUsageChart = {
       ],
       datasets: [
         {
-          label: "Chill Water",
+          label: "Chill Water (G)",
           borderColor: "#32f9db",
           pointBorderColor: "#FFF",
           pointBackgroundColor: "#32f9db",
@@ -241,7 +241,7 @@ const dashboardCOB1WaterUsageChart = {
             432
           ]
         }, {
-          label: "Hot Water",
+          label: "Hot Water (G)",
           borderColor: "#f96332",
           pointBorderColor: "#FFF",
           pointBackgroundColor: "#f96332",
@@ -296,7 +296,7 @@ const dashboardCOB1GasChart = {
       ],
       datasets: [
         {
-          label: "Gasoline",
+          label: "Natural Gas (Btu)",
           borderColor: "#18ce0f",
           pointBorderColor: "#FFF",
           pointBackgroundColor: "#18ce0f",
@@ -353,7 +353,7 @@ const dashboardCOB2ElectricityChart = {
       ],
       datasets: [
         {
-          label: "Electricity",
+          label: "Electricity (kwh)",
           borderColor: chartColor,
           pointBorderColor: chartColor,
           pointBackgroundColor: "#2c2c2c",
@@ -473,7 +473,7 @@ const dashboardCOB2WaterUsageChart = {
       ],
       datasets: [
         {
-          label: "Chill Water",
+          label: "Chill Water (G)",
           borderColor: "#32f9db",
           pointBorderColor: "#FFF",
           pointBackgroundColor: "#32f9db",
@@ -496,7 +496,7 @@ const dashboardCOB2WaterUsageChart = {
             445
           ]
         }, {
-          label: "Hot Water",
+          label: "Hot Water (G)",
           borderColor: "#f96332",
           pointBorderColor: "#FFF",
           pointBackgroundColor: "#f96332",
@@ -551,7 +551,7 @@ const dashboardCOB2GasChart = {
       ],
       datasets: [
         {
-          label: "Gasoline",
+          label: "Natural Gas (Btu)",
           borderColor: "#18ce0f",
           pointBorderColor: "#FFF",
           pointBackgroundColor: "#18ce0f",
@@ -608,7 +608,7 @@ const dashboardKLElectricityChart = {
       ],
       datasets: [
         {
-          label: "Electricity",
+          label: "Electricity (kwh)",
           borderColor: chartColor,
           pointBorderColor: chartColor,
           pointBackgroundColor: "#2c2c2c",
@@ -728,7 +728,7 @@ const dashboardKLWaterUsageChart = {
       ],
       datasets: [
         {
-          label: "Chill Water",
+          label: "Chill Water (G)",
           borderColor: "#32f9db",
           pointBorderColor: "#FFF",
           pointBackgroundColor: "#32f9db",
@@ -751,7 +751,7 @@ const dashboardKLWaterUsageChart = {
             412
           ]
         }, {
-          label: "Hot Water",
+          label: "Hot Water (G)",
           borderColor: "#f96332",
           pointBorderColor: "#FFF",
           pointBackgroundColor: "#f96332",
@@ -806,7 +806,7 @@ const dashboardKLGasChart = {
       ],
       datasets: [
         {
-          label: "Gasoline",
+          label: "Natural Gas (Btu)",
           borderColor: "#18ce0f",
           pointBorderColor: "#FFF",
           pointBackgroundColor: "#18ce0f",
@@ -863,7 +863,7 @@ const dashboardSSBElectricityChart = {
       ],
       datasets: [
         {
-          label: "Electricity",
+          label: "Electricity (kwh)",
           borderColor: chartColor,
           pointBorderColor: chartColor,
           pointBackgroundColor: "#2c2c2c",
@@ -983,7 +983,7 @@ const dashboardSSBWaterUsageChart = {
       ],
       datasets: [
         {
-          label: "Chill Water",
+          label: "Chill Water (G)",
           borderColor: "#32f9db",
           pointBorderColor: "#FFF",
           pointBackgroundColor: "#32f9db",
@@ -1006,7 +1006,7 @@ const dashboardSSBWaterUsageChart = {
             410
           ]
         }, {
-          label: "Hot Water",
+          label: "Hot Water (G)",
           borderColor: "#f96332",
           pointBorderColor: "#FFF",
           pointBackgroundColor: "#f96332",
@@ -1061,7 +1061,7 @@ const dashboardSSBGasChart = {
       ],
       datasets: [
         {
-          label: "Gasoline",
+          label: "Natural Gas (Btu)",
           borderColor: "#18ce0f",
           pointBorderColor: "#FFF",
           pointBackgroundColor: "#18ce0f",
@@ -1118,7 +1118,7 @@ const dashboardSSMElectricityChart = {
       ],
       datasets: [
         {
-          label: "Electricity",
+          label: "Electricity (kwh)",
           borderColor: chartColor,
           pointBorderColor: chartColor,
           pointBackgroundColor: "#2c2c2c",
@@ -1238,7 +1238,7 @@ const dashboardSSMWaterUsageChart = {
       ],
       datasets: [
         {
-          label: "Chill Water",
+          label: "Chill Water (G)",
           borderColor: "#32f9db",
           pointBorderColor: "#FFF",
           pointBackgroundColor: "#32f9db",
@@ -1261,7 +1261,7 @@ const dashboardSSMWaterUsageChart = {
             454
           ]
         }, {
-          label: "Hot Water",
+          label: "Hot Water (G)",
           borderColor: "#f96332",
           pointBorderColor: "#FFF",
           pointBackgroundColor: "#f96332",
@@ -1316,7 +1316,7 @@ const dashboardSSMGasChart = {
       ],
       datasets: [
         {
-          label: "Gasoline",
+          label: "Natural Gas (Btu)",
           borderColor: "#18ce0f",
           pointBorderColor: "#FFF",
           pointBackgroundColor: "#18ce0f",
@@ -1373,7 +1373,7 @@ const dashboardSE1ElectricityChart = {
       ],
       datasets: [
         {
-          label: "Electricity",
+          label: "Electricity (kwh)",
           borderColor: chartColor,
           pointBorderColor: chartColor,
           pointBackgroundColor: "#2c2c2c",
@@ -1493,7 +1493,7 @@ const dashboardSE1WaterUsageChart = {
       ],
       datasets: [
         {
-          label: "Chill Water",
+          label: "Chill Water (G)",
           borderColor: "#32f9db",
           pointBorderColor: "#FFF",
           pointBackgroundColor: "#32f9db",
@@ -1516,7 +1516,7 @@ const dashboardSE1WaterUsageChart = {
             443
           ]
         }, {
-          label: "Hot Water",
+          label: "Hot Water (G)",
           borderColor: "#f96332",
           pointBorderColor: "#FFF",
           pointBackgroundColor: "#f96332",
@@ -1571,7 +1571,7 @@ const dashboardSE1GasChart = {
       ],
       datasets: [
         {
-          label: "Gasoline",
+          label: "Natural Gas (Btu)",
           borderColor: "#18ce0f",
           pointBorderColor: "#FFF",
           pointBackgroundColor: "#18ce0f",
@@ -1628,7 +1628,7 @@ const dashboardSE2ElectricityChart = {
       ],
       datasets: [
         {
-          label: "Electricity",
+          label: "Electricity (kwh)",
           borderColor: chartColor,
           pointBorderColor: chartColor,
           pointBackgroundColor: "#2c2c2c",
@@ -1748,7 +1748,7 @@ const dashboardSE2WaterUsageChart = {
       ],
       datasets: [
         {
-          label: "Chill Water",
+          label: "Chill Water (G)",
           borderColor: "#32f9db",
           pointBorderColor: "#FFF",
           pointBackgroundColor: "#32f9db",
@@ -1771,7 +1771,7 @@ const dashboardSE2WaterUsageChart = {
             423
           ]
         }, {
-          label: "Hot Water",
+          label: "Hot Water (G)",
           borderColor: "#f96332",
           pointBorderColor: "#FFF",
           pointBackgroundColor: "#f96332",
@@ -1826,7 +1826,7 @@ const dashboardSE2GasChart = {
       ],
       datasets: [
         {
-          label: "Gasoline",
+          label: "Natural Gas (Btu)",
           borderColor: "#18ce0f",
           pointBorderColor: "#FFF",
           pointBackgroundColor: "#18ce0f",

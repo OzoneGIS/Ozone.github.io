@@ -94,8 +94,8 @@ var dashRoutes = [
   }, {
     path: '/maps/dev',
     invisible: true,
-    name: 'Social',
-    mini: "SM",
+    name: 'DevMap',
+    mini: "DM",
     component: DevMap
   }, {
     path: "/icons",

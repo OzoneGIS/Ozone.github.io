@@ -6,6 +6,7 @@ import Papa from 'papaparse';
 import 'assets/css/Maps.css';
 import leed from 'assets/img/leed.png';
 import PitchToggle from 'views/Maps/PitchToggle.jsx';
+import {ping} from "variables/general.jsx";
 
 mapboxgl.accessToken = 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4M29iazA2Z2gycXA4N2pmbDZmangifQ.-g_vE53SD2WrJ6tFX7QHmA';
 
@@ -33,7 +34,7 @@ class Maps extends Component {
   }
 
   componentDidMount() {
-    const {lng, lat, zoom} = this.state;
+    const {lng, lat, zoom, pitch, bearing} = this.state;
 
     const map = new mapboxgl.Map({
       container: this.mapContainer,
@@ -42,7 +43,8 @@ class Maps extends Component {
         lng, lat
       ],
       attributionControl: false,
-      zoom
+      zoom,
+      hash: true
     });
 
     map.on('move', () => {
@@ -530,6 +532,77 @@ class Maps extends Component {
         },
         "filter": ["==", "$type", "Polygon"]
       });
+
+      ping.data.features.forEach(mark => {
+        var ref = document.createElement('div');
+        var i = document.createElement('i');
+        i.className = 'far fa-dot-circle';
+        i.style.color = 'rgb(227, 132, 71)';
+        ref.appendChild(i);
+        new mapboxgl.Marker(ref).setLngLat(mark.geometry.coordinates).setPopup(new mapboxgl.Popup({offset: 25}).setHTML('<h3>' + mark.properties.title + '</h3><p>' + mark.properties.description + '</p>')).addTo(map);
+      });
+
+      /*  map.addSource('events', {
+        'type': 'geojson',
+        'data': ping
+      })
+
+      var baseLayout = {
+        'text-field': '#',
+        'text-font': ['Open Sans Extrabold', 'Arial Unicode MS Bold'],
+        'text-size': 40,
+        //'text-padding': 60,
+        //'text-allow-overlap': true,
+        'text-ignore-placement': true
+      }
+
+      var basePaint = {
+        'text-color': 'rgba(227,132,71,1)',
+        'text-opacity': 1
+      }
+
+      map.addLayer({
+        'id': 'events-pulse',
+        'type': 'symbol',
+        'source': 'events',
+        'layout': baseLayout,
+        'paint': basePaint
+      });
+
+      map.addLayer({
+        'id': 'events',
+        'type': 'symbol',
+        'source': 'events',
+        'layout': baseLayout,
+        'paint': basePaint
+      });
+
+      map.setPaintProperty('events-pulse', 'text-color', 'yellow');
+      map.setLayoutProperty('events-pulse', 'text-size', 40);
+      var framesPerSecond = 30;
+      var multiplier = 1;
+      var opacity = .1;
+      var textSize = 40;
+
+      function pulseMarker(timestamp) {
+        setTimeout(function() {
+          requestAnimationFrame(pulseMarker);
+          //console.log(timestamp)
+          multiplier += 0.1;
+          opacity -= (0.9/framesPerSecond);
+          //console.log(opacity);
+          textSize += (50/framesPerSecond);
+          map.setPaintProperty('events-pulse', 'text-opacity', opacity);
+          map.setLayoutProperty('events-pulse', 'text-size', textSize);
+
+          if (opacity <= 0.1) {
+            opacity = 1;
+            textSize = 40;
+          }
+        }, 1000/framesPerSecond);
+      }
+
+      pulseMarker(0);*/
     });
 
     map.on('mouseenter', 'building-layer', function() {
@@ -541,7 +614,7 @@ class Maps extends Component {
     });
 
     map.on('click', 'building-layer', function(e) {
-      new mapboxgl.Popup().setLngLat(e.lngLat).setHTML(e.features[0].properties.name).addTo(map);
+      new mapboxgl.Popup().setLngLat(e.lngLat).setHTML(e.features[0].properties.title).addTo(map);
     });
 
     axios.get(`https://raw.githubusercontent.com/adriandarian/GhettoDatabase/master/Environmental.csv`).then(res => {
@@ -578,6 +651,22 @@ class Maps extends Component {
             icon.className = 'fas fa-tint';
             icon.style.color = 'rgb(6, 129, 208)'
             break;
+          case 'Ozzi Stations':
+            icon.className = 'fas fa-utensils';
+            icon.style.color = 'rgb(144, 235, 41)';
+            break;
+          case 'LEED Lab':
+            icon.className = 'fas fa-flask';
+            icon.style.color = 'rgb(205, 29, 219)';
+            break;
+          case 'Car Charging':
+            icon.className = 'fas fa-exchange-alt';
+            icon.style.color = 'rgb(85, 41, 134)';
+            break;
+          case 'Recycling Center':
+            icon.className = 'fas fa-recycle';
+            icon.style.color = 'rgb(33, 136, 39)';
+            break;
           case 'Trash Can':
             icon.className = 'fas fa-trash-alt';
             icon.style.color = 'rgb(87, 86, 87)'
@@ -586,8 +675,8 @@ class Maps extends Component {
             icon.className = 'fas fa-bicycle';
             icon.style.color = 'rgb(230, 7, 7)'
             break;
-          case 'Community Garden':
-            icon.className = 'fab fa-pagelines';
+          case 'Vernal Pools':
+            icon.className = 'fas fa-leaf';
             icon.style.color = 'rgb(140, 226, 199)';
             break;
           case 'Bus':
@@ -625,12 +714,70 @@ class Maps extends Component {
 
     map.addControl(new PitchToggle({minpitchzoom: 11}));
 
+    if (pitch !== 0 || bearing !== 0) {
+      // The 'building' layer in the mapbox-streets vector source contains building-height
+      // data from OpenStreetMap.
+      map.on('load', function() {
+        // Insert the layer beneath any symbol layer.
+        var layers = map.getStyle().layers;
+
+        var labelLayerId;
+        for (var i = 0; i < layers.length; i++) {
+          if (layers[i].type === 'symbol' && layers[i].layout['text-field']) {
+            labelLayerId = layers[i].id;
+            break;
+          }
+        }
+
+        map.addLayer({
+          'id': '3d-buildings',
+          'source': 'composite',
+          'source-layer': 'building',
+          'filter': [
+            '==', 'extrude', 'true'
+          ],
+          'type': 'fill-extrusion',
+          'minzoom': 15,
+          'paint': {
+            'fill-extrusion-color': '#aaa',
+
+            // use an 'interpolate' expression to add a smooth transition effect to the
+            // buildings as the user zooms in
+            'fill-extrusion-height': [
+              "interpolate",
+              ["linear"],
+              ["zoom"],
+              15,
+              0,
+              15.05,
+              [
+                "get", "height"
+              ]
+            ],
+            'fill-extrusion-base': [
+              "interpolate",
+              ["linear"],
+              ["zoom"],
+              15,
+              0,
+              15.05,
+              [
+                "get", "min_height"
+              ]
+            ],
+            'fill-extrusion-opacity': .6
+          }
+        }, labelLayerId);
+      });
+    }
+
   }
 
   render() {
     return (<div id="map">
       <img src={leed} className="App-leed" alt="leed"/>
       <div ref={el => (this.mapContainer = el)} className="absolute top right left bottom"/>
+      <nav id='filter-group' class='filter-group'></nav>
     </div>)
   }
 }

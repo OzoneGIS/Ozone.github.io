@@ -65,7 +65,7 @@ class DashboardSE2 extends React.Component {
                     [
                       {
                         i: "now-ui-icons arrows-1_refresh-69",
-                        t: "Just Updated"
+                        t: "Updated Yesterday"
                       }
                     ]
                   }
@@ -76,7 +76,7 @@ class DashboardSE2 extends React.Component {
           <Col xs={12} md={6}>
             <Card className="card-chart">
               <CardHeader>
-                <CardCategory><b>Gas</b></CardCategory>
+                <CardCategory><b>Natural Gas</b></CardCategory>
               </CardHeader>
               <CardBody>
                 <div className="chart-area">
@@ -89,7 +89,7 @@ class DashboardSE2 extends React.Component {
                     [
                       {
                         i: "now-ui-icons arrows-1_refresh-69",
-                        t: "Just Updated"
+                        t: "Updated Yesterday"
                       }
                     ]
                   }
