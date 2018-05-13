@@ -6,6 +6,7 @@ import Papa from 'papaparse';
 import 'assets/css/Maps.css';
 import leed from 'assets/img/leed.png';
 import PitchToggle from 'views/Maps/PitchToggle.jsx';
+import {ping} from "variables/general.jsx";
 
 mapboxgl.accessToken = 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4M29iazA2Z2gycXA4N2pmbDZmangifQ.-g_vE53SD2WrJ6tFX7QHmA';
 
@@ -33,7 +34,7 @@ class Maps extends Component {
   }
 
   componentDidMount() {
-    const {lng, lat, zoom} = this.state;
+    const {lng, lat, zoom, pitch, bearing} = this.state;
 
     const map = new mapboxgl.Map({
       container: this.mapContainer,
@@ -530,6 +531,15 @@ class Maps extends Component {
         },
         "filter": ["==", "$type", "Polygon"]
       });
+
+      ping.data.features.forEach(mark => {
+        var ref = document.createElement('div');
+        var i = document.createElement('i');
+        i.className = 'far fa-dot-circle';
+        i.style.color = 'rgb(227, 132, 71)';
+        ref.appendChild(i);
+        new mapboxgl.Marker(ref).setLngLat(mark.geometry.coordinates).setPopup(new mapboxgl.Popup({offset: 25}).setHTML('<h3>' + mark.properties.title + '</h3><p>' + mark.properties.description + '</p>')).addTo(map);
+      });
     });
 
     map.on('mouseenter', 'building-layer', function() {
@@ -648,6 +658,63 @@ class Maps extends Component {
     map.addControl(new mapboxgl.NavigationControl());
 
     map.addControl(new PitchToggle({minpitchzoom: 11}));
+
+    if (pitch !== 0 || bearing !== 0) {
+      // The 'building' layer in the mapbox-streets vector source contains building-height
+      // data from OpenStreetMap.
+      map.on('load', function() {
+        // Insert the layer beneath any symbol layer.
+        var layers = map.getStyle().layers;
+
+        var labelLayerId;
+        for (var i = 0; i < layers.length; i++) {
+          if (layers[i].type === 'symbol' && layers[i].layout['text-field']) {
+            labelLayerId = layers[i].id;
+            break;
+          }
+        }
+
+        map.addLayer({
+          'id': '3d-buildings',
+          'source': 'composite',
+          'source-layer': 'building',
+          'filter': [
+            '==', 'extrude', 'true'
+          ],
+          'type': 'fill-extrusion',
+          'minzoom': 15,
+          'paint': {
+            'fill-extrusion-color': '#aaa',
+
+            // use an 'interpolate' expression to add a smooth transition effect to the
+            // buildings as the user zooms in
+            'fill-extrusion-height': [
+              "interpolate",
+              ["linear"],
+              ["zoom"],
+              15,
+              0,
+              15.05,
+              [
+                "get", "height"
+              ]
+            ],
+            'fill-extrusion-base': [
+              "interpolate",
+              ["linear"],
+              ["zoom"],
+              15,
+              0,
+              15.05,
+              [
+                "get", "min_height"
+              ]
+            ],
+            'fill-extrusion-opacity': .6
+          }
+        }, labelLayerId);
+      });
+    }
 
   }
 

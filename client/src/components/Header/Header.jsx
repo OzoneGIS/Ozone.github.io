@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 import {
   Collapse,
   Navbar,
@@ -12,8 +12,18 @@ import {
   InputGroupAddon,
   Input
 } from "reactstrap";
+import Select from 'react-select';
 
 import dashboardRoutes from "routes/dashboard.jsx";
+
+var selectOptions = [
+  { value: 'one', label: 'One' },
+  { value: 'two', label: 'Two' },
+  { value: 'three', label: 'Three' },
+  { value: 'four', label: 'Four' },
+  { value: 'five', label: 'Five' },
+  { value: 'six', label: 'Six' }
+];
 
 class Header extends React.Component {
   constructor(props) {
@@ -25,16 +35,16 @@ class Header extends React.Component {
     };
     this.toggle = this.toggle.bind(this);
     this.dropdownToggle = this.dropdownToggle.bind(this);
+    this.state = {
+      multipleSelect: null
+    }
   }
+
   toggle() {
     if (this.state.isOpen) {
-      this.setState({
-        color: "transparent"
-      });
+      this.setState({color: "transparent"});
     } else {
-      this.setState({
-        color: "white"
-      });
+      this.setState({color: "white"});
     }
     this.setState({
       isOpen: !this.state.isOpen
@@ -77,93 +87,80 @@ class Header extends React.Component {
   // function that adds color white/transparent to the navbar on resize (this is for the collapse)
   updateColor() {
     if (window.innerWidth < 993 && this.state.isOpen) {
-      this.setState({
-        color: "white"
-      });
+      this.setState({color: "white"});
     } else {
-      this.setState({
-        color: "transparent"
-      });
+      this.setState({color: "transparent"});
     }
   }
   componentDidMount() {
     window.addEventListener("resize", this.updateColor.bind(this));
   }
   componentDidUpdate(e) {
-    if (
-      window.innerWidth < 993 &&
-      e.history.location.pathname !== e.location.pathname &&
-      document.documentElement.className.indexOf("nav-open") !== -1
-    ) {
+    if (window.innerWidth < 993 && e.history.location.pathname !== e.location.pathname && document.documentElement.className.indexOf("nav-open") !== -1) {
       document.documentElement.classList.toggle("nav-open");
       this.refs.sidebarToggle.classList.toggle("toggled");
     }
   }
   render() {
     return (
-      // add or remove classes depending if we are on full-screen-maps page or not
-      <Navbar
-        color={
-          this.props.location.pathname.indexOf("maps") !== -1
-            ? "white"
-            : this.state.color
-        }
-        expand="lg"
-        className={
-          this.props.location.pathname.indexOf("maps") !== -1
-            ? "navbar-absolute fixed-top"
-            : "navbar-absolute fixed-top " +
-              (this.state.color === "transparent" ? "navbar-transparent " : "")
-        }
-      >
-        <Container fluid>
-          <div className="navbar-wrapper">
-            <div className="navbar-toggle">
-              <button
-                type="button"
-                ref="sidebarToggle"
-                className="navbar-toggler"
-                onClick={() => this.openSidebar()}
-              >
-                <span className="navbar-toggler-bar bar1" />
-                <span className="navbar-toggler-bar bar2" />
-                <span className="navbar-toggler-bar bar3" />
-              </button>
-            </div>
-            <NavbarBrand href="/">{this.getBrand()}</NavbarBrand>
+    // add or remove classes depending if we are on full-screen-maps page or not
+    <Navbar color={this.props.location.pathname.indexOf("maps") !== -1
+        ? "white"
+        : this.state.color
+} expand="lg" className={this.props.location.pathname.indexOf("maps") !== -1
+        ? "navbar-absolute fixed-top"
+        : "navbar-absolute fixed-top " + (
+          this.state.color === "transparent"
+          ? "navbar-transparent "
+          : "")}>
+      <Container fluid>
+        <div className="navbar-wrapper">
+          <div className="navbar-toggle">
+            <button type="button" ref="sidebarToggle" className="navbar-toggler" onClick={() => this.openSidebar()}>
+              <span className="navbar-toggler-bar bar1"/>
+              <span className="navbar-toggler-bar bar2"/>
+              <span className="navbar-toggler-bar bar3"/>
+            </button>
           </div>
-          <NavbarToggler onClick={this.toggle}>
-            <span className="navbar-toggler-bar navbar-kebab" />
-            <span className="navbar-toggler-bar navbar-kebab" />
-            <span className="navbar-toggler-bar navbar-kebab" />
-          </NavbarToggler>
-          <Collapse
-            isOpen={this.state.isOpen}
-            navbar
-            className="justify-content-end"
-          >
-            <form>
-              <InputGroup className="no-border">
-                <Input placeholder="Search..." />
-                <InputGroupAddon addontype="append">
-                  <i className="now-ui-icons ui-1_zoom-bold" />
-                </InputGroupAddon>
-              </InputGroup>
-            </form>
-            <Nav navbar>
-              <NavItem>
-                <Link to="#pablo" className="nav-link">
-                  <i className="now-ui-icons users_single-02" />
-                  <p>
-                    <span className="d-lg-none d-md-block">Account</span>
-                  </p>
-                </Link>
-              </NavItem>
-            </Nav>
-          </Collapse>
-        </Container>
-      </Navbar>
-    );
+          <NavbarBrand href="/">{this.getBrand()}</NavbarBrand>
+        </div>
+        <NavbarToggler onClick={this.toggle}>
+          <span className="navbar-toggler-bar navbar-kebab"/>
+          <span className="navbar-toggler-bar navbar-kebab"/>
+          <span className="navbar-toggler-bar navbar-kebab"/>
+        </NavbarToggler>
+        <Collapse isOpen={this.state.isOpen} navbar="navbar" className="justify-content-end">
+          /*<form>
+            <InputGroup className="no-border">
+              <Input placeholder="Search..."/>
+              <InputGroupAddon addontype="append">
+                <i className="now-ui-icons ui-1_zoom-bold"/>
+              </InputGroupAddon>
+            </InputGroup>
+          </form>*/
+          <Select
+            className="warning"
+            multi={true}
+            closeOnSelect={false}
+            placeholder="Multiple Select"
+            name="multipleSelect"
+            value={this.state.multipleSelect}
+            options={selectOptions}
+            onChange={(value) => this.setState({ multipleSelect: value})}
+        />
+          <Nav navbar="navbar">
+            <NavItem>
+              <Link to="#pablo" className="nav-link">
+                <i className="now-ui-icons users_single-02"/>
+                <p>
+                  <span className="d-lg-none d-md-block">Account</span>
+                </p>
+              </Link>
+            </NavItem>
+          </Nav>
+        </Collapse>
+      </Container>
+    </Navbar>);
   }
 }
 
