@@ -2047,8 +2047,8 @@ js-stringify@^1.0.1:
   resolved "https://registry.yarnpkg.com/js-stringify/-/js-stringify-1.0.2.tgz#1736fddfd9724f28a3682adc6230ae7e4e9679db"
 
 js-yaml@^3.5.4:
-  version "3.12.0"
-  resolved "https://registry.yarnpkg.com/js-yaml/-/js-yaml-3.12.0.tgz#eaed656ec8344f10f527c6bfa1b6e2244de167d1"
+  version "3.13.1"
+  resolved "https://registry.yarnpkg.com/js-yaml/-/js-yaml-3.13.1.tgz#aff151b30bfdfa8e49e05da22e7415e9dfa37847"
   dependencies:
     argparse "^1.0.7"
     esprima "^4.0.0"
@@ -3653,7 +3653,7 @@ stdout-stream@^1.4.0:
   dependencies:
     readable-stream "^2.0.1"
 
-"stormpath-config@github:stormpath/stormpath-node-config#okta", stormpath-config@stormpath/stormpath-node-config#okta:
+stormpath-config@stormpath/stormpath-node-config#okta:
   version "0.0.27"
   resolved "https://codeload.github.com/stormpath/stormpath-node-config/tar.gz/0cf1158865646f5f3d97856b98afaacaaea8d4b9"
   dependencies:
@@ -3663,8 +3663,9 @@ stdout-stream@^1.4.0:
     lodash "^4.0.0"
     properties-parser "^0.3.0"
 
-"stormpath@github:stormpath/stormpath-sdk-node#1.0.0-rc5":
+stormpath@stormpath/stormpath-sdk-node#1.0.0-rc5:
   version "1.0.0-rc4"
+  uid "39637f656dacc03327e1482a3f993445f7b21b4b"
   resolved "https://codeload.github.com/stormpath/stormpath-sdk-node/tar.gz/39637f656dacc03327e1482a3f993445f7b21b4b"
   dependencies:
     async "~1.5.2"
