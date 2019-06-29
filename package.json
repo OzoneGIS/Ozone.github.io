@@ -14,8 +14,8 @@
     "connect-ensure-login": "^0.1.1",
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.4",
-    "cors": "^2.8.4",
     "debug": "^4.1.1",
+    "cors": "^2.8.5",
     "dotenv": "^5.0.1",
     "express": "^4.16.3",
     "express-graphql": "^0.6.12",
@@ -30,10 +30,10 @@
     "node-sass": "^4.8.3",
     "nodemon": "^1.17.3",
     "passport": "^0.4.0",
-    "passport-auth0": "^0.6.1",
+    "passport-auth0": "^1.1.0",
     "pug": "^2.0.3",
     "serve-favicon": "^2.5.0",
-    "yarn": "^1.5.1"
+    "yarn": "^1.16.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
