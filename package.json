@@ -43,7 +43,7 @@
     "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
   },
   "devDependencies": {
-    "concurrently": "^3.5.0"
+    "concurrently": "^4.1.1"
   },
   "repository": {
     "type": "git",
