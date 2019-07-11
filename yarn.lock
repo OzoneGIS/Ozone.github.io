@@ -2475,14 +2475,6 @@ lock@~0.1.2:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/lock/-/lock-0.1.4.tgz#fec7deaef17e7c3a0a55e1da042803e25d91745d"
 
-lodash.assign@^4.2.0:
-  version "4.2.0"
-  resolved "https://registry.yarnpkg.com/lodash.assign/-/lodash.assign-4.2.0.tgz#0d99f3ccd7a6d261d19bdaeb9245005d285808e7"
-
-lodash.clonedeep@^4.3.2:
-  version "4.5.0"
-  resolved "https://registry.yarnpkg.com/lodash.clonedeep/-/lodash.clonedeep-4.5.0.tgz#e23f3f9c4f8fbdde872529c1071857a086e5ccef"
-
 lodash.includes@^4.3.0:
   version "4.3.0"
   resolved "https://registry.yarnpkg.com/lodash.includes/-/lodash.includes-4.3.0.tgz#60bb98a87cb923c68ca1e51325483314849f553f"
@@ -2519,9 +2511,9 @@ lodash.sortby@^4.7.0:
   version "4.7.0"
   resolved "https://registry.yarnpkg.com/lodash.sortby/-/lodash.sortby-4.7.0.tgz#edd14c824e2cc9c1e0b0a1b42bb5210516a42438"
 
-lodash@^4.0.0, lodash@^4.17.10, lodash@^4.17.11, lodash@^4.17.4, lodash@^4.5.1, lodash@^4.6.1, lodash@~4.17.10:
-  version "4.17.11"
-  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.11.tgz#b39ea6229ef607ecd89e2c8df12536891cac9b8d"
+lodash@^4.0.0, lodash@^4.17.10, lodash@^4.17.11, lodash@^4.17.4, lodash@^4.6.1, lodash@~4.17.10:
+  version "4.17.14"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.14.tgz#9ce487ae66c96254fe20b599f21b6816028078ba"
 
 long@^4.0.0:
   version "4.0.0"
@@ -2755,11 +2747,7 @@ ms@2.1.1, ms@^2.1.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.1.1.tgz#30a5864eb3ebb0a66f2ebe6d727af06a09d86e0a"
 
-nan@^2.10.0:
-  version "2.11.0"
-  resolved "https://registry.yarnpkg.com/nan/-/nan-2.11.0.tgz#574e360e4d954ab16966ec102c0c049fd961a099"
-
-nan@^2.12.1:
+nan@^2.12.1, nan@^2.13.2:
   version "2.14.0"
   resolved "https://registry.yarnpkg.com/nan/-/nan-2.14.0.tgz#7818f722027b2459a86f0295d434d1fc2336c52c"
 
@@ -2838,7 +2826,7 @@ node-pre-gyp@^0.12.0:
     semver "^5.3.0"
     tar "^4"
 
-node-sass@^4.12.0:
+node-sass@^4.8.3:
   version "4.12.0"
   resolved "https://registry.yarnpkg.com/node-sass/-/node-sass-4.12.0.tgz#0914f531932380114a30cc5fa4fa63233a25f017"
   dependencies:
@@ -3204,12 +3192,6 @@ path-type@^1.0.0:
     graceful-fs "^4.1.2"
     pify "^2.0.0"
     pinkie-promise "^2.0.0"
-
-pause-stream@0.0.11:
-  version "0.0.11"
-  resolved "https://registry.yarnpkg.com/pause-stream/-/pause-stream-0.0.11.tgz#fe5a34b0cbce12b5aa6a2b403ee2e73b602f1445"
-  dependencies:
-    through "~2.3"
 
 pause@0.0.1:
   version "0.0.1"
