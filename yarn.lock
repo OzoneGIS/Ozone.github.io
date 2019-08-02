@@ -3131,13 +3131,12 @@ pascalcase@^0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/pascalcase/-/pascalcase-0.1.1.tgz#b363e55e8006ca6fe21784d2db22bd15d7917f14"
 
-passport-auth0@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/passport-auth0/-/passport-auth0-1.1.0.tgz#fc6fac83ae3ec5a3e5d462c05d145a4fbdad6703"
+passport-auth0@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/passport-auth0/-/passport-auth0-1.2.0.tgz#270c337dbdfdf0eca12a270028fce11b930c1e19"
   dependencies:
     passport-oauth "^1.0.0"
-    request "^2.61.0"
-    xtend "^4.0.0"
+    request "^2.83.0"
 
 passport-oauth1@1.x.x:
   version "1.1.0"
@@ -3596,7 +3595,7 @@ repeating@^2.0.0:
   dependencies:
     is-finite "^1.0.0"
 
-request@^2.61.0, request@^2.63.0, request@^2.87.0, request@^2.88.0:
+request@^2.63.0, request@^2.83.0, request@^2.87.0, request@^2.88.0:
   version "2.88.0"
   resolved "https://registry.yarnpkg.com/request/-/request-2.88.0.tgz#9c2fca4f7d35b592efe57c7f0a55e81052124fef"
   dependencies:
