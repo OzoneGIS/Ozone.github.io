@@ -10,7 +10,7 @@
     "bootstrap": "4.0.0-beta",
     "chart.js": "2.7.1",
     "mapbox-gl": "^0.44.2",
-    "moment": "2.19.2",
+    "moment": "2.19.3",
     "node-sass-chokidar": "1.2.2",
     "npm-run-all": "4.1.2",
     "papaparse": "^4.3.7",
