@@ -62,7 +62,7 @@ exports.replace = async (req, res, next) => {
 exports.update = async (req, res, next) => {
   try {
     const { user } = req.locals;
-    const response = await service.update(user, req.body);
+    const response = await service.updateOne(user, req.body);
     return res.json(response);
   } catch (error) {
     return next(error);
@@ -89,7 +89,7 @@ exports.list = async (req, res, next) => {
 exports.remove = async (req, res, next) => {
   try {
     const { user } = req.locals;
-    await service.remove(user);
+    await service.deleteOne(user);
     res.status(httpStatus.NO_CONTENT).end();
   } catch (error) {
     next(error);
