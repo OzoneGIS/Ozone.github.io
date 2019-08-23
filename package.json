@@ -2,16 +2,61 @@
   "name": "ozone",
   "version": "1.0.0",
   "private": false,
-  "license": "MIT",
   "description": "create-react-app and nodejs server",
+  "keywords": [
+    "API",
+    "REST",
+    "Travis CI",
+    "boilerplate",
+    "coveralls",
+    "es8",
+    "eslint",
+    "express",
+    "generator",
+    "istanbul",
+    "mocha",
+    "mongodb",
+    "mongoose",
+    "node.js",
+    "nyc",
+    "passport"
+  ],
+  "bugs": {
+    "url": "https://github.com/adriandarian/sustainable/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adriandarian/sustainable.git"
+  },
+  "license": "MIT",
   "author": {
     "name": "Sustainable Sites"
   },
-  "engines": {
-    "node": ">=10",
-    "yarn": "*"
-  },
   "main": "src/index.js",
+  "scripts": {
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "postcoverage": "opn coverage/lcov-report/index.html",
+    "deploy": "sh ./deploy.sh",
+    "dev": "nodemon ./src/index.js",
+    "docker:dev": "docker-compose -f docker-compose.yml -f docker-compose.dev.yml up",
+    "docker:prod": "docker-compose -f docker-compose.yml -f docker-compose.prod.yml up",
+    "docker:start": "cross-env NODE_ENV=production pm2-docker start ./src/index.js",
+    "docker:test": "docker-compose -f docker-compose.yml -f docker-compose.test.yml up --abort-on-container-exit",
+    "docs": "apidoc -i src -o docs",
+    "postdocs": "opn docs/index.html",
+    "lint": "eslint **/*.js --ignore-path .gitignore --ignore-pattern internals/scripts",
+    "lint:fix": "yarn lint -- --fix",
+    "lint:watch": "yarn lint -- --watch",
+    "precommit": "yarn lint",
+    "postpublish": "git push --tags",
+    "prestart": "yarn docs",
+    "start": "cross-env NODE_ENV=production pm2 start ./src/index.js",
+    "test": "cross-env NODE_ENV=test nyc --reporter=html --reporter=text -x '**/authProviders.js' -x '**/mongoose.js' mocha --timeout 20000 --recursive $(find src -name '*test.js') --exit",
+    "test:integration": "cross-env NODE_ENV=test mocha --timeout 20000 src/api/tests/integration",
+    "test:unit": "cross-env NODE_ENV=test mocha src/api/tests/unit",
+    "test:watch": "cross-env NODE_ENV=test mocha --watch src/api/tests/unit",
+    "validate": "yarn lint && yarn test"
+  },
   "dependencies": {
     "axios": "^0.19.0",
     "bcryptjs": "2.4.3",
@@ -38,30 +83,6 @@
     "passport-jwt": "4.0.0",
     "uuid": "^3.1.0"
   },
-  "scripts": {
-    "precommit": "yarn lint",
-    "prestart": "yarn docs",
-    "start": "cross-env NODE_ENV=production pm2 start ./src/index.js",
-    "dev": "nodemon ./src/index.js",
-    "lint": "eslint **/*.js --ignore-path .gitignore --ignore-pattern internals/scripts",
-    "lint:fix": "yarn lint -- --fix",
-    "lint:watch": "yarn lint -- --watch",
-    "test": "cross-env NODE_ENV=test nyc --reporter=html --reporter=text -x '**/authProviders.js' -x '**/mongoose.js' mocha --timeout 20000 --recursive $(find src -name '*test.js') --exit",
-    "test:unit": "cross-env NODE_ENV=test mocha src/api/tests/unit",
-    "test:integration": "cross-env NODE_ENV=test mocha --timeout 20000 src/api/tests/integration",
-    "test:watch": "cross-env NODE_ENV=test mocha --watch src/api/tests/unit",
-    "coverage": "nyc report --reporter=text-lcov | coveralls",
-    "postcoverage": "opn coverage/lcov-report/index.html",
-    "validate": "yarn lint && yarn test",
-    "postpublish": "git push --tags",
-    "deploy": "sh ./deploy.sh",
-    "docs": "apidoc -i src -o docs",
-    "postdocs": "opn docs/index.html",
-    "docker:start": "cross-env NODE_ENV=production pm2-docker start ./src/index.js",
-    "docker:prod": "docker-compose -f docker-compose.yml -f docker-compose.prod.yml up",
-    "docker:dev": "docker-compose -f docker-compose.yml -f docker-compose.dev.yml up",
-    "docker:test": "docker-compose -f docker-compose.yml -f docker-compose.test.yml up --abort-on-container-exit"
-  },
   "devDependencies": {
     "apidoc": "^0.17.5",
     "chai": "^4.1.0",
@@ -79,34 +100,8 @@
     "sinon-chai": "^3.0.0",
     "supertest": "^4.0.2"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/adriandarian/sustainable.git"
-  },
-  "bugs": {
-    "url": "https://github.com/adriandarian/sustainable/issues"
-  },
-  "keywords": [
-    "express",
-    "node",
-    "node.js",
-    "mongodb",
-    "mongoose",
-    "passport",
-    "es6",
-    "es7",
-    "es8",
-    "es2017",
-    "mocha",
-    "istanbul",
-    "nyc",
-    "eslint",
-    "Travis CI",
-    "coveralls",
-    "REST",
-    "API",
-    "boilerplate",
-    "generator",
-    "starter project"
-  ]
+  "engines": {
+    "node": ">=10",
+    "yarn": "*"
+  }
 }

@@ -50,5 +50,5 @@ refreshTokenSchema.statics = {
 /**
  * @typedef RefreshToken
  */
-const RefreshToken = mongoose.model('RefreshToken', refreshTokenSchema);
+const RefreshToken = mongoose.model('RefreshToken', refreshTokenSchema, 'refresh');
 module.exports = RefreshToken;
