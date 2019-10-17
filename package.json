@@ -93,7 +93,7 @@
     "eslint-plugin-import": "^2.2.0",
     "husky": "^3.0.9",
     "mocha": "^6.2.1",
-    "nodemon": "^1.19.3",
+    "nodemon": "^1.19.4",
     "nyc": "^14.1.1",
     "opn-cli": "^5.0.0",
     "sinon": "^7.5.0",
