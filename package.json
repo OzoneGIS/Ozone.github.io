@@ -22,11 +22,11 @@
     "passport"
   ],
   "bugs": {
-    "url": "https://github.com/adriandarian/sustainable/issues"
+    "url": "https://github.com/SSites/Ozone/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/adriandarian/sustainable.git"
+    "url": "https://github.com/SSites/Ozone.git"
   },
   "license": "MIT",
   "author": {
@@ -34,6 +34,7 @@
   },
   "main": "src/index.js",
   "scripts": {
+    "clean": "rm -rf ./node_modules yarn.lock ./client/node_modules ./client/yarn.lock",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "postcoverage": "opn coverage/lcov-report/index.html",
     "deploy": "sh ./deploy.sh",
