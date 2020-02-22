@@ -98,7 +98,7 @@
     "nyc": "^15.0.0",
     "opn-cli": "^5.0.0",
     "sinon": "^8.1.1",
-    "sinon-chai": "^3.0.0",
+    "sinon-chai": "^3.5.0",
     "supertest": "^4.0.2"
   },
   "engines": {
