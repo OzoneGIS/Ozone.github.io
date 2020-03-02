@@ -3,17 +3,18 @@
   "version": "1.1.0",
   "private": true,
   "description": "react, mapboxgl, axios, papaparse, reactstrap, bootstrap, fontawesome, googleapis, and custom code in one project",
-  "homepage": "http://adriandarian.github.io/sustainable",
+  "homepage": "https://ozonegis.github.io/Ozone.github.io/",
   "license": "MIT",
   "scripts": {
-    "build": "npm run build-css && react-scripts build",
+    "build": "yarn build-css && react-scripts build",
     "build-css": "node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/",
-    "deploy": "npm run build && gh-pages -d build",
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d build",
     "eject": "react-scripts eject",
     "start": "npm-run-all -p watch-css start-js",
     "start-js": "react-scripts start",
     "test": "react-scripts test --env=jsdom",
-    "watch-css": "npm run build-css && node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/ --watch --recursive"
+    "watch-css": "yarn build-css && node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/ --watch --recursive"
   },
   "dependencies": {
     "@fortawesome/react-fontawesome": "0.0.18",
