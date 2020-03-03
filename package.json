@@ -19,7 +19,7 @@
   "dependencies": {
     "@fortawesome/react-fontawesome": "0.0.18",
     "axios": "^0.18.1",
-    "bootstrap": "4.0.0-beta",
+    "bootstrap": "4.4.1",
     "chart.js": "2.7.1",
     "mapbox-gl": "^0.44.2",
     "moment": "2.19.3",
