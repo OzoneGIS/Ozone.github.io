@@ -1844,7 +1844,7 @@ chartjs-color@~2.2.0:
     chartjs-color-string "^0.5.0"
     color-convert "^0.5.3"
 
-chokidar@^1.6.0, chokidar@^1.6.1:
+chokidar@^1.6.0:
   version "1.7.0"
   resolved "https://registry.yarnpkg.com/chokidar/-/chokidar-1.7.0.tgz#798e689778151c8076b4b360e5edd28cda2bb468"
   integrity sha1-eY5ol3gVHIB2tLNg5e3SjNortGg=
@@ -1860,7 +1860,7 @@ chokidar@^1.6.0, chokidar@^1.6.1:
   optionalDependencies:
     fsevents "^1.0.0"
 
-chokidar@^2.0.2:
+chokidar@^2.0.2, chokidar@^2.0.4:
   version "2.1.8"
   resolved "https://registry.yarnpkg.com/chokidar/-/chokidar-2.1.8.tgz#804b3a7b6a99358c3c5c61e71d8728f041cff917"
   integrity sha512-ZmZUazfOzf0Nve7duiCKD23PFSCs4JPoYyccjUFF3aQkQadqBhfzhjkwBH2mNOG9cTBwhamM37EIsIkZw3nRgg==
@@ -6174,21 +6174,21 @@ node-pre-gyp@^0.6.36:
     tar "^2.2.1"
     tar-pack "^3.4.0"
 
-node-sass-chokidar@1.2.2:
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/node-sass-chokidar/-/node-sass-chokidar-1.2.2.tgz#ea1c13634c74f9cb411eb7a8a7906ded95cb28fe"
-  integrity sha512-JKyXxp57aGZMk/mrB1sGE3oEdisvCDQMknLIhGycZEyppunb0+DCAWSh79D9tJkV62ejL0ONr6vpkLH0KRDKkA==
+node-sass-chokidar@1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/node-sass-chokidar/-/node-sass-chokidar-1.4.0.tgz#3e5f2531e4606291b7d071761908a509075419d5"
+  integrity sha512-yQWApNiQhg7tMGSbcbeOY0P7v1nKofGBMpX0N4bnOjYlOaN1s+Lw+gqAwuqNu8iuGZobZJlDDCiC6NCIv5/ejA==
   dependencies:
     async-foreach "^0.1.3"
-    chokidar "^1.6.1"
+    chokidar "^2.0.4"
     get-stdin "^4.0.1"
     glob "^7.0.3"
     meow "^3.7.0"
-    node-sass "^4.7.2"
+    node-sass "4.13"
     sass-graph "^2.1.1"
     stdout-stream "^1.4.0"
 
-node-sass@^4.7.2:
+node-sass@4.13:
   version "4.13.1"
   resolved "https://registry.yarnpkg.com/node-sass/-/node-sass-4.13.1.tgz#9db5689696bb2eec2c32b98bfea4c7a2e992d0a3"
   integrity sha512-TTWFx+ZhyDx1Biiez2nB0L3YrCZ/8oHagaDalbuBSlqXgUPsdkUSzJsVxeDO9LtPB49+Fh3WQl3slABo6AotNw==
