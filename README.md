@@ -8,6 +8,10 @@
 
 **[Ozone](https://ozonegis.github.io/Ozone.github.io/)** An interactive web app providing on-campus sustainable information. Ozone is Sustainable Sites' current project. Eventually hosted at [//sustainability.ucmerced.edu/map](http://sustainability.ucmerced.edu/map), it will provide information to help students, faculty, and visitors understand the efforts going on campus and how they can make the campus a greener healthier place to be.
 
+## Before running the application locally
+
+Create a `.env` in the root directory and put `NODE_PATH=./src` in the `.env`
+
 [CHANGELOG]: ./CHANGELOG.md
 
 [LICENSE]: ./LICENSE.md
