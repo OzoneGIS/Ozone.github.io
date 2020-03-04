@@ -7513,10 +7513,10 @@ react-error-overlay@^3.0.0:
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-3.0.0.tgz#c2bc8f4d91f1375b3dad6d75265d51cd5eeaf655"
   integrity sha512-XzgvowFrwDo6TWcpJ/WTiarb9UI6lhA4PMzS7n1joK3sHfBBBOQHUc0U4u57D6DWO9vHv6lVSWx2Q/Ymfyv4hw==
 
-react-google-maps@9.2.2:
-  version "9.2.2"
-  resolved "https://registry.yarnpkg.com/react-google-maps/-/react-google-maps-9.2.2.tgz#62fc6330e5a5d8e2aebd5f60c8e928562bce4f4a"
-  integrity sha512-3l5Vzl5HFgWCUh8HiomCfJEEiU4DjjAe1siy1JoOB8d0zYXojL1LVjfd4N0uhfVBSiTvW3yLsr24O8KTGLkwdw==
+react-google-maps@9.2.3:
+  version "9.2.3"
+  resolved "https://registry.yarnpkg.com/react-google-maps/-/react-google-maps-9.2.3.tgz#3005dd0791f2b96df0b487d40fa7e6981cc46f02"
+  integrity sha512-hKq1OX4/AD0dY9WMp6Sx4wUYi+9agdjN4zQLWnkO1Tj8zX3I2yDu4HFaYtawOtVIYSlYHIo0/wnSKoCzLTwcIQ==
   dependencies:
     babel-runtime "^6.11.6"
     can-use-dom "^0.1.0"
