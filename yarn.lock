@@ -7456,10 +7456,10 @@ react-bootstrap-wizard@0.0.4:
   resolved "https://registry.yarnpkg.com/react-bootstrap-wizard/-/react-bootstrap-wizard-0.0.4.tgz#a635de868750a3e54f70227e5708af796c0666e7"
   integrity sha512-THpvmpgJNHbDMka/gt/yVm/hyp2Ihbnnr8m9tsn0jVhHuH9U6LeXs8b7FSqmSH+EUFwdOq6aSFDgJQDxJQeiIg==
 
-react-chartjs-2@2.7.0:
-  version "2.7.0"
-  resolved "https://registry.yarnpkg.com/react-chartjs-2/-/react-chartjs-2-2.7.0.tgz#14925143f7e5c59dc631d0d8279255b031c5561a"
-  integrity sha512-DkT9TVi+/wKaEWL2iI2ka2L3Q0kq+y7TrAqlWNETAqE5CTPphPg1Af3w9X2uQCQ1ZA60Q3base9mK3dRtlb9bQ==
+react-chartjs-2@2.9.0:
+  version "2.9.0"
+  resolved "https://registry.yarnpkg.com/react-chartjs-2/-/react-chartjs-2-2.9.0.tgz#d054dbdd763fbe9a76296a4ae0752ea549b76d9e"
+  integrity sha512-IYwqUUnQRAJ9SNA978vxulHJTcUFTJk2LDVfbAyk0TnJFZZG7+6U/2flsE4MCw6WCbBjTTypy8T82Ch7XrPtRw==
   dependencies:
     lodash "^4.17.4"
     prop-types "^15.5.8"
