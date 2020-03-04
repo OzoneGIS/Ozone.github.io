@@ -36,7 +36,7 @@
     "react-datetime": "2.11.0",
     "react-dom": "16.13.0",
     "react-google-maps": "9.2.3",
-    "react-jvectormap": "0.0.2",
+    "react-jvectormap": "0.0.16",
     "react-mapbox-gl": "^3.8.0",
     "react-notification-alert": "0.0.7",
     "react-nouislider": "2.0.1",

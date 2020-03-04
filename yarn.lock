@@ -5237,7 +5237,7 @@ jquery-mousewheel@^3.1.13:
   resolved "https://registry.yarnpkg.com/jquery-mousewheel/-/jquery-mousewheel-3.1.13.tgz#06f0335f16e353a695e7206bf50503cb523a6ee5"
   integrity sha1-BvAzXxbjU6aV5yBr9QUDy1I6buU=
 
-jquery@>=1.5, jquery@^3.2.1:
+jquery@>=1.5, jquery@^3.4.0:
   version "3.4.1"
   resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.4.1.tgz#714f1f8d9dde4bdfa55764ba37ef214630d80ef2"
   integrity sha512-36+AdBzCL+y6qjw5Tx7HgzeGCzC81MDDgaUP8ld2zhx58HdqXGoBd+tHdrBMiyjGQs0Hxs/MLZTu/eHNJJuWPw==
@@ -5424,10 +5424,10 @@ jsx-ast-utils@^2.0.0:
     array-includes "^3.0.3"
     object.assign "^4.1.0"
 
-jvectormap@^2.0.4:
-  version "2.0.4"
-  resolved "https://registry.yarnpkg.com/jvectormap/-/jvectormap-2.0.4.tgz#7913e1577285c156eda156430f90ed5ada068e4b"
-  integrity sha1-eRPhV3KFwVbtoVZDD5DtWtoGjks=
+jvectormap-next@^3.0.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/jvectormap-next/-/jvectormap-next-3.1.0.tgz#238f35eb46bcfd2acf3d05a9ec90f254cab79b41"
+  integrity sha512-0cWh7b6zjWNnKqjON0yeseYzV4oY3BJItxEQqi2L9T43bylaeUMfn7FfbSpF3xsxnJvu8rfc/ZjDYEesJ9I+SQ==
   dependencies:
     jquery ">=1.5"
 
@@ -7547,14 +7547,14 @@ react-is@^16.6.0, react-is@^16.7.0:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.0.tgz#0f37c3613c34fe6b37cd7f763a0d6293ab15c527"
   integrity sha512-GFMtL0vHkiBv9HluwNZTggSn/sCyEt9n02aM0dSAjGGyqyNlAyftYm4phPxdvCigG15JreC5biwxCgTAJZ7yAA==
 
-react-jvectormap@0.0.2:
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/react-jvectormap/-/react-jvectormap-0.0.2.tgz#0ccf0d7f74caad87830120f9eee24b57327b8d7e"
-  integrity sha1-DM8Nf3TKrYeDASD57uJLVzJ7jX4=
+react-jvectormap@0.0.16:
+  version "0.0.16"
+  resolved "https://registry.yarnpkg.com/react-jvectormap/-/react-jvectormap-0.0.16.tgz#694223db7112e94b64dc334bd39d5f6e5b1560f5"
+  integrity sha512-DGmdeWucMfagdmQ/ie50Ef/JBP3Q4VpvjikvigNddnVtPlX0M6j9n4QFu42EZ/+S/UeWlEpsaxDzmC5ky4auLA==
   dependencies:
-    jquery "^3.2.1"
+    jquery "^3.4.0"
     jquery-mousewheel "^3.1.13"
-    jvectormap "^2.0.4"
+    jvectormap-next "^3.0.0"
     prop-types "^15.6.0"
 
 react-lifecycles-compat@^3.0.4:
