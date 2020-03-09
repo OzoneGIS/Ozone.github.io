@@ -21,7 +21,7 @@
     "axios": "^0.19.2",
     "bootstrap": "4.3.1",
     "chart.js": "2.9.3",
-    "mapbox-gl": "^0.44.2",
+    "mapbox-gl": "^1.8.1",
     "moment": "2.19.3",
     "node-sass-chokidar": "1.4.0",
     "npm-run-all": "4.1.2",
