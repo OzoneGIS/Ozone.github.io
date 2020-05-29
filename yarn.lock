@@ -9612,10 +9612,10 @@ react-big-calendar@0.24.5:
     react-overlays "^2.0.0-0"
     uncontrollable "^7.0.0"
 
-react-bootstrap-sweetalert@5.1.9:
-  version "5.1.9"
-  resolved "https://registry.yarnpkg.com/react-bootstrap-sweetalert/-/react-bootstrap-sweetalert-5.1.9.tgz#3f88125d2a4bac199dc7dd751341719e91e0dcfe"
-  integrity sha512-/FVTTN4l5TEOTT6PpIZ6k1/61lKZ0hSWx2pY1xcEI2ZJ1NKrajaLAEW3CHka6yDWkdc+VKGCTk0sFnX64qCKkA==
+react-bootstrap-sweetalert@5.1.11:
+  version "5.1.11"
+  resolved "https://registry.yarnpkg.com/react-bootstrap-sweetalert/-/react-bootstrap-sweetalert-5.1.11.tgz#721e028754e790dfaf1babed9a2a4ead85513425"
+  integrity sha512-cpBfdoZeoJE82ndokAhm+7JwrSLPKg+ZPgmB/3A+zf4pklP4eXHY2LWe2rpJm9w0UsSTeBD2Ve69C5ar0U88hA==
 
 react-bootstrap-switch@15.5.3:
   version "15.5.3"
