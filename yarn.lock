@@ -9595,10 +9595,10 @@ react-app-polyfill@^1.0.6:
     regenerator-runtime "^0.13.3"
     whatwg-fetch "^3.0.0"
 
-react-big-calendar@0.24.5:
-  version "0.24.5"
-  resolved "https://registry.yarnpkg.com/react-big-calendar/-/react-big-calendar-0.24.5.tgz#c6b988b25967e483163e24f157b0ffd595c35d83"
-  integrity sha512-ukKxDK8MFBuiooJBoxrhsUgEAIZE4kBY6A+7jtKxUwmkPCRtETcm1E3tRbJapiWmYYxghfIxcem8cBGI5iBoUg==
+react-big-calendar@0.25.0:
+  version "0.25.0"
+  resolved "https://registry.yarnpkg.com/react-big-calendar/-/react-big-calendar-0.25.0.tgz#19dc3b8eaebe8aac1ba7b9b9a93d47c8431e2126"
+  integrity sha512-B+awXBEI60LHA4+cXLBdftclrtYLfenmgZBT3doQJpm160kck6r2wjqoGEeTsoaLVn3xRMbzrs2Bg5whtMCKHA==
   dependencies:
     "@babel/runtime" "^7.1.5"
     clsx "^1.0.4"
@@ -9608,7 +9608,7 @@ react-big-calendar@0.24.5:
     lodash "^4.17.11"
     lodash-es "^4.17.11"
     memoize-one "^5.1.1"
-    prop-types "^15.6.2"
+    prop-types "^15.7.2"
     react-overlays "^2.0.0-0"
     uncontrollable "^7.0.0"
 
