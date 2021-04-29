@@ -1,0 +1,28 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "13:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: react-big-calendar
+    versions:
+    - 0.31.0
+    - 0.32.0
+    - 0.33.0
+    - 0.33.1
+  - dependency-name: mapbox-gl
+    versions:
+    - 1.13.0
+    - 1.13.1
+  - dependency-name: react-table
+    versions:
+    - 7.6.3
+  - dependency-name: elliptic
+    versions:
+    - 6.5.3
+  - dependency-name: jquery
+    versions:
+    - 3.5.1
