@@ -1138,10 +1138,10 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2", "@babel/runtime@^7.1.5", "@babel/runtime@^7.3.4", "@babel/runtime@^7.4.0", "@babel/runtime@^7.4.4", "@babel/runtime@^7.4.5", "@babel/runtime@^7.5.5", "@babel/runtime@^7.6.3", "@babel/runtime@^7.7.2", "@babel/runtime@^7.8.4", "@babel/runtime@^7.8.7":
-  version "7.9.2"
-  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.9.2.tgz#d90df0583a3a252f09aaa619665367bae518db06"
-  integrity sha512-NE2DtOdufG7R5vnfQUTehdTfNycfUANEtCa9PssN9O/xmTzP4E08UI797ixaei6hBEVL9BI/PsdJS5x7mWoB9Q==
+"@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2", "@babel/runtime@^7.1.5", "@babel/runtime@^7.12.1", "@babel/runtime@^7.3.4", "@babel/runtime@^7.4.0", "@babel/runtime@^7.4.4", "@babel/runtime@^7.4.5", "@babel/runtime@^7.5.5", "@babel/runtime@^7.6.3", "@babel/runtime@^7.7.2", "@babel/runtime@^7.8.4", "@babel/runtime@^7.8.7":
+  version "7.14.8"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.14.8.tgz#7119a56f421018852694290b9f9148097391b446"
+  integrity sha512-twj3L8Og5SaCRCErB4x4ajbvBIVV77CGeFglHpeg5WC5FF8TZzBWXtTJ4MqaD9QszLYTtr+IsaAL2rEUevb+eg==
   dependencies:
     regenerator-runtime "^0.13.4"
 
@@ -1556,10 +1556,17 @@
   resolved "https://registry.yarnpkg.com/@nodelib/fs.stat/-/fs.stat-1.1.3.tgz#2b5a3ab3f918cca48a8c754c08168e3f03eba61b"
   integrity sha512-shAmDyaQC4H92APFoIaVDHCx5bStIocgvbwQyxPRrbUY20V1EYTbSDchWbuwlMG3V17cprZhA6+78JfB+3DTPw==
 
-"@restart/hooks@^0.3.12":
-  version "0.3.21"
-  resolved "https://registry.yarnpkg.com/@restart/hooks/-/hooks-0.3.21.tgz#5264d12019ffb844dc1fc44d55517ded7b580ee2"
-  integrity sha512-Wcu3CFJV+iiqPEIoPVx3/CYnZBRgPeRABo6bLJByRH9ptJXyObn7WYPG7Rv0cg3+55bqcBbG0xEfovzwE2PNXg==
+"@popperjs/core@^2.5.3":
+  version "2.9.2"
+  resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.9.2.tgz#adea7b6953cbb34651766b0548468e743c6a2353"
+  integrity sha512-VZMYa7+fXHdwIq1TDhSXoVmSPEGM/aa+6Aiq3nVVJ9bXr24zScr+NlKFKC3iPljA7ho/GAZr+d2jOf5GIRC30Q==
+
+"@restart/hooks@^0.3.25":
+  version "0.3.27"
+  resolved "https://registry.yarnpkg.com/@restart/hooks/-/hooks-0.3.27.tgz#91f356d66d4699a8cd8b3d008402708b6a9dc505"
+  integrity sha512-s984xV/EapUIfkjlf8wz9weP2O9TNKR96C68FfMEy2bE69+H4cNv3RD4Mf97lW7Htt7PjZrYTjSC8f3SB9VCXw==
+  dependencies:
+    dequal "^2.0.2"
 
 "@scarf/scarf@^0.1.5":
   version "0.1.5"
@@ -1817,6 +1824,11 @@
   integrity sha512-5PONNyiZXHS6oiW0H1rsNQ+Apkg+cqp3jP4HRhCAcgASIj3ifrFsdj1QB5TvArqT5N8RetK6UH7873COgRZwoQ==
   dependencies:
     "@types/geojson" "*"
+
+"@types/warning@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@types/warning/-/warning-3.0.0.tgz#0d2501268ad8f9962b740d387c4654f5f8e23e52"
+  integrity sha1-DSUBJorY+ZYrdA04fEZU9fjiPlI=
 
 "@types/yargs-parser@*":
   version "15.0.0"
@@ -3872,10 +3884,15 @@ cssstyle@^1.0.0, cssstyle@^1.1.1:
   dependencies:
     cssom "0.3.x"
 
-csstype@^2.2.0, csstype@^2.5.7, csstype@^2.6.7:
+csstype@^2.2.0, csstype@^2.5.7:
   version "2.6.9"
   resolved "https://registry.yarnpkg.com/csstype/-/csstype-2.6.9.tgz#05141d0cd557a56b8891394c1911c40c8a98d098"
   integrity sha512-xz39Sb4+OaTsULgUERcCk+TJj8ylkL4aSVDQiX/ksxbELSqwkgt4d4RD7fovIdgJGSuNYqwZEiVjYY5l0ask+Q==
+
+csstype@^3.0.2:
+  version "3.0.8"
+  resolved "https://registry.yarnpkg.com/csstype/-/csstype-3.0.8.tgz#d2266a792729fb227cd216fb572f43728e1ad340"
+  integrity sha512-jXKhWqXPmlUeoQnF/EhTtTl4C9SnrxSH/jZUih3jmO6lBKr99rP3/+FmrMj4EFpOXzMtXHAZkd3x0E6h6Fgflw==
 
 currently-unhandled@^0.4.1:
   version "0.4.1"
@@ -3918,7 +3935,7 @@ data-urls@^1.0.0, data-urls@^1.1.0:
     whatwg-mimetype "^2.2.0"
     whatwg-url "^7.0.0"
 
-date-arithmetic@^4.0.1:
+date-arithmetic@^4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/date-arithmetic/-/date-arithmetic-4.1.0.tgz#e5d6434e9deb71f79760a37b729e4a515e730ddf"
   integrity sha512-QWxYLR5P/6GStZcdem+V1xoto6DMadYWpMXU82ES3/RfR3Wdwr3D0+be7mgOJ+Ov0G9D5Dmb9T17sNLQYj9XOg==
@@ -4048,6 +4065,11 @@ depd@~1.1.2:
   resolved "https://registry.yarnpkg.com/depd/-/depd-1.1.2.tgz#9bcd52e14c097763e749b274c4346ed2e560b5a9"
   integrity sha1-m81S4UwJd2PnSbJ0xDRu0uVgtak=
 
+dequal@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/dequal/-/dequal-2.0.2.tgz#85ca22025e3a87e65ef75a7a437b35284a7e319d"
+  integrity sha512-q9K8BlJVxK7hQYqa6XISGmBZbtQQWVXSrRrWreHC94rMt1QL/Impruc+7p2CYSYuVIUr+YCt6hjrs1kkdJRTug==
+
 des.js@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/des.js/-/des.js-1.0.1.tgz#5382142e1bdc53f85d86d53e5f4aa7deb91e0843"
@@ -4157,13 +4179,13 @@ dom-helpers@^3.4.0:
   dependencies:
     "@babel/runtime" "^7.1.2"
 
-dom-helpers@^5.0.1, dom-helpers@^5.1.0:
-  version "5.1.3"
-  resolved "https://registry.yarnpkg.com/dom-helpers/-/dom-helpers-5.1.3.tgz#7233248eb3a2d1f74aafca31e52c5299cc8ce821"
-  integrity sha512-nZD1OtwfWGRBWlpANxacBEZrEuLa16o1nh7YopFWeoF68Zt8GGEmzHu6Xv4F3XaFIC+YXtTLrzgqKxFgLEe4jw==
+dom-helpers@^5.0.1, dom-helpers@^5.1.0, dom-helpers@^5.2.0:
+  version "5.2.1"
+  resolved "https://registry.yarnpkg.com/dom-helpers/-/dom-helpers-5.2.1.tgz#d9400536b2bf8225ad98fe052e029451ac40e902"
+  integrity sha512-nRCa7CK3VTrM2NmGkIy4cbK7IZlgBE/PYMn55rrXefr5xXDP0LdtfPnblFDoVdcAfslJ7or6iqAUnx0CCGIWQA==
   dependencies:
-    "@babel/runtime" "^7.6.3"
-    csstype "^2.6.7"
+    "@babel/runtime" "^7.8.7"
+    csstype "^3.0.2"
 
 dom-serializer@0:
   version "0.2.2"
@@ -8649,7 +8671,7 @@ pnp-webpack-plugin@1.6.4:
   dependencies:
     ts-pnp "^1.1.6"
 
-popper.js@^1.12.5, popper.js@^1.15.0:
+popper.js@^1.12.5:
   version "1.16.1"
   resolved "https://registry.yarnpkg.com/popper.js/-/popper.js-1.16.1.tgz#2a223cb3dc7b6213d740e40372be40de43e65b1b"
   integrity sha512-Wb4p1J4zyFTbM+u6WuO4XstYx4Ky9Cewe4DWrel7B0w6VVICvPwdOpotjzcf6eD8TsckVnIMNONQyPIUFOUbCQ==
@@ -9595,21 +9617,21 @@ react-app-polyfill@^1.0.6:
     regenerator-runtime "^0.13.3"
     whatwg-fetch "^3.0.0"
 
-react-big-calendar@0.24.5:
-  version "0.24.5"
-  resolved "https://registry.yarnpkg.com/react-big-calendar/-/react-big-calendar-0.24.5.tgz#c6b988b25967e483163e24f157b0ffd595c35d83"
-  integrity sha512-ukKxDK8MFBuiooJBoxrhsUgEAIZE4kBY6A+7jtKxUwmkPCRtETcm1E3tRbJapiWmYYxghfIxcem8cBGI5iBoUg==
+react-big-calendar@0.33.6:
+  version "0.33.6"
+  resolved "https://registry.yarnpkg.com/react-big-calendar/-/react-big-calendar-0.33.6.tgz#87594b4ce54b4f3cc7f69d52f2d34ddf6b2eb00b"
+  integrity sha512-4crVUE1W7+zIUfbfrXxd9nDOVktwn8M8Ffrjd39r9zFIveZu1zhrWwi+qqu46EQw2xRnb+mFx+mcwUozkqYlkA==
   dependencies:
     "@babel/runtime" "^7.1.5"
     clsx "^1.0.4"
-    date-arithmetic "^4.0.1"
+    date-arithmetic "^4.1.0"
     dom-helpers "^5.1.0"
     invariant "^2.2.4"
     lodash "^4.17.11"
     lodash-es "^4.17.11"
     memoize-one "^5.1.1"
-    prop-types "^15.6.2"
-    react-overlays "^2.0.0-0"
+    prop-types "^15.7.2"
+    react-overlays "^4.1.1"
     uncontrollable "^7.0.0"
 
 react-bootstrap-sweetalert@5.1.9:
@@ -9767,15 +9789,16 @@ react-onclickoutside@^6.5.0:
   resolved "https://registry.yarnpkg.com/react-onclickoutside/-/react-onclickoutside-6.9.0.tgz#a54bc317ae8cf6131a5d78acea55a11067f37a1f"
   integrity sha512-8ltIY3bC7oGhj2nPAvWOGi+xGFybPNhJM0V1H8hY/whNcXgmDeaeoCMPPd8VatrpTsUWjb/vGzrmu6SrXVty3A==
 
-react-overlays@^2.0.0-0:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/react-overlays/-/react-overlays-2.1.1.tgz#ffe2090c4a10da6b8947a1c7b1a67d0457648a0d"
-  integrity sha512-gaQJwmb8Ij2IGVt4D1HmLtl4A0mDVYxlsv/8i0dHWK7Mw0kNat6ORelbbEWzaXTK1TqMeQtJw/jraL3WOADz3w==
+react-overlays@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/react-overlays/-/react-overlays-4.1.1.tgz#0060107cbe1c5171a744ccda3fbf0556d064bc5f"
+  integrity sha512-WtJifh081e6M24KnvTQoNjQEpz7HoLxqt8TwZM7LOYIkYJ8i/Ly1Xi7RVte87ZVnmqQ4PFaFiNHZhSINPSpdBQ==
   dependencies:
-    "@babel/runtime" "^7.4.5"
-    "@restart/hooks" "^0.3.12"
-    dom-helpers "^5.1.0"
-    popper.js "^1.15.0"
+    "@babel/runtime" "^7.12.1"
+    "@popperjs/core" "^2.5.3"
+    "@restart/hooks" "^0.3.25"
+    "@types/warning" "^3.0.0"
+    dom-helpers "^5.2.0"
     prop-types "^15.7.2"
     uncontrollable "^7.0.0"
     warning "^4.0.3"
